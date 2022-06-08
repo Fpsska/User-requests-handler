@@ -1,13 +1,23 @@
 .form {
     &__wrapper {
         display: flex;
-        align-items: center;
+        align-items: flex-end;
     }
     &__template {
         display: flex;
+        flex-direction: column;
         &:not(:last-child) {
             margin: 0 10px 0 0;
         }
+    }
+    &__controls {
+        display: flex;
+        align-items: center;
+        margin: 10px 0 0 0;
+    }
+    &__text {
+        font-weight: 600;
+        cursor: pointer;
     }
     &__input {
         font-size: 12px;
@@ -18,15 +28,6 @@
     }
     &__input--id {
         max-width: 45px;
-    }
-}
-
-.label {
-    &__text {
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
     }
 }
 
