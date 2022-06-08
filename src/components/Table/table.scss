@@ -1,6 +1,6 @@
 .table-wrapper {
     overflow: auto;
-    height: 160px;
+    // height: 160px;
 }
 
 .table {
@@ -10,6 +10,9 @@
     td {
         text-align: left;
         padding: 14px 20px;
+    }
+    &__cell--status {
+        color: green;
     }
 }
 

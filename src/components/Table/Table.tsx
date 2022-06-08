@@ -2,11 +2,18 @@ import React from 'react';
 
 import { FaSort } from 'react-icons/fa';
 
+import { useAppSelector } from '../../app/hooks';
+
+import TableTemplate from './TableTemplate';
+
 import './table.scss';
 
 // /. imports
 
 const Table: React.FC = () => {
+
+    const { tableTemplates } = useAppSelector(state => state.tableSlice);
+
     return (
         <div className="table-wrapper">
             <table className="table">
@@ -43,42 +50,20 @@ const Table: React.FC = () => {
                     </tr>
                 </thead>
                 <tbody className="table__body">
-                    <tr className="table__row">
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                    </tr>
-                    <tr className="table__row">
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                    </tr>
-                    <tr className="table__row">
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                    </tr>
-                    <tr className="table__row">
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                        <td className="table__cell">Text</td>
-                    </tr>
+                    {tableTemplates.map(item => {
+                        return (
+                            <TableTemplate
+                                key={item.id}
+                                id={item.id}
+                                name={item.name}
+                                birth={item.birth}
+                                phone={item.phone}
+                                filial={item.filial}
+                                isPaid={item.isPaid}
+                                status={item.status}
+                            />
+                        );
+                    })}
                 </tbody>
             </table>
         </div>
