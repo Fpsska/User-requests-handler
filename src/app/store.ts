@@ -1,9 +1,12 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 
+import formSlice from './slices/formSlice';
+
 // /. imports
 
 export const store = configureStore({
   reducer: {
+    formSlice: formSlice
   }
 });
 

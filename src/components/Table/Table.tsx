@@ -82,7 +82,6 @@ const Table: React.FC = () => {
                 </tbody>
             </table>
         </div>
-
     );
 };
 
