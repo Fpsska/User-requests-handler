@@ -1,0 +1,38 @@
+.form {
+    &__wrapper {
+        display: flex;
+        align-items: center;
+    }
+    &__template {
+        display: flex;
+        &:not(:last-child) {
+            margin: 0 10px 0 0;
+        }
+    }
+    &__input {
+        font-size: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        color: #000;
+    }
+    &__input--id {
+        max-width: 45px;
+    }
+}
+
+.label {
+    &__text {
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+}
+
+.selection-menu {
+    padding: 9px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+}

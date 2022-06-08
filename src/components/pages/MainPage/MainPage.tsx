@@ -1,9 +1,16 @@
 import React from 'react';
 
+import Form from '../../Form/Form';
+
 // /. imports
 
-export const MainPage: React.FC = () => {
+const MainPage: React.FC = () => {
     return (
-        <div>MainPage</div>
+        <div>
+            MainPage
+            <Form />
+        </div>
     );
 };
+
+export default MainPage;

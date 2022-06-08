@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Route, Routes } from 'react-router';
 
-import { Layout } from '../common/Layout';
-import { MainPage } from '../pages/MainPage/MainPage';
+import Layout from '../common/Layout';
+import MainPage from '../pages/MainPage/MainPage';
 
 import './App.css';
 import '../../assets/styles/_style.scss';

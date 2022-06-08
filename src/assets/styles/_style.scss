@@ -32,4 +32,19 @@ button {
     border: none;
 }
 
+input {
+    outline: none;
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+        transition: background-color 5000s;
+        -webkit-text-fill-color: #fff !important;
+    }
+}
+
+select {
+    outline: 0;
+}
+
 // /. NULL-STYLES

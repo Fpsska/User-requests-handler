@@ -4,7 +4,7 @@ import { Outlet } from 'react-router';
 
 // /. imports
 
-export const Layout: React.FC = () => {
+const Layout: React.FC = () => {
     return (
         <div className="page">
             <header></header>
@@ -15,3 +15,5 @@ export const Layout: React.FC = () => {
         </div>
     );
 };
+
+export default Layout;
