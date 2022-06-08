@@ -7,7 +7,6 @@ import Form from '../../Form/Form';
 const MainPage: React.FC = () => {
     return (
         <div>
-            MainPage
             <Form />
         </div>
     );

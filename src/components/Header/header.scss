@@ -1,0 +1,18 @@
+.header {
+    margin: 0 0 20px 0;
+    &__wrapper {
+        display: flex;
+    }
+};
+
+.relult {
+    &__wrapper {
+        display: flex;
+        align-items: center;
+    }
+    &__text {
+        font-weight: 600;
+        font-size: 20px;
+        margin: 0 0 0 10px;
+    }
+}
