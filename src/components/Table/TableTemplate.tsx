@@ -41,7 +41,13 @@ const TableTemplate: React.FC<propTypes> = (props) => {
                         ? <IoCheckmarkCircleOutline size={'24px'} color={'green'} />
                         : <IoCloseCircleOutline size={'24px'} color={'red'} />}
                 </td>
-                <td className="table__cell table__cell--status">{status}</td>
+                <td
+                    className={status === 'Закрыта'
+                        ? 'table__cell table__cell--status close'
+                        : 'table__cell table__cell--status active'}
+                >
+                    {status}
+                </td>
             </tr>
         </>
     );

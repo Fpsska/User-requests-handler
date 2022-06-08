@@ -3,14 +3,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { tableTemplatesTypes } from '../../Types/tableSliceTypes';
 
 import { generateRandomDate } from '../../helpers/getRandomDate';
-
-
-
-// [
-//     'В обработке',
-//     'Новая',
-//     'Закрыта'
-// ]
+import { getRandomStatus } from '../../helpers/getRandomStatus';
 
 // /. imports
 
@@ -55,9 +48,16 @@ const tableSlice = createSlice({
             state.tableTemplates = action.payload;
             state.tableTemplates.map(item => {
                 item.birth = `${generateRandomDate(new Date(2012, 0, 1), new Date()).toLocaleDateString('en-GB')}`;
-                item.filial = 'Филиал №1';
+                item.filial = `${getRandomStatus([
+                    'Филиал №1',
+                    'Филиал №2'
+                ])}`;
                 item.isPaid = Boolean(Math.round(Math.random()));
-                item.status = 'В обработке';
+                item.status = `${getRandomStatus([
+                    'В обработке',
+                    'Новая',
+                    'Закрыта'
+                ])}`;
             });
             state.status = 'success';
         },

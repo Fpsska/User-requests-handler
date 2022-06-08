@@ -14,6 +14,9 @@
     &__cell--status {
         color: green;
     }
+    &__cell--status.close {
+        color: red;
+    }
 }
 
 .table__head.sticky {
@@ -35,3 +38,5 @@
         }
     }
 }
+
+
