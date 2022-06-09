@@ -28,6 +28,7 @@ export const fetchUsersData = createAsyncThunk(
 // /. AsyncThunk
 
 interface tableSliceTypes {
+    isUsersDataEmpty: boolean,
     fetchUsersErrMsg: string,
     requestСount: number
     isTableDataLoading: boolean,
@@ -38,6 +39,7 @@ interface tableSliceTypes {
 // /. interfaces
 
 const initialState: tableSliceTypes = {
+    isUsersDataEmpty: false,
     fetchUsersErrMsg: '',
     requestСount: 0,
     isTableDataLoading: true,
@@ -53,6 +55,9 @@ const tableSlice = createSlice({
     reducers: {
         switchTableDataLoadingStatus(state, action: PayloadAction<boolean>) {
             state.isTableDataLoading = action.payload;
+        },
+        swithUsersDataEmptyStatus(state, action: PayloadAction<boolean>) {
+            state.isUsersDataEmpty = action.payload;
         }
     },
     extraReducers: {
@@ -88,7 +93,8 @@ const tableSlice = createSlice({
 });
 
 export const {
-    switchTableDataLoadingStatus
+    switchTableDataLoadingStatus,
+    swithUsersDataEmptyStatus
 } = tableSlice.actions;
 
 export default tableSlice.reducer;

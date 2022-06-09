@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { FaSort } from 'react-icons/fa';
 
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import Preloader from '../common/Preloader/Preloader';
+
+import { swithUsersDataEmptyStatus } from '../../app/slices/tableSlice';
 
 import TableTemplate from './TableTemplate';
 
@@ -17,8 +19,17 @@ const Table: React.FC = () => {
     const {
         tableTemplates,
         isTableDataLoading,
-        fetchUsersErrMsg
+        fetchUsersErrMsg,
+        isUsersDataEmpty
     } = useAppSelector(state => state.tableSlice);
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        tableTemplates.length === 0
+            ? dispatch(swithUsersDataEmptyStatus(true))
+            : dispatch(swithUsersDataEmptyStatus(false));
+    }, [tableTemplates]);
 
     return (
         <div className="table-wrapper">
@@ -79,6 +90,9 @@ const Table: React.FC = () => {
                     }
                     {
                         !isTableDataLoading && fetchUsersErrMsg && <span className="error-message">Error: {fetchUsersErrMsg}!</span>
+                    }
+                    {
+                        !isTableDataLoading && isUsersDataEmpty ? <span className="error-message">No matches!</span> : <></>
                     }
                 </tbody>
             </table>
