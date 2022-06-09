@@ -22,10 +22,10 @@ const MainPage: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        status === 'success'
+        status === 'loading'
             ? setTimeout(() => {
                 dispatch(switchTableDataLoadingStatus(false));
-            }, 110000)
+            }, 5000)
             : dispatch(switchTableDataLoadingStatus(true));
     }, [status]);
 

@@ -9,17 +9,26 @@ import { getRandomStatus } from '../../helpers/getRandomStatus';
 
 export const fetchUsersData = createAsyncThunk(
     'tableSlice/fetchUsersData',
-    async () => {
-        const response = await fetch('https://jsonplaceholder.typicode.com/users');
-        const data = await response.json();
-        const result = data;
-        return result;
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await fetch('https://jsonplaceholder.typicode.com/users');
+
+            if (!response.ok) {
+                throw new Error('Response: server error!');
+            }
+
+            const data = await response.json();
+            return data;
+        } catch (err: any) {
+            return rejectWithValue(err.message);
+        }
     }
 );
 
 // /. AsyncThunk
 
 interface tableSliceTypes {
+    fetchUsersErrMsg: string,
     requestСount: number
     isTableDataLoading: boolean,
     status: string,
@@ -29,6 +38,7 @@ interface tableSliceTypes {
 // /. interfaces
 
 const initialState: tableSliceTypes = {
+    fetchUsersErrMsg: '',
     requestСount: 0,
     isTableDataLoading: true,
     status: '',
@@ -70,8 +80,9 @@ const tableSlice = createSlice({
             state.status = 'success';
             state.requestСount = state.tableTemplates.length;
         },
-        [fetchUsersData.rejected.type]: (state) => {
+        [fetchUsersData.rejected.type]: (state, action: PayloadAction<string>) => {
             state.status = 'failed';
+            state.fetchUsersErrMsg = action.payload;
         }
     }
 });

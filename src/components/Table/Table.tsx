@@ -14,7 +14,11 @@ import './table.scss';
 
 const Table: React.FC = () => {
 
-    const { tableTemplates, isTableDataLoading } = useAppSelector(state => state.tableSlice);
+    const {
+        tableTemplates,
+        isTableDataLoading,
+        fetchUsersErrMsg
+    } = useAppSelector(state => state.tableSlice);
 
     return (
         <div className="table-wrapper">
@@ -51,27 +55,31 @@ const Table: React.FC = () => {
                         </th>
                     </tr>
                 </thead>
-                <tbody className="table__body">
-                {isTableDataLoading
-                    ? <div className="table__preloader">
-                        <Preloader />
-                    </div>
-                    : <></>
-                }
-                    {tableTemplates.map(item => {
-                        return (
-                            <TableTemplate
-                                key={item.id}
-                                id={item.id}
-                                name={item.name}
-                                birth={item.birth}
-                                phone={item.phone}
-                                filial={item.filial}
-                                isPaid={item.isPaid}
-                                status={item.status}
-                            />
-                        );
-                    })}
+                <tbody className={isTableDataLoading ? 'table__body loading' : 'table__body'}>
+                    {isTableDataLoading
+                        ? <div className="table__preloader">
+                            <Preloader />
+                        </div>
+                        : <>
+                            {tableTemplates.map(item => {
+                                return (
+                                    <TableTemplate
+                                        key={item.id}
+                                        id={item.id}
+                                        name={item.name}
+                                        birth={item.birth}
+                                        phone={item.phone}
+                                        filial={item.filial}
+                                        isPaid={item.isPaid}
+                                        status={item.status}
+                                    />
+                                );
+                            })}
+                        </>
+                    }
+                    {
+                        !isTableDataLoading && fetchUsersErrMsg && <span className="error-message">Error: {fetchUsersErrMsg}!</span>
+                    }
                 </tbody>
             </table>
         </div>
