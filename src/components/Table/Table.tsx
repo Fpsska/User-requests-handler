@@ -1,12 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { FaSort } from 'react-icons/fa';
+import { FaSortDown, FaSortUp, FaSortAlphaDown } from 'react-icons/fa';
+
+import { TiArrowSortedUp } from 'react-icons/ti';
+
+import { AiOutlineSortDescending } from 'react-icons/ai';
+
+import { BsSortAlphaUpAlt } from 'react-icons/bs';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import Preloader from '../common/Preloader/Preloader';
 
-import { swithUsersDataEmptyStatus } from '../../app/slices/tableSlice';
+import {
+    swithUsersDataEmptyStatus,
+    sortUsersByASC,
+    sortUsersByDSC
+} from '../../app/slices/tableSlice';
 
 import TableTemplate from './TableTemplate';
 
@@ -23,7 +33,46 @@ const Table: React.FC = () => {
         isUsersDataEmpty
     } = useAppSelector(state => state.tableSlice);
 
+    const [sortOder, setSetOrder] = useState<string>('DSC');
+    const [statuses, setStatus] = useState<any>(
+        {
+            id: false,
+            fio: false,
+            birth: false,
+            phone: false,
+            filial: false,
+            isPaid: false,
+            status: false
+        }
+    );
+
     const dispatch = useAppDispatch();
+
+    const iconHandler = (name: string): void => {
+        switch (name) {
+            case 'id':
+                setStatus(() => ({ ...statuses, id: !statuses.id }));
+                break;
+            case 'fio':
+                setStatus(() => ({ ...statuses, fio: !statuses.fio }));
+                break;
+            case 'birth':
+                setStatus(() => ({ ...statuses, birth: !statuses.birth }));
+                break;
+            case 'phone':
+                setStatus(() => ({ ...statuses, phone: !statuses.phone }));
+                break;
+            case 'filial':
+                setStatus(() => ({ ...statuses, filial: !statuses.filial }));
+                break;
+            case 'isPaid':
+                setStatus(() => ({ ...statuses, isPaid: !statuses.isPaid }));
+                break;
+            case 'status':
+                setStatus(() => ({ ...statuses, status: !statuses.status }));
+                break;
+        }
+    };
 
     useEffect(() => {
         tableTemplates.length === 0
@@ -31,38 +80,49 @@ const Table: React.FC = () => {
             : dispatch(swithUsersDataEmptyStatus(false));
     }, [tableTemplates]);
 
+    const sortUsersData = (name: string): void => {
+        if (sortOder === 'ASC') {
+            setSetOrder('DSC');
+            dispatch(sortUsersByASC(name));
+        } else if (sortOder === 'DSC') {
+            setSetOrder('ASC');
+            dispatch(sortUsersByDSC(name));
+        }
+        iconHandler(name);
+    };
+
     return (
         <div className="table-wrapper">
             <table className="table">
                 <thead className="table__head sticky">
                     <tr className="table__row table__row--head">
-                        <th className="table__col table__col--head">
+                        <th className="table__col table__col--head" onClick={() => sortUsersData('id')}>
                             ID
-                            <FaSort />
+                            {statuses.id ? <TiArrowSortedUp /> : <FaSortDown />}
                         </th>
-                        <th className="table__col table__col--head">
+                        <th className="table__col table__col--head" onClick={() => sortUsersData('fio')}>
                             ФИО
-                            <FaSort />
+                            {statuses.fio ? <TiArrowSortedUp /> : <FaSortDown />}
                         </th>
-                        <th className="table__col table__col--head">
+                        <th className="table__col table__col--head" onClick={() => sortUsersData('birth')}>
                             Дата рождения
-                            <FaSort />
+                            {statuses.birth ? <TiArrowSortedUp /> : <FaSortDown />}
                         </th>
-                        <th className="table__col table__col--head">
+                        <th className="table__col table__col--head" onClick={() => sortUsersData('phone')}>
                             Телефон
-                            <FaSort />
+                            {statuses.phone ? <TiArrowSortedUp /> : <FaSortDown />}
                         </th>
-                        <th className="table__col table__col--head">
+                        <th className="table__col table__col--head" onClick={() => sortUsersData('filial')}>
                             Филиал
-                            <FaSort />
+                            {statuses.filial ? <TiArrowSortedUp /> : <FaSortDown />}
                         </th>
-                        <th className="table__col table__col--head">
+                        <th className="table__col table__col--head" onClick={() => sortUsersData('isPaid')}>
                             Оплата
-                            <FaSort />
+                            {statuses.isPaid ? <TiArrowSortedUp /> : <FaSortDown />}
                         </th>
-                        <th className="table__col table__col--head">
+                        <th className="table__col table__col--head" onClick={() => sortUsersData('status')}>
                             Статус
-                            <FaSort />
+                            {statuses.status ? <TiArrowSortedUp /> : <FaSortDown />}
                         </th>
                     </tr>
                 </thead>
