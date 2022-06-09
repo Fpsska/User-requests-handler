@@ -1,26 +1,40 @@
 import React, { useEffect } from 'react';
 
-import { useAppDispatch } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 
 import Form from '../../Form/Form';
 import Table from '../../Table/Table';
 
 import { fetchUsersData } from '../../../app/slices/tableSlice';
+import { switchTableDataLoadingStatus } from '../../../app/slices/tableSlice';
+
+import './mainPage.scss';
 
 // /. imports
 
 const MainPage: React.FC = () => {
 
+    const { status } = useAppSelector(state => state.tableSlice);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(fetchUsersData());
     }, []);
 
+    useEffect(() => {
+        status === 'success'
+            ? setTimeout(() => {
+                dispatch(switchTableDataLoadingStatus(false));
+            }, 110000)
+            : dispatch(switchTableDataLoadingStatus(true));
+    }, [status]);
+
     return (
-        <div>
-            <Form />
-            <Table />
+        <div className="main-page">
+            <div className="main-page__wrapper">
+                <Form />
+                <Table />
+            </div>
         </div>
     );
 };

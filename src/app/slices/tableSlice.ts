@@ -20,6 +20,8 @@ export const fetchUsersData = createAsyncThunk(
 // /. AsyncThunk
 
 interface tableSliceTypes {
+    requestСount: number
+    isTableDataLoading: boolean,
     status: string,
     tableTemplates: tableTemplatesTypes[]
 }
@@ -27,6 +29,8 @@ interface tableSliceTypes {
 // /. interfaces
 
 const initialState: tableSliceTypes = {
+    requestСount: 0,
+    isTableDataLoading: true,
     status: '',
     tableTemplates: []
 };
@@ -36,7 +40,11 @@ const initialState: tableSliceTypes = {
 const tableSlice = createSlice({
     name: 'tableSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        switchTableDataLoadingStatus(state, action: PayloadAction<boolean>) {
+            state.isTableDataLoading = action.payload;
+        }
+    },
     extraReducers: {
         [fetchUsersData.pending.type]: (state) => {
             state.status = 'loading';
@@ -60,6 +68,7 @@ const tableSlice = createSlice({
                 ])}`;
             });
             state.status = 'success';
+            state.requestСount = state.tableTemplates.length;
         },
         [fetchUsersData.rejected.type]: (state) => {
             state.status = 'failed';
@@ -67,6 +76,8 @@ const tableSlice = createSlice({
     }
 });
 
-export const { } = tableSlice.actions;
+export const {
+    switchTableDataLoadingStatus
+} = tableSlice.actions;
 
 export default tableSlice.reducer;

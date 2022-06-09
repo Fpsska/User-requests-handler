@@ -4,6 +4,8 @@ import { FaSort } from 'react-icons/fa';
 
 import { useAppSelector } from '../../app/hooks';
 
+import Preloader from '../common/Preloader/Preloader';
+
 import TableTemplate from './TableTemplate';
 
 import './table.scss';
@@ -12,7 +14,7 @@ import './table.scss';
 
 const Table: React.FC = () => {
 
-    const { tableTemplates } = useAppSelector(state => state.tableSlice);
+    const { tableTemplates, isTableDataLoading } = useAppSelector(state => state.tableSlice);
 
     return (
         <div className="table-wrapper">
@@ -50,6 +52,12 @@ const Table: React.FC = () => {
                     </tr>
                 </thead>
                 <tbody className="table__body">
+                {isTableDataLoading
+                    ? <div className="table__preloader">
+                        <Preloader />
+                    </div>
+                    : <></>
+                }
                     {tableTemplates.map(item => {
                         return (
                             <TableTemplate
