@@ -1,14 +1,15 @@
 .table-wrapper {
     overflow: auto;
-    ::-webkit-scrollbar {
+    &::-webkit-scrollbar {
         width: 6px;
     }
-    ::-webkit-scrollbar-track {
+    &::-webkit-scrollbar-track {
         box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     }
-    ::-webkit-scrollbar-thumb {
+    &::-webkit-scrollbar-thumb {
         box-shadow: inset 0 0 6px #ccc;
     }
+    height: 80vh;
 }
 
 .table {
@@ -64,6 +65,11 @@
     }
 }
 
-.table__body.loading {
-    height: calc(100vh - 400px);
+.table__body.loading,
+.table__body.empty {
+    height: 80vh;
+}
+
+.table__body.empty {
+    color: #000;
 }

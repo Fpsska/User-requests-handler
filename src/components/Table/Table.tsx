@@ -66,7 +66,7 @@ const Table: React.FC = () => {
                         </th>
                     </tr>
                 </thead>
-                <tbody className={isTableDataLoading ? 'table__body loading' : 'table__body'}>
+                <tbody className={isTableDataLoading ? 'table__body loading' : isUsersDataEmpty ? 'table__body empty' : 'table__body'}>
                     {isTableDataLoading
                         ? <div className="table__preloader">
                             <Preloader />
@@ -89,10 +89,10 @@ const Table: React.FC = () => {
                         </>
                     }
                     {
-                        !isTableDataLoading && fetchUsersErrMsg && <span className="error-message">Error: {fetchUsersErrMsg}!</span>
+                        !isTableDataLoading && fetchUsersErrMsg && <span className="error-message">Error: {fetchUsersErrMsg}</span>
                     }
                     {
-                        !isTableDataLoading && isUsersDataEmpty ? <span className="error-message">No matches!</span> : <></>
+                        !isTableDataLoading && !fetchUsersErrMsg && isUsersDataEmpty ? <span className="error-message">No matches!</span> : <></>
                     }
                 </tbody>
             </table>

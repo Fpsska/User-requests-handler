@@ -22,11 +22,15 @@ const MainPage: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        status === 'loading'
-            ? setTimeout(() => {
+        if (status === 'loading') {
+            setTimeout(() => {
+                dispatch(switchTableDataLoadingStatus(true));
+            }, 3500);
+        } else {
+            setTimeout(() => {
                 dispatch(switchTableDataLoadingStatus(false));
-            }, 5000)
-            : dispatch(switchTableDataLoadingStatus(true));
+            }, 3500);
+        }
     }, [status]);
 
     return (
