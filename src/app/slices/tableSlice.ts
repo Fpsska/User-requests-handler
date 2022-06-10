@@ -79,7 +79,7 @@ const tableSlice = createSlice({
                     state.tableData = state.tableData.sort((a, b) => a.phone > b.phone ? 1 : -1);
                     break;
                 case 'filial':
-                    state.tableData = state.tableData.sort((a, b) => (+a.filial.replace(/\D/g, '')) - (+b.filial.replace(/\D/g, '')));
+                    state.tableData = state.tableData.sort((a, b) => (+a.filial.replace(/\D/gi, '')) - (+b.filial.replace(/\D/gi, '')));
                     break;
                 case 'isPaid':
                     state.tableData = state.tableData.sort((a, b) => (+a.isPaid) - (+b.isPaid));
@@ -104,7 +104,7 @@ const tableSlice = createSlice({
                     state.tableData = state.tableData.sort((a, b) => a.phone < b.phone ? 1 : -1);
                     break;
                 case 'filial':
-                    state.tableData = state.tableData.sort((a, b) => (+b.filial.replace(/\D/g, '')) - (+a.filial.replace(/\D/g, '')));
+                    state.tableData = state.tableData.sort((a, b) => (+b.filial.replace(/\D/gi, '')) - (+a.filial.replace(/\D/gi, '')));
                     break;
                 case 'isPaid':
                     state.tableData = state.tableData.sort((a, b) => (+b.isPaid) - (+a.isPaid));
@@ -118,34 +118,16 @@ const tableSlice = createSlice({
             const { name, value } = action.payload;
             switch (name) {
                 case 'ID':
-                    state.tableData = state.filteredTableData.filter(item => {
-                        if (RegExp(value, 'g').test(String(item.id))) {
-                            return item;
-                        } else if (+value === 0) {
-                            return state.tableData;
-                        }
-                    });
+                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(String(item.id)));
                     break;
                 case 'FIO':
-                    state.tableData = state.filteredTableData.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
+                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'gi').test(item.name));
                     break;
                 case 'BIRTH':
-                    state.tableData = state.filteredTableData.filter(item => {
-                        if (RegExp(value, 'g').test(item.birth)) {
-                            return item;
-                        } else if (+value === 0) {
-                            return state.tableData;
-                        }
-                    });
+                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(item.birth));
                     break;
                 case 'PHONE':
-                    state.tableData = state.filteredTableData.filter(item => {
-                        if (RegExp(value, 'g').test(item.phone)) {
-                            return item;
-                        } else if (+value === 0) {
-                            return state.tableData;
-                        }
-                    });
+                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(item.phone.replace(/\D/g, '')));
                     break;
                 case 'FILIAL':
                     state.tableData = state.filteredTableData.filter(item => {

@@ -25,7 +25,7 @@ const initialState: formSliceTypes = {
         },
         {
             id: 'BIRTH',
-            type: 'text',
+            type: 'number',
             placeholder: 'Дата рождения'
         },
         {
