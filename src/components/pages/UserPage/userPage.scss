@@ -1,0 +1,15 @@
+.user {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    &:not(:last-child) {
+        margin: 0 0 15px 0;
+    }
+    &__information span {
+        font-weight: 600;
+    }
+}

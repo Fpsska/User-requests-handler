@@ -6,4 +6,8 @@ export interface tableDataTypes {
     filial: string,
     isPaid: boolean,
     status: string
+    email: string,
+    username: string
+    address: any[string],
+    city: string,
 }

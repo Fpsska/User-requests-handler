@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
@@ -20,13 +20,13 @@ const Header: React.FC = () => {
                 <nav className="nav">
                     <ul className="nav__menu">
                         <li className="nav__item">
-                            <Link className="nav__link" to="/CodeConstruction-Task">Main</Link>
+                            <NavLink className="nav__link" to="/">Main</NavLink>
                         </li>
                         <li className="nav__item">
-                            <Link className="nav__link" to="/CodeConstruction-Task">Users</Link>
+                            <NavLink className="nav__link" to="Users">Users</NavLink>
                         </li>
                         <li className="nav__item">
-                            <Link className="nav__link" to="/CodeConstruction-Task">Posts</Link>
+                            <NavLink className="nav__link" to="Posts">Posts</NavLink>
                         </li>
                     </ul>
                 </nav>
