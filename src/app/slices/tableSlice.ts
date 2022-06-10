@@ -76,10 +76,10 @@ const tableSlice = createSlice({
                     state.tableTemplates = state.tableTemplates.sort((a, b) => a.phone > b.phone ? 1 : -1);
                     break;
                 case 'filial':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.filial > b.filial ? 1 : -1);
+                    state.tableTemplates = state.tableTemplates.sort((a, b) => (+a.filial.replace(/\D/g, '')) - (+b.filial.replace(/\D/g, '')));
                     break;
                 case 'isPaid':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.isPaid > b.isPaid ? 1 : -1);
+                    state.tableTemplates = state.tableTemplates.sort((a, b) => (+a.isPaid) - (+b.isPaid));
                     break;
                 case 'status':
                     state.tableTemplates = state.tableTemplates.sort((a, b) => a.status > b.status ? 1 : -1);
@@ -101,10 +101,10 @@ const tableSlice = createSlice({
                     state.tableTemplates = state.tableTemplates.sort((a, b) => a.phone < b.phone ? 1 : -1);
                     break;
                 case 'filial':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.filial < b.filial ? 1 : -1);
+                    state.tableTemplates = state.tableTemplates.sort((a, b) => (+b.filial.replace(/\D/g, '')) - (+a.filial.replace(/\D/g, '')));
                     break;
                 case 'isPaid':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.isPaid < b.isPaid ? 1 : -1);
+                    state.tableTemplates = state.tableTemplates.sort((a, b) => (+b.isPaid) - (+a.isPaid));
                     break;
                 case 'status':
                     state.tableTemplates = state.tableTemplates.sort((a, b) => a.status < b.status ? 1 : -1);
