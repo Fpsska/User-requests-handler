@@ -61,7 +61,7 @@ const tableSlice = createSlice({
         swithUsersDataEmptyStatus(state, action: PayloadAction<boolean>) {
             state.isUsersDataEmpty = action.payload;
         },
-        setRequestСount(state, action: PayloadAction<number>) {
+        setRequestCount(state, action: PayloadAction<number>) {
             state.requestСount = action.payload;
         },
         sortUsersByASC(state, action: PayloadAction<string>) {  // SECOND
@@ -188,7 +188,7 @@ const tableSlice = createSlice({
 export const {
     switchTableDataLoadingStatus,
     swithUsersDataEmptyStatus,
-    setRequestСount,
+    setRequestCount,
     sortUsersByASC,
     sortUsersByDSC,
     filterUsers

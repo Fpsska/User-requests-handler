@@ -1,0 +1,12 @@
+.relult {
+    margin: 0 0 15px 0;
+    &__wrapper {
+        display: flex;
+        align-items: center;
+    }
+    &__text {
+        font-weight: 600;
+        font-size: 20px;
+        margin: 0 0 0 10px;
+    }
+}
