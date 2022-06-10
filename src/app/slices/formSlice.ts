@@ -37,28 +37,34 @@ const initialState: formSliceTypes = {
     formSelectTemplates: [
         {
             id: 'FILIAL',
-            text: 'Филиал',
             options: [
                 {
                     id: 1,
-                    option: 'Филиал №2'
+                    option: 'Филиал'
                 },
                 {
                     id: 2,
+                    option: 'Филиал №2'
+                },
+                {
+                    id: 3,
                     option: 'Филиал №1'
                 }
             ]
         },
         {
             id: 'PAY',
-            text: 'Оплата',
             options: [
                 {
-                    id: 3,
+                    id: 4,
+                    option: 'Оплата'
+                },
+                {
+                    id: 5,
                     option: 'оплачено'
                 },
                 {
-                    id: 4,
+                    id: 6,
                     option: 'не оплачено'
                 }
             ]

@@ -34,7 +34,6 @@ const Form: React.FC = () => {
                             <FormSelectTemplate
                                 key={item.id}
                                 id={item.id}
-                                text={item.text}
                                 options={item.options}
                             />
                         );

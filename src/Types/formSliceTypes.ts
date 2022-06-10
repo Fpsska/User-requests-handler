@@ -11,6 +11,5 @@ export interface optionsTypes {
 
 export interface formSelectTemplatesTypes {
     id: string,
-    text: string,
     options: optionsTypes[]
 }

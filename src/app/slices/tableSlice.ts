@@ -144,6 +144,26 @@ const tableSlice = createSlice({
                         }
                     });
                     break;
+                case 'FILIAL':
+                    state.tableTemplates = state.filteredTableData.filter(item => {
+                        if (item.filial === value) {
+                            return item;
+                        } else if (value === 'Филиал') {
+                            return state.tableTemplates;
+                        }
+                    });
+                    break;
+                case 'PAY':
+                    state.tableTemplates = state.filteredTableData.filter(item => {
+                        if (item.isPaid === true && value === 'оплачено') {
+                            return item;
+                        } else if (item.isPaid === false && value === 'не оплачено') {
+                            return item;
+                        } else if (value === 'Оплата') {
+                            return state.tableTemplates;
+                        }
+                    });
+                    break;
             }
         }
     },
