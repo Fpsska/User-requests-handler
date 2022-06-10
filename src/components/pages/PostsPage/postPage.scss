@@ -1,4 +1,4 @@
-.user-page__wrapper {
+.post-page__wrapper {
     height: calc(100vh - 80px);
     overflow: auto;
     &::-webkit-scrollbar {
@@ -6,18 +6,19 @@
     }
 }
 
-.user {
+.post {
     border: 1px solid #ccc;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding: 10px;
+    font-weight: 600;
     &:not(:last-child) {
         margin: 0 0 15px 0;
     }
     &__information span {
-        font-weight: 600;
+        font-weight: 400;
     }
 }

@@ -23,7 +23,7 @@ const UserPage: React.FC = () => {
                     {
                         tableData.map(item => {
                             return (
-                                <ul className="user">
+                                <ul className="user" key={item.id}>
                                     <li className="user__information">Name: <span>{item.name}</span></li>
                                     <li className="user__information">Username: <span>{item.username}</span></li>
                                     <li className="user__information">Phone: <span>{item.phone}</span></li>
