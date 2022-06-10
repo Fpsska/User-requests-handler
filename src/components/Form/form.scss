@@ -17,6 +17,14 @@
         border-radius: 5px;
         padding: 10px;
         color: #000;
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
     }
     &__input--id {
         max-width: 45px;

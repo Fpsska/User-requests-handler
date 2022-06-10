@@ -15,7 +15,7 @@ const initialState: formSliceTypes = {
     formInputTemplates: [
         {
             id: 'ID',
-            type: 'text',
+            type: 'number',
             placeholder: 'ID'
         },
         {

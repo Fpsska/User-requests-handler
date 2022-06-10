@@ -33,6 +33,7 @@ interface tableSliceTypes {
     requestСount: number
     isTableDataLoading: boolean,
     status: string,
+    filteredTableData: any[],
     tableTemplates: any[]       // tableTemplatesTypes
 }
 
@@ -44,6 +45,7 @@ const initialState: tableSliceTypes = {
     requestСount: 0,
     isTableDataLoading: true,
     status: '',
+    filteredTableData: [],
     tableTemplates: []
 };
 
@@ -108,6 +110,23 @@ const tableSlice = createSlice({
                     state.tableTemplates = state.tableTemplates.sort((a, b) => a.status < b.status ? 1 : -1);
                     break;
             }
+        },
+        filterUsers(state, action: PayloadAction<{ name: string, value: string }>) {
+            const { name, value } = action.payload;
+            switch (name) {
+                case 'ID':
+                    state.tableTemplates = state.filteredTableData.filter(item => {
+                        if (RegExp(value, 'g').test(item.id)) {
+                            return item;
+                        } else if (+value === 0) {
+                            return state.tableTemplates;
+                        }
+                    });
+                    break;
+                case 'FIO':
+                    state.tableTemplates = state.filteredTableData.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
+                    break;
+            }
         }
     },
     extraReducers: {
@@ -119,6 +138,7 @@ const tableSlice = createSlice({
             action: PayloadAction<tableTemplatesTypes[]>
         ) => {
             state.tableTemplates = action.payload;
+            state.filteredTableData = action.payload;
             state.tableTemplates.map(item => {
                 item.birth = `${generateRandomDate(new Date(2012, 0, 1), new Date()).toLocaleDateString('en-GB')}`;
                 item.filial = `${getRandomStatus([
@@ -146,7 +166,8 @@ export const {
     switchTableDataLoadingStatus,
     swithUsersDataEmptyStatus,
     sortUsersByASC,
-    sortUsersByDSC
+    sortUsersByDSC,
+    filterUsers
 } = tableSlice.actions;
 
 export default tableSlice.reducer;
