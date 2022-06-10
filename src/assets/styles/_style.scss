@@ -67,3 +67,8 @@ select {
     left: 50%;
     transform: translate(-50%,-50%);
 }
+
+.message {
+    @extend .error-message;
+    color: #000 !important;
+}

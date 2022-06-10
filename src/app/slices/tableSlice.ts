@@ -59,32 +59,32 @@ const tableSlice = createSlice({
         swithUsersDataEmptyStatus(state, action: PayloadAction<boolean>) {
             state.isUsersDataEmpty = action.payload;
         },
-        sortUsersByASC(state, action: PayloadAction<string>) {
+        sortUsersByASC(state, action: PayloadAction<string>) {  // SECOND
             switch (action.payload) {
                 case 'id':
                     state.tableTemplates = state.tableTemplates.sort((a, b) => a.id - b.id);
                     break;
                 case 'fio':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase() ? 1 : -1);
+                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.name > b.name ? 1 : -1);
                     break;
                 case 'birth':
-                    // state.tableTemplates = state.tableTemplates.sort((a, b) => a - b);
+                    state.tableTemplates = state.tableTemplates.sort((a, b) => (+a.birth.slice(6)) - (+b.birth.slice(6)));
                     break;
                 case 'phone':
                     state.tableTemplates = state.tableTemplates.sort((a, b) => a.phone > b.phone ? 1 : -1);
                     break;
                 case 'filial':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.filial.toLocaleLowerCase() > b.filial.toLocaleLowerCase() ? 1 : -1);
+                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.filial > b.filial ? 1 : -1);
                     break;
                 case 'isPaid':
                     state.tableTemplates = state.tableTemplates.sort((a, b) => a.isPaid > b.isPaid ? 1 : -1);
                     break;
                 case 'status':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.status.toLocaleLowerCase() > b.status.toLocaleLowerCase() ? 1 : -1);
+                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.status > b.status ? 1 : -1);
                     break;
             }
         },
-        sortUsersByDSC(state, action: PayloadAction<string>) {
+        sortUsersByDSC(state, action: PayloadAction<string>) { // FIRST
             switch (action.payload) {
                 case 'id':
                     state.tableTemplates = state.tableTemplates.sort((a, b) => b.id - a.id);
@@ -93,8 +93,7 @@ const tableSlice = createSlice({
                     state.tableTemplates = state.tableTemplates.sort((a, b) => a.name < b.name ? 1 : -1);
                     break;
                 case 'birth':
-                    // state.tableTemplates = state.tableTemplates.sort((a, b) => b - a);
-                    // state.tableTemplates = state.tableTemplates.map(item => console.log(item.replace(/\D/g, '')));
+                    state.tableTemplates = state.tableTemplates.sort((a, b) => (+b.birth.slice(6)) - (+a.birth.slice(6)));
                     break;
                 case 'phone':
                     state.tableTemplates = state.tableTemplates.sort((a, b) => a.phone < b.phone ? 1 : -1);

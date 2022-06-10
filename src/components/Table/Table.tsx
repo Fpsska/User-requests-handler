@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { FaSortDown, FaSortUp, FaSortAlphaDown } from 'react-icons/fa';
+import { FaSortDown } from 'react-icons/fa';
 
 import { TiArrowSortedUp } from 'react-icons/ti';
-
-import { AiOutlineSortDescending } from 'react-icons/ai';
-
-import { BsSortAlphaUpAlt } from 'react-icons/bs';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
@@ -152,7 +148,7 @@ const Table: React.FC = () => {
                         !isTableDataLoading && fetchUsersErrMsg && <span className="error-message">Error: {fetchUsersErrMsg}</span>
                     }
                     {
-                        !isTableDataLoading && !fetchUsersErrMsg && isUsersDataEmpty ? <span className="error-message">No matches!</span> : <></>
+                        !isTableDataLoading && !fetchUsersErrMsg && isUsersDataEmpty ? <span className="message">No matches!</span> : <></>
                     }
                 </tbody>
             </table>
