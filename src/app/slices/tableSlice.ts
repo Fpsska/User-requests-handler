@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction, current } from '@reduxjs/toolkit';
 
-import { tableTemplatesTypes } from '../../Types/tableSliceTypes';
+import { tableDataTypes } from '../../Types/tableSliceTypes';
 
 import { generateRandomDate } from '../../helpers/getRandomDate';
 import { getRandomStatus } from '../../helpers/getRandomStatus';
@@ -33,8 +33,8 @@ interface tableSliceTypes {
     requestСount: number
     isTableDataLoading: boolean,
     status: string,
-    filteredTableData: any[],
-    tableTemplates: any[]       // tableTemplatesTypes
+    filteredTableData: tableDataTypes[],
+    tableData: tableDataTypes[]       // tableDataTypes
 }
 
 // /. interfaces
@@ -46,7 +46,7 @@ const initialState: tableSliceTypes = {
     isTableDataLoading: true,
     status: '',
     filteredTableData: [],
-    tableTemplates: []
+    tableData: []
 };
 
 // /. initialState
@@ -67,50 +67,50 @@ const tableSlice = createSlice({
         sortUsersByASC(state, action: PayloadAction<string>) {  // SECOND
             switch (action.payload) {
                 case 'id':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.id - b.id);
+                    state.tableData = state.tableData.sort((a, b) => a.id - b.id);
                     break;
                 case 'fio':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.name > b.name ? 1 : -1);
+                    state.tableData = state.tableData.sort((a, b) => a.name > b.name ? 1 : -1);
                     break;
                 case 'birth':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => (+a.birth.slice(6)) - (+b.birth.slice(6)));
+                    state.tableData = state.tableData.sort((a, b) => (+a.birth.slice(6)) - (+b.birth.slice(6)));
                     break;
                 case 'phone':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.phone > b.phone ? 1 : -1);
+                    state.tableData = state.tableData.sort((a, b) => a.phone > b.phone ? 1 : -1);
                     break;
                 case 'filial':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => (+a.filial.replace(/\D/g, '')) - (+b.filial.replace(/\D/g, '')));
+                    state.tableData = state.tableData.sort((a, b) => (+a.filial.replace(/\D/g, '')) - (+b.filial.replace(/\D/g, '')));
                     break;
                 case 'isPaid':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => (+a.isPaid) - (+b.isPaid));
+                    state.tableData = state.tableData.sort((a, b) => (+a.isPaid) - (+b.isPaid));
                     break;
                 case 'status':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.status > b.status ? 1 : -1);
+                    state.tableData = state.tableData.sort((a, b) => a.status > b.status ? 1 : -1);
                     break;
             }
         },
         sortUsersByDSC(state, action: PayloadAction<string>) { // FIRST
             switch (action.payload) {
                 case 'id':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => b.id - a.id);
+                    state.tableData = state.tableData.sort((a, b) => b.id - a.id);
                     break;
                 case 'fio':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.name < b.name ? 1 : -1);
+                    state.tableData = state.tableData.sort((a, b) => a.name < b.name ? 1 : -1);
                     break;
                 case 'birth':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => (+b.birth.slice(6)) - (+a.birth.slice(6)));
+                    state.tableData = state.tableData.sort((a, b) => (+b.birth.slice(6)) - (+a.birth.slice(6)));
                     break;
                 case 'phone':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.phone < b.phone ? 1 : -1);
+                    state.tableData = state.tableData.sort((a, b) => a.phone < b.phone ? 1 : -1);
                     break;
                 case 'filial':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => (+b.filial.replace(/\D/g, '')) - (+a.filial.replace(/\D/g, '')));
+                    state.tableData = state.tableData.sort((a, b) => (+b.filial.replace(/\D/g, '')) - (+a.filial.replace(/\D/g, '')));
                     break;
                 case 'isPaid':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => (+b.isPaid) - (+a.isPaid));
+                    state.tableData = state.tableData.sort((a, b) => (+b.isPaid) - (+a.isPaid));
                     break;
                 case 'status':
-                    state.tableTemplates = state.tableTemplates.sort((a, b) => a.status < b.status ? 1 : -1);
+                    state.tableData = state.tableData.sort((a, b) => a.status < b.status ? 1 : -1);
                     break;
             }
         },
@@ -118,52 +118,52 @@ const tableSlice = createSlice({
             const { name, value } = action.payload;
             switch (name) {
                 case 'ID':
-                    state.tableTemplates = state.filteredTableData.filter(item => {
-                        if (RegExp(value, 'g').test(item.id)) {
+                    state.tableData = state.filteredTableData.filter(item => {
+                        if (RegExp(value, 'g').test(String(item.id))) {
                             return item;
                         } else if (+value === 0) {
-                            return state.tableTemplates;
+                            return state.tableData;
                         }
                     });
                     break;
                 case 'FIO':
-                    state.tableTemplates = state.filteredTableData.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
+                    state.tableData = state.filteredTableData.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
                     break;
                 case 'BIRTH':
-                    state.tableTemplates = state.filteredTableData.filter(item => {
+                    state.tableData = state.filteredTableData.filter(item => {
                         if (RegExp(value, 'g').test(item.birth)) {
                             return item;
                         } else if (+value === 0) {
-                            return state.tableTemplates;
+                            return state.tableData;
                         }
                     });
                     break;
                 case 'PHONE':
-                    state.tableTemplates = state.filteredTableData.filter(item => {
+                    state.tableData = state.filteredTableData.filter(item => {
                         if (RegExp(value, 'g').test(item.phone)) {
                             return item;
                         } else if (+value === 0) {
-                            return state.tableTemplates;
+                            return state.tableData;
                         }
                     });
                     break;
                 case 'FILIAL':
-                    state.tableTemplates = state.filteredTableData.filter(item => {
+                    state.tableData = state.filteredTableData.filter(item => {
                         if (item.filial === value) {
                             return item;
                         } else if (value === 'Филиал') {
-                            return state.tableTemplates;
+                            return state.tableData;
                         }
                     });
                     break;
                 case 'PAY':
-                    state.tableTemplates = state.filteredTableData.filter(item => {
+                    state.tableData = state.filteredTableData.filter(item => {
                         if (item.isPaid === true && value === 'оплачено') {
                             return item;
                         } else if (item.isPaid === false && value === 'не оплачено') {
                             return item;
                         } else if (value === 'Оплата') {
-                            return state.tableTemplates;
+                            return state.tableData;
                         }
                     });
                     break;
@@ -176,10 +176,10 @@ const tableSlice = createSlice({
         },
         [fetchUsersData.fulfilled.type]: (
             state,
-            action: PayloadAction<tableTemplatesTypes[]>
+            action: PayloadAction<tableDataTypes[]>
         ) => {
-            state.tableTemplates = action.payload;
-            state.tableTemplates.map(item => {
+            state.tableData = action.payload;
+            state.tableData.map(item => {
                 item.birth = `${generateRandomDate(new Date(2012, 0, 1), new Date()).toLocaleDateString('en-GB')}`;
                 item.filial = `${getRandomStatus([
                     'Филиал №1',
@@ -193,7 +193,7 @@ const tableSlice = createSlice({
                 ])}`;
             });
             state.status = 'success';
-            state.requestСount = state.tableTemplates.length;
+            state.requestСount = state.tableData.length;
             state.filteredTableData = action.payload;
         },
         [fetchUsersData.rejected.type]: (state, action: PayloadAction<string>) => {

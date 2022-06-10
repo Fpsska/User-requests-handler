@@ -23,7 +23,7 @@ import './table.scss';
 const Table: React.FC = () => {
 
     const {
-        tableTemplates,
+        tableData,
         isTableDataLoading,
         fetchUsersErrMsg,
         isUsersDataEmpty
@@ -71,10 +71,10 @@ const Table: React.FC = () => {
     };
 
     useEffect(() => {
-        tableTemplates.length === 0
+        tableData.length === 0
             ? dispatch(swithUsersDataEmptyStatus(true))
             : dispatch(swithUsersDataEmptyStatus(false));
-    }, [tableTemplates]);
+    }, [tableData]);
 
     const sortUsersData = (name: string): void => {
         if (sortOder === 'ASC') {
@@ -128,7 +128,7 @@ const Table: React.FC = () => {
                             <Preloader />
                         </div>
                         : <>
-                            {tableTemplates.map(item => {
+                            {tableData.map(item => {
                                 return (
                                     <TableTemplate
                                         key={item.id}

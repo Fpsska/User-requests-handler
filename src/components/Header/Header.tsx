@@ -12,13 +12,13 @@ import './header.scss';
 
 const Header: React.FC = () => {
 
-    const { requestСount, isTableDataLoading, tableTemplates } = useAppSelector(state => state.tableSlice);
+    const { requestСount, isTableDataLoading, tableData } = useAppSelector(state => state.tableSlice);
     const [text, setText] = useState<string>('заявок');
 
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(setRequestСount(tableTemplates.length));
+        dispatch(setRequestСount(tableData.length));
 
         if (requestСount >= 5 || requestСount === 0) {
             setText('заявок');
@@ -27,7 +27,7 @@ const Header: React.FC = () => {
         } else if (requestСount === 1) {
             setText('заявка');
         };
-    }, [requestСount, tableTemplates]);
+    }, [requestСount, tableData]);
 
     return (
         <header className="header">

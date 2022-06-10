@@ -1,4 +1,4 @@
-export interface tableTemplatesTypes {
+export interface tableDataTypes {
     id: number,
     name: string,
     birth: string,
