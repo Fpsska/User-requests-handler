@@ -26,6 +26,9 @@
     &__cell--status.close {
         color: red;
     }
+    &__cell--status.progress {
+        color: orange;
+    }
     &__col--head {
         cursor: pointer;
     }

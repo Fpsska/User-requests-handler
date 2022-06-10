@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { IoCloseCircleOutline, IoCheckmarkCircleOutline } from 'react-icons/io5';
 
@@ -28,6 +28,19 @@ const TableTemplate: React.FC<propTypes> = (props) => {
         status
     } = props;
 
+    const [statusName, setStatusName] = useState<string>('');
+
+
+    useEffect(() => {
+        if (status === 'Закрыта') {
+            setStatusName('close');
+        } else if (status === 'Новая') {
+            setStatusName('active');
+        } else if (status === 'В обработке') {
+            setStatusName('progress');
+        }
+    }, [status]);
+
     return (
         <>
             <tr id={String(id)} key={id} className="table__row">
@@ -41,11 +54,7 @@ const TableTemplate: React.FC<propTypes> = (props) => {
                         ? <IoCheckmarkCircleOutline size={'24px'} color={'green'} />
                         : <IoCloseCircleOutline size={'24px'} color={'red'} />}
                 </td>
-                <td
-                    className={status === 'Закрыта'
-                        ? 'table__cell table__cell--status close'
-                        : 'table__cell table__cell--status active'}
-                >
+                <td className={`table__cell table__cell--status ${statusName}`}>
                     {status}
                 </td>
             </tr>
