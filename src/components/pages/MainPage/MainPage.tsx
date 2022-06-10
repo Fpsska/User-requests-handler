@@ -7,9 +7,6 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import Form from '../../Form/Form';
 import Table from '../../Table/Table';
 
-import { fetchUsersData } from '../../../app/slices/tableSlice';
-import { switchTableDataLoadingStatus } from '../../../app/slices/tableSlice';
-
 import { setRequestCount } from '../../../app/slices/tableSlice';
 
 import './mainPage.scss';
@@ -19,7 +16,6 @@ import './mainPage.scss';
 const MainPage: React.FC = () => {
 
     const {
-        status,
         requestСount,
         isTableDataLoading,
         tableData
@@ -27,22 +23,6 @@ const MainPage: React.FC = () => {
     const [text, setText] = useState<string>('заявок');
 
     const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        dispatch(fetchUsersData());
-    }, []);
-
-    useEffect(() => {
-        if (status === 'loading') {
-            setTimeout(() => {
-                dispatch(switchTableDataLoadingStatus(true));
-            }, 3500);
-        } else {
-            setTimeout(() => {
-                dispatch(switchTableDataLoadingStatus(false));
-            }, 3500);
-        }
-    }, [status]);
 
     useEffect(() => {
         dispatch(setRequestCount(tableData.length));
