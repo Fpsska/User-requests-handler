@@ -61,6 +61,9 @@ const tableSlice = createSlice({
         swithUsersDataEmptyStatus(state, action: PayloadAction<boolean>) {
             state.isUsersDataEmpty = action.payload;
         },
+        setRequestСount(state, action: PayloadAction<number>) {
+            state.requestСount = action.payload;
+        },
         sortUsersByASC(state, action: PayloadAction<string>) {  // SECOND
             switch (action.payload) {
                 case 'id':
@@ -191,7 +194,6 @@ const tableSlice = createSlice({
             });
             state.status = 'success';
             state.requestСount = state.tableTemplates.length;
-
             state.filteredTableData = action.payload;
         },
         [fetchUsersData.rejected.type]: (state, action: PayloadAction<string>) => {
@@ -204,6 +206,7 @@ const tableSlice = createSlice({
 export const {
     switchTableDataLoadingStatus,
     swithUsersDataEmptyStatus,
+    setRequestСount,
     sortUsersByASC,
     sortUsersByDSC,
     filterUsers
