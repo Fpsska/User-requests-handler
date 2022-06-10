@@ -32,6 +32,12 @@ const FormInputTemplate: React.FC<propTypes> = (props) => {
             case 'FIO':
                 dispatch(filterUsers({ name: id, value }));
                 break;
+            case 'BIRTH':
+                dispatch(filterUsers({ name: id, value }));
+                break;
+            case 'PHONE':
+                dispatch(filterUsers({ name: id, value }));
+                break;
         }
     };
 
@@ -42,7 +48,7 @@ const FormInputTemplate: React.FC<propTypes> = (props) => {
                 className={id === 'ID' ? 'form__input form__input--id' : 'form__input'}
                 type={type}
                 placeholder={placeholder}
-                onChange={(e) => inputHandler(e.target.value)}  //dispatch(filterUsers({ name: id, value: e.target.value }))
+                onChange={(e) => inputHandler(e.target.value)}
             />
         </div>
     );

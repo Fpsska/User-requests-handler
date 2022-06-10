@@ -126,6 +126,24 @@ const tableSlice = createSlice({
                 case 'FIO':
                     state.tableTemplates = state.filteredTableData.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
                     break;
+                case 'BIRTH':
+                    state.tableTemplates = state.filteredTableData.filter(item => {
+                        if (RegExp(value, 'g').test(item.birth)) {
+                            return item;
+                        } else if (+value === 0) {
+                            return state.tableTemplates;
+                        }
+                    });
+                    break;
+                case 'PHONE':
+                    state.tableTemplates = state.filteredTableData.filter(item => {
+                        if (RegExp(value, 'g').test(item.phone)) {
+                            return item;
+                        } else if (+value === 0) {
+                            return state.tableTemplates;
+                        }
+                    });
+                    break;
             }
         }
     },
@@ -138,7 +156,6 @@ const tableSlice = createSlice({
             action: PayloadAction<tableTemplatesTypes[]>
         ) => {
             state.tableTemplates = action.payload;
-            state.filteredTableData = action.payload;
             state.tableTemplates.map(item => {
                 item.birth = `${generateRandomDate(new Date(2012, 0, 1), new Date()).toLocaleDateString('en-GB')}`;
                 item.filial = `${getRandomStatus([
@@ -154,6 +171,8 @@ const tableSlice = createSlice({
             });
             state.status = 'success';
             state.requestСount = state.tableTemplates.length;
+
+            state.filteredTableData = action.payload;
         },
         [fetchUsersData.rejected.type]: (state, action: PayloadAction<string>) => {
             state.status = 'failed';
