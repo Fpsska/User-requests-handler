@@ -1,8 +1,17 @@
-.user-page__wrapper {
-    height: calc(100vh - 80px);
-    overflow: auto;
-    &::-webkit-scrollbar {
-        width: 0;
+.user-page {
+    &__wrapper {
+        height: calc(100vh - 80px);
+        overflow: auto;
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+    }
+    &__preloader {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 

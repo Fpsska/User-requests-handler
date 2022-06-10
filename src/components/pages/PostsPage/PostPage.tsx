@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { useAppSelector } from '../../../app/hooks';
+
+import Preloader from '../../common/Preloader/Preloader';
 
 import './postPage.scss';
 
@@ -8,26 +10,27 @@ import './postPage.scss';
 
 const PostPage: React.FC = () => {
 
-    const { postData } = useAppSelector(state => state.postSilce);
-
-    const dispatch = useAppDispatch();
+    const { postData, isPostDataLoading } = useAppSelector(state => state.postSilce);
 
     return (
         <div className="post-page">
             <div className="post-page__wrapper">
-                <div className="posts">
-                    {
-                        postData.map(item => {
-                            return (
-                                <ul className="post" key={item.id}>
-                                    <li className="post__information">User ID: <span>{item.userId}</span></li>
-                                    <li className="post__information">Title: <span>{item.title}</span></li>
-                                    <li className="post__information">Body: <span>{item.body}</span></li>
-                                </ul>
-                            )
-                        })
-                    }
-                </div>
+                {isPostDataLoading
+                    ? <div className="post-page__preloder"><Preloader /></div>
+                    : <div className="posts">
+                        {
+                            postData.map(item => {
+                                return (
+                                    <ul className="post" key={item.id}>
+                                        <li className="post__information">User ID: <span>{item.userId}</span></li>
+                                        <li className="post__information">Title: <span>{item.title}</span></li>
+                                        <li className="post__information">Body: <span>{item.body}</span></li>
+                                    </ul>
+                                )
+                            })
+                        }
+                    </div>
+                }
             </div>
         </div>
     );
