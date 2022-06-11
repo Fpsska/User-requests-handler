@@ -20,7 +20,7 @@ const Header: React.FC = () => {
                 <nav className="nav">
                     <ul className="nav__menu">
                         <li className="nav__item">
-                            <NavLink className="nav__link" to="/">Main</NavLink>
+                            <NavLink className="nav__link" to="/CodeConstruction-Task/">Main</NavLink>
                         </li>
                         <li className="nav__item">
                             <NavLink className="nav__link" to="Users">Users</NavLink>
