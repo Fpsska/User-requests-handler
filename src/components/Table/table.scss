@@ -1,6 +1,6 @@
 .table-wrapper {
     height: calc(100vh - 40px - 40px - 49px - 66px - 54px);
-    overflow-y: scroll;
+    overflow-y: auto;
     display: block;
     
     &::-webkit-scrollbar {

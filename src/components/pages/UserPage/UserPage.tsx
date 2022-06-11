@@ -12,6 +12,7 @@ const UserPage: React.FC = () => {
 
     const {
         isTableDataLoading,
+        fetchUsersErrMsg,
         tableData
     } = useAppSelector(state => state.tableSlice);
 
@@ -33,6 +34,9 @@ const UserPage: React.FC = () => {
                                     </ul>
                                 )
                             })
+                        }
+                        {
+                            !isTableDataLoading && fetchUsersErrMsg && <span className="error-message">Error: {fetchUsersErrMsg}</span>
                         }
                     </div>
                 }

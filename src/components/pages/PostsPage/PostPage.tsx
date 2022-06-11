@@ -10,7 +10,11 @@ import './postPage.scss';
 
 const PostPage: React.FC = () => {
 
-    const { postData, isPostDataLoading } = useAppSelector(state => state.postSilce);
+    const {
+        postData,
+        isPostDataLoading,
+        fetchPostsErrMsg
+    } = useAppSelector(state => state.postSilce);
 
     return (
         <div className="post-page">
@@ -28,6 +32,9 @@ const PostPage: React.FC = () => {
                                     </ul>
                                 )
                             })
+                        }
+                        {
+                            !isPostDataLoading && fetchPostsErrMsg && <span className="error-message">Error: {fetchPostsErrMsg}</span>
                         }
                     </div>
                 }
