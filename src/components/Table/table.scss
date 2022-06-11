@@ -1,10 +1,9 @@
 .table-wrapper {
     height: calc(100vh - 40px - 40px - 49px - 66px - 54px);
-    overflow-y: auto;
-    display: block;
-    
+    overflow: auto;
     &::-webkit-scrollbar {
         width: 6px;
+        height: 6px;
     }
     &::-webkit-scrollbar-track {
         box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -13,7 +12,6 @@
         box-shadow: inset 0 0 6px #ccc;
     }
 }
-
 
 .table {
     width: 100%;

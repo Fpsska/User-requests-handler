@@ -20,7 +20,7 @@ const PostPage: React.FC = () => {
         <div className="post-page">
             <div className="post-page__wrapper">
                 {isPostDataLoading
-                    ? <div className="post-page__preloder"><Preloader /></div>
+                    ? <div className="post-page__preloader"><Preloader /></div>
                     : <div className="posts">
                         {
                             postData.map(item => {

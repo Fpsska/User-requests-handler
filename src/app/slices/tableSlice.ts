@@ -34,7 +34,7 @@ interface tableSliceTypes {
     isTableDataLoading: boolean,
     status: string,
     filteredTableData: tableDataTypes[],
-    tableData: tableDataTypes[]       // tableDataTypes
+    tableData: tableDataTypes[]      
 }
 
 // /. interfaces
