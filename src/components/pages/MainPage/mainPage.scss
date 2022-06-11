@@ -1,3 +1,9 @@
+.main-page {
+    &__wrapper {
+        height: calc(100vh - 134px);
+    }
+}
+
 .relult {
     margin: 0 0 15px 0;
     &__wrapper {

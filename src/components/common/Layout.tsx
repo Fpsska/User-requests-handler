@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Outlet } from 'react-router';
 
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
@@ -45,7 +46,7 @@ const Layout: React.FC = () => {
             <main className="main">
                 <Outlet />
             </main>
-            <footer></footer>
+            <Footer />
         </div>
     );
 };

@@ -55,8 +55,21 @@ select {
     height: 100%;
 }
 
+header {
+    flex: 0 0 auto;
+}
+main {
+    flex: 1 0 auto;
+}
+footer {
+    flex: 0 0 auto;
+}
+
 .page {
     padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .error-message {
@@ -65,10 +78,10 @@ select {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
 .message {
     @extend .error-message;
-    color: #000 ;
+    color: #000;
 }

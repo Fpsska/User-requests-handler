@@ -1,0 +1,14 @@
+.footer {
+    &__wrapper {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+    }
+    &__social {
+        display: flex;
+        align-items: center;
+        :not(:last-child) {
+            margin: 0 10px 0 0;
+        }
+    }
+}
