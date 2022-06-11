@@ -1,6 +1,8 @@
 .table-wrapper {
-    height: calc(100vh - 229px);
-    overflow: auto;
+    height: calc(100vh - 40px - 40px - 49px - 66px - 54px);
+    overflow-y: scroll;
+    display: block;
+    
     &::-webkit-scrollbar {
         width: 6px;
     }
@@ -12,13 +14,16 @@
     }
 }
 
+
 .table {
     width: 100%;
     border-spacing: 0;
     th,
     td {
         text-align: left;
-        padding: 14px 20px;
+        min-width: 150px;
+        overflow: hidden;
+        padding: 0.75em 1em;
     }
     &__cell--status {
         color: green;
@@ -72,4 +77,3 @@
 .table__body.empty {
     height: 80vh;
 }
-

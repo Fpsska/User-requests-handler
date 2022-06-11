@@ -2,14 +2,14 @@
     margin: 0 0 10px 0;
     &__wrapper {
         display: flex;
-        align-items: flex-end;
+        flex-wrap: wrap;
+        margin: 0 -10px 0 -10px;
     }
     &__template {
+        flex-grow: 1;
         display: flex;
         flex-direction: column;
-        &:not(:last-child) {
-            margin: 0 10px 0 0;
-        }
+        margin: 10px;
     }
     &__input {
         font-size: 12px;

@@ -1,6 +1,6 @@
 .user-page {
     &__wrapper {
-        height: calc(100vh - 134px);
+        height: calc(100vh - 40px - 40px - 54px);
         overflow: auto;
         &::-webkit-scrollbar {
             width: 0;

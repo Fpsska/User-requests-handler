@@ -9,6 +9,7 @@ import PostPage from '../pages/PostsPage/PostPage';
 
 import './App.css';
 import '../../assets/styles/_style.scss';
+import '../../assets/styles/_media.scss';
 
 // /. imports
 
