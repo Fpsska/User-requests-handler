@@ -2,7 +2,8 @@ import React from 'react';
 
 import { useAppSelector } from '../../app/hooks';
 
-import FormInputTemplate from './FormInputTemplate';
+import { useInput } from '../../hooks/useInput';
+
 import FormSelectTemplate from './FormSelectTemplate';
 
 import './form.scss';
@@ -11,23 +12,65 @@ import './form.scss';
 
 const Form: React.FC = () => {
 
-    const { formInputTemplates, formSelectTemplates } = useAppSelector(state => state.formSlice);
+    const { formSelectTemplates } = useAppSelector(state => state.formSlice);
+
+    const inputID = useInput('');
+    const inputFIO = useInput('');
+    const inputBIRTH = useInput('');
+    const inputPHONE = useInput('');
+
+    const inputHandler = (name: string, e: React.ChangeEvent<HTMLInputElement>): void => {
+        switch (name) {
+            case 'ID':
+                inputID.onInputChange({ name: 'ID', value: e.target.value });
+                break;
+            case 'FIO':
+                inputFIO.onInputChange({ name: 'FIO', value: e.target.value });
+                break;
+            case 'BIRTH':
+                inputBIRTH.onInputChange({ name: 'BIRTH', value: e.target.value });
+                break;
+            case 'PHONE':
+                inputPHONE.onInputChange({ name: 'PHONE', value: e.target.value });
+                break;
+        }
+    };
 
     return (
         <form className="form" action="#">
             <div className="form__wrapper">
-                <>
-                    {formInputTemplates.map(item => {
-                        return (
-                            <FormInputTemplate
-                                key={item.id}
-                                id={item.id}
-                                type={item.type}
-                                placeholder={item.placeholder}
-                            />
-                        );
-                    })}
-                </>
+                <div className="form__template">
+                    <input className="form__input form__input--id"
+                        type="number"
+                        placeholder="ID"
+                        value={inputID.value}
+                        onChange={e => inputHandler('ID', e)}
+                    />
+                </div>
+                <div className="form__template">
+                    <input className="form__input"
+                        type="text"
+                        placeholder="ФИО"
+                        value={inputFIO.value}
+                        onChange={e => inputHandler('FIO', e)}
+                    />
+                </div>
+                <div className="form__template">
+                    <input className="form__input"
+                        type="number"
+                        placeholder="Дата рождения"
+                        value={inputBIRTH.value}
+                        onChange={e => inputHandler('BIRTH', e)}
+                    />
+                </div>
+                <div className="form__template">
+                    <input className="form__input"
+                        type="number"
+                        placeholder="Телефон"
+                        value={inputPHONE.value}
+                        onChange={e => inputHandler('PHONE', e)}
+                    />
+                </div>
                 <>
                     {formSelectTemplates.map(item => {
                         return (

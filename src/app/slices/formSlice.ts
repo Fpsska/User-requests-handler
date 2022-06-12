@@ -1,39 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { FormInputTemplatesTypes, formSelectTemplatesTypes } from '../../Types/formSliceTypes';
+import { formSelectTemplatesTypes } from '../../Types/formSliceTypes';
 
 // /. imports
 
 interface formSliceTypes {
-    formInputTemplates: FormInputTemplatesTypes[],
     formSelectTemplates: formSelectTemplatesTypes[]
 }
 
 // /. interfaces
 
 const initialState: formSliceTypes = {
-    formInputTemplates: [
-        {
-            id: 'ID',
-            type: 'number',
-            placeholder: 'ID'
-        },
-        {
-            id: 'FIO',
-            type: 'text',
-            placeholder: 'ФИО'
-        },
-        {
-            id: 'BIRTH',
-            type: 'number',
-            placeholder: 'Дата рождения'
-        },
-        {
-            id: 'PHONE',
-            type: 'number',
-            placeholder: 'Телефон'
-        }
-    ],
     formSelectTemplates: [
         {
             id: 'FILIAL',
