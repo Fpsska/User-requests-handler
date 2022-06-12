@@ -4,6 +4,8 @@ import { useAppDispatch } from '../../app/hooks';
 
 import { filterUsers } from '../../app/slices/tableSlice';
 
+import { useInput } from '../../hooks/useInput';
+
 // /. imports
 
 interface propTypes {
@@ -17,26 +19,33 @@ interface propTypes {
 const FormInputTemplate: React.FC<propTypes> = (props) => {
 
     const {
-        id,  // string
+        id,  
         type,
         placeholder
     } = props;
 
     const dispatch = useAppDispatch();
 
-    const inputHandler = (value: string): void => {
+    const inputFIO = useInput('');
+    const restInputs = useInput('');
+
+    const inputHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
         switch (id) {
             case 'ID':
-                dispatch(filterUsers({ name: id, value }));
+                restInputs.onInputChange({ name: 'ANY', value: e.target.value });
+                dispatch(filterUsers({ name: id, value: restInputs.value }));
                 break;
             case 'FIO':
-                dispatch(filterUsers({ name: id, value }));
+                inputFIO.onInputChange({ name: 'FIO', value: e.target.value });
+                dispatch(filterUsers({ name: id, value: inputFIO.value }));
                 break;
             case 'BIRTH':
-                dispatch(filterUsers({ name: id, value }));
+                restInputs.onInputChange({ name: 'ANY', value: e.target.value });
+                dispatch(filterUsers({ name: id, value: restInputs.value }));
                 break;
             case 'PHONE':
-                dispatch(filterUsers({ name: id, value }));
+                restInputs.onInputChange({ name: 'ANY', value: e.target.value });
+                dispatch(filterUsers({ name: id, value: restInputs.value }));
                 break;
         }
     };
@@ -47,8 +56,9 @@ const FormInputTemplate: React.FC<propTypes> = (props) => {
                 id={id}
                 className={id === 'ID' ? 'form__input form__input--id' : 'form__input'}
                 type={type}
+                value={id === 'FIO' ? inputFIO.value : restInputs.value}
                 placeholder={placeholder}
-                onChange={(e) => inputHandler(e.target.value)}
+                onChange={(e) => inputHandler(e)}
             />
         </div>
     );
