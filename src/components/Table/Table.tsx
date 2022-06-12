@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { FaSortDown } from 'react-icons/fa';
-
-import { TiArrowSortedUp } from 'react-icons/ti';
-
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import Preloader from '../common/Preloader/Preloader';
@@ -14,7 +10,8 @@ import {
     sortUsersByDSC
 } from '../../app/slices/tableSlice';
 
-import TableTemplate from './TableTemplate';
+import TableBodyTemplate from './TableBodyTemplate';
+import TableHeadTemplate from './TableHeadTemplate';
 
 import './table.scss';
 
@@ -26,7 +23,8 @@ const Table: React.FC = () => {
         tableData,
         isTableDataLoading,
         fetchUsersErrMsg,
-        isUsersDataEmpty
+        isUsersDataEmpty,
+        tableHeadTemplate
     } = useAppSelector(state => state.tableSlice);
 
     const [sortOder, setSetOrder] = useState<string>('DSC');
@@ -44,82 +42,30 @@ const Table: React.FC = () => {
 
     const dispatch = useAppDispatch();
 
-    const iconHandler = (name: string): void => {
-        switch (!isTableDataLoading && name) {
-            case 'id':
-                setStatus(() => ({ ...statuses, id: !statuses.id }));
-                break;
-            case 'fio':
-                setStatus(() => ({ ...statuses, fio: !statuses.fio }));
-                break;
-            case 'birth':
-                setStatus(() => ({ ...statuses, birth: !statuses.birth }));
-                break;
-            case 'phone':
-                setStatus(() => ({ ...statuses, phone: !statuses.phone }));
-                break;
-            case 'filial':
-                setStatus(() => ({ ...statuses, filial: !statuses.filial }));
-                break;
-            case 'isPaid':
-                setStatus(() => ({ ...statuses, isPaid: !statuses.isPaid }));
-                break;
-            case 'status':
-                setStatus(() => ({ ...statuses, status: !statuses.status }));
-                break;
-        }
-    };
-
     useEffect(() => {
         tableData.length === 0
             ? dispatch(swithUsersDataEmptyStatus(true))
             : dispatch(swithUsersDataEmptyStatus(false));
     }, [tableData]);
 
-    const sortUsersData = (name: string): void => {
-        if (!isTableDataLoading && sortOder === 'ASC') {
-            setSetOrder('DSC');
-            dispatch(sortUsersByASC(name));
-        } else if (!isTableDataLoading && sortOder === 'DSC') {
-            setSetOrder('ASC');
-            dispatch(sortUsersByDSC(name));
-        }
-        iconHandler(name);
-    };
-
     return (
         <div className="table-wrapper">
             <table className="table">
                 <thead className="table__head sticky">
                     <tr className="table__row table__row--head">
-                        <th className="table__col table__col--head" onClick={() => sortUsersData('id')}>
-                            ID
-                            {!isTableDataLoading && !isUsersDataEmpty && statuses.id ? <TiArrowSortedUp /> : <FaSortDown />}
-                        </th>
-                        <th className="table__col table__col--head" onClick={() => sortUsersData('fio')}>
-                            ФИО
-                            {!isTableDataLoading && !isUsersDataEmpty && statuses.fio ? <TiArrowSortedUp /> : <FaSortDown />}
-                        </th>
-                        <th className="table__col table__col--head" onClick={() => sortUsersData('birth')}>
-                            Дата рождения
-                            {!isTableDataLoading && !isUsersDataEmpty && statuses.birth ? <TiArrowSortedUp /> : <FaSortDown />}
-                        </th>
-                        <th className="table__col table__col--head" onClick={() => sortUsersData('phone')}>
-                            Телефон
-                            {!isTableDataLoading && !isUsersDataEmpty && statuses.phone ? <TiArrowSortedUp /> : <FaSortDown />}
-                        </th>
-                        <th className="table__col table__col--head" onClick={() => sortUsersData('filial')}>
-                            Филиал
-                            {!isTableDataLoading && !isUsersDataEmpty && statuses.filial ? <TiArrowSortedUp /> : <FaSortDown />}
-                        </th>
-                        <th className="table__col table__col--head" onClick={() => sortUsersData('isPaid')}>
-                            Оплата
-                            {!isTableDataLoading && !isUsersDataEmpty && statuses.isPaid ? <TiArrowSortedUp /> : <FaSortDown />}
-                        </th>
-                        <th className="table__col table__col--head" onClick={() => sortUsersData('status')}>
-                            Статус
-                            {!isTableDataLoading && !isUsersDataEmpty && statuses.status ? <TiArrowSortedUp /> : <FaSortDown />}
-                        </th>
+                        {
+                            tableHeadTemplate.map(item => {
+                                return (
+                                    <TableHeadTemplate
+                                        key={item.id}
+                                        name={item.name}
+                                        text={item.text}
+                                        isTableDataLoading={isTableDataLoading}
+                                        isUsersDataEmpty={isUsersDataEmpty}
+                                    />
+                                )
+                            })
+                        }
                     </tr>
                 </thead>
                 <tbody className={isTableDataLoading ? 'table__body loading' : isUsersDataEmpty ? 'table__body empty' : 'table__body'}>
@@ -130,7 +76,7 @@ const Table: React.FC = () => {
                         : <>
                             {tableData.map(item => {
                                 return (
-                                    <TableTemplate
+                                    <TableBodyTemplate
                                         key={item.id}
                                         id={item.id}
                                         name={item.name}

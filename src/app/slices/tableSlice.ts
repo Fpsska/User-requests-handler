@@ -1,6 +1,6 @@
-import { createSlice, createAsyncThunk, PayloadAction, current } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
-import { tableDataTypes } from '../../Types/tableSliceTypes';
+import { tableDataTypes, tableHeadTemplateTypes } from '../../Types/tableSliceTypes';
 
 import { generateRandomDate } from '../../helpers/getRandomDate';
 import { getRandomStatus } from '../../helpers/getRandomStatus';
@@ -34,7 +34,8 @@ interface tableSliceTypes {
     isTableDataLoading: boolean,
     status: string,
     filteredTableData: tableDataTypes[],
-    tableData: tableDataTypes[]
+    tableData: tableDataTypes[],
+    tableHeadTemplate: tableHeadTemplateTypes[]
 }
 
 // /. interfaces
@@ -46,7 +47,44 @@ const initialState: tableSliceTypes = {
     isTableDataLoading: true,
     status: '',
     filteredTableData: [],
-    tableData: []
+    tableData: [],
+    tableHeadTemplate: [
+        {
+            id: 1,
+            name: 'id',
+            text: 'ID'
+        },
+        {
+            id: 2,
+            name: 'fio',
+            text: 'ФИО'
+        },
+        {
+            id: 3,
+            name: 'birth',
+            text: 'Дата рождения'
+        },
+        {
+            id: 5,
+            name: 'phone',
+            text: 'Телефон'
+        },
+        {
+            id: 6,
+            name: 'filial',
+            text: 'Филиал'
+        },
+        {
+            id: 7,
+            name: 'isPaid',
+            text: 'Оплата'
+        },
+        {
+            id: 8,
+            name: 'status',
+            text: 'Статус'
+        }
+    ]
 };
 
 // /. initialState

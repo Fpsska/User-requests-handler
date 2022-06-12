@@ -16,7 +16,7 @@ interface propTypes {
 
 // /. interfaces
 
-const TableTemplate: React.FC<propTypes> = (props) => {
+const TableBodyTemplate: React.FC<propTypes> = (props) => {
 
     const {
         id,
@@ -43,7 +43,7 @@ const TableTemplate: React.FC<propTypes> = (props) => {
 
     return (
         <>
-            <tr id={String(id)} key={id} className="table__row">
+            <tr key={id} className="table__row">
                 <td className="table__cell table__cell--id">{id}</td>
                 <td className="table__cell table__cell--name">{name}</td>
                 <td className="table__cell table__cell--birth">{birth}</td>
@@ -62,4 +62,4 @@ const TableTemplate: React.FC<propTypes> = (props) => {
     );
 };
 
-export default TableTemplate;
+export default TableBodyTemplate;

@@ -38,7 +38,7 @@ const FormSelectTemplate: React.FC<propTypes> = (props) => {
     };
 
     return (
-        <div id={id} className="form__template">
+        <div className="form__template">
             <select className="selection-menu" defaultValue={options[0].option} onChange={(e) => handleSelect(e.target.value)} disabled={isTableDataLoading}>
                 {options.map(item => {
                     return (

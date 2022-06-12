@@ -11,3 +11,9 @@ export interface tableDataTypes {
     address: any[string],
     city: string,
 }
+
+export interface tableHeadTemplateTypes {
+    id: number,
+    name: string,
+    text: string
+}
