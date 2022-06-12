@@ -45,7 +45,7 @@ const Table: React.FC = () => {
     const dispatch = useAppDispatch();
 
     const iconHandler = (name: string): void => {
-        switch (name) {
+        switch (!isTableDataLoading && name) {
             case 'id':
                 setStatus(() => ({ ...statuses, id: !statuses.id }));
                 break;
@@ -77,10 +77,10 @@ const Table: React.FC = () => {
     }, [tableData]);
 
     const sortUsersData = (name: string): void => {
-        if (sortOder === 'ASC') {
+        if (!isTableDataLoading && sortOder === 'ASC') {
             setSetOrder('DSC');
             dispatch(sortUsersByASC(name));
-        } else if (sortOder === 'DSC') {
+        } else if (!isTableDataLoading && sortOder === 'DSC') {
             setSetOrder('ASC');
             dispatch(sortUsersByDSC(name));
         }
@@ -94,31 +94,31 @@ const Table: React.FC = () => {
                     <tr className="table__row table__row--head">
                         <th className="table__col table__col--head" onClick={() => sortUsersData('id')}>
                             ID
-                            {statuses.id ? <TiArrowSortedUp /> : <FaSortDown />}
+                            {!isTableDataLoading && !isUsersDataEmpty && statuses.id ? <TiArrowSortedUp /> : <FaSortDown />}
                         </th>
                         <th className="table__col table__col--head" onClick={() => sortUsersData('fio')}>
                             ФИО
-                            {statuses.fio ? <TiArrowSortedUp /> : <FaSortDown />}
+                            {!isTableDataLoading && !isUsersDataEmpty && statuses.fio ? <TiArrowSortedUp /> : <FaSortDown />}
                         </th>
                         <th className="table__col table__col--head" onClick={() => sortUsersData('birth')}>
                             Дата рождения
-                            {statuses.birth ? <TiArrowSortedUp /> : <FaSortDown />}
+                            {!isTableDataLoading && !isUsersDataEmpty && statuses.birth ? <TiArrowSortedUp /> : <FaSortDown />}
                         </th>
                         <th className="table__col table__col--head" onClick={() => sortUsersData('phone')}>
                             Телефон
-                            {statuses.phone ? <TiArrowSortedUp /> : <FaSortDown />}
+                            {!isTableDataLoading && !isUsersDataEmpty && statuses.phone ? <TiArrowSortedUp /> : <FaSortDown />}
                         </th>
                         <th className="table__col table__col--head" onClick={() => sortUsersData('filial')}>
                             Филиал
-                            {statuses.filial ? <TiArrowSortedUp /> : <FaSortDown />}
+                            {!isTableDataLoading && !isUsersDataEmpty && statuses.filial ? <TiArrowSortedUp /> : <FaSortDown />}
                         </th>
                         <th className="table__col table__col--head" onClick={() => sortUsersData('isPaid')}>
                             Оплата
-                            {statuses.isPaid ? <TiArrowSortedUp /> : <FaSortDown />}
+                            {!isTableDataLoading && !isUsersDataEmpty && statuses.isPaid ? <TiArrowSortedUp /> : <FaSortDown />}
                         </th>
                         <th className="table__col table__col--head" onClick={() => sortUsersData('status')}>
                             Статус
-                            {statuses.status ? <TiArrowSortedUp /> : <FaSortDown />}
+                            {!isTableDataLoading && !isUsersDataEmpty && statuses.status ? <TiArrowSortedUp /> : <FaSortDown />}
                         </th>
                     </tr>
                 </thead>

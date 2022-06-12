@@ -11,6 +11,7 @@
 
 .post {
     @include card;
+    align-items: center;
     &__information span {
         font-weight: 400;
     }

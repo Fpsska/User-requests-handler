@@ -25,6 +25,10 @@
             -webkit-appearance: none;
             margin: 0;
         }
+        &:disabled {
+            border: 1px solid #000;
+            cursor: not-allowed;
+        }
     }
     &__input--id {
         max-width: 45px;
@@ -36,4 +40,9 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 12px;
+    &:disabled {
+        border: 1px solid #000;
+        background-color: rgba($color: #ccc, $alpha: 0.25);
+        cursor: not-allowed;
+    }
 }
