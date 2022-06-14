@@ -38,10 +38,10 @@ const MainPage: React.FC = () => {
     return (
         <div className="main-page">
             <div className="main-page__wrapper">
-                <div className="relult">
-                    <div className="relult__wrapper">
+                <div className="result">
+                    <div className="result__wrapper">
                         <IoDocumentTextOutline size={'34px'} />
-                        <h1 className="relult__text">{isTableDataLoading ? '0' : requestСount} {text}</h1>
+                        <h1 className="result__text">{isTableDataLoading ? '0' : requestСount} {text}</h1>
                     </div>
                 </div>
                 <Form />

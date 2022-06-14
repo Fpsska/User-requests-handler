@@ -17,9 +17,9 @@
     &__link {
         font-size: 16px;
         font-weight: 600;
-        color: #000;
+        color: var(--nav-links-color);
     }
     &__link.active {
-        color: rgb(175, 175, 175);
+        color: var(--nav-links-activeColor);
     }
 }
