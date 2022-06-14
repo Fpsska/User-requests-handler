@@ -1,7 +1,26 @@
 html[data-theme="light"] {
     --nav-links-color: #000;
     --nav-links-activeColor: rgba(175, 175, 175, 1);
-    
+
     --result-text-color: #000;
     --footer-link-color: #000;
+
+    --input-color: #000;
+    --input-border-color: #ccc;
+    --input-border-disabledColor: #000;
+
+    --selectionmenu-border-color: #ccc;
+    --selectionmenu-border-disabledColor: #000;
+    --selectionmenu-background-color: rgba(204, 204, 204, 0.2);
+
+    --scrollbarTrack-boxshadow-color: rgba(0, 0, 0, 0.3);
+    --scrollbarThumb-boxshadow-color: #ccc;
+
+    --cell-defaultStatus-color: green;
+    --cell-closetStatus-color: red;
+    --cell-progressStatus-color: orange;
+
+    --table-preloader-background-color: rgba(204, 204, 204, 0.3);
+    --stickyTH--background-color: #ccc;
+    --TD-border-color: #000;
 }

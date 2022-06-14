@@ -13,10 +13,10 @@
     }
     &__input {
         font-size: 12px;
-        border: 1px solid #ccc;
+        border: 1px solid var(--input-border-color);
         border-radius: 5px;
         padding: 10px;
-        color: #000;
+        color: var(--input-color);
         input[type="number"] {
             -moz-appearance: textfield;
         }
@@ -26,7 +26,7 @@
             margin: 0;
         }
         &:disabled {
-            border: 1px solid #000;
+            border: 1px solid var(--input-border-disabledColor);
             cursor: not-allowed;
         }
     }
@@ -37,12 +37,12 @@
 
 .selection-menu {
     padding: 9px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--selectionmenu-border-color);
     border-radius: 5px;
     font-size: 12px;
     &:disabled {
-        border: 1px solid #000;
-        background-color: rgba($color: #ccc, $alpha: 0.25);
+        border: 1px solid var(--selectionmenu-border-disabledColor);
+        background-color: var(--selectionmenu-background-color);
         cursor: not-allowed;
     }
 }
