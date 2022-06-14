@@ -8,6 +8,7 @@ html[data-theme="light"] {
     --input-color: #000;
     --input-border-color: #ccc;
     --input-border-disabledColor: #000;
+    --input-autoFill-background-color: #000;
 
     --selectionmenu-border-color: #ccc;
     --selectionmenu-border-disabledColor: #000;
@@ -23,4 +24,11 @@ html[data-theme="light"] {
     --table-preloader-background-color: rgba(204, 204, 204, 0.3);
     --stickyTH--background-color: #ccc;
     --TD-border-color: #000;
+
+    --card-border-color: #ccc;
+
+    --message-color: #000;
+    --err-message-color: red;
+
+    --preloader-background-color: #000;
 }

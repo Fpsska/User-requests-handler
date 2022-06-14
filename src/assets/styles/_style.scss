@@ -39,7 +39,7 @@ input {
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
         transition: background-color 5000s;
-        -webkit-text-fill-color: #000 !important;
+        -webkit-text-fill-color: var(--input-autoFill-background-color) !important;
     }
 }
 
@@ -73,7 +73,7 @@ footer {
 }
 
 .error-message {
-    color: red;
+    color: var(--err-message-color);
     font-size: 16px;
     position: absolute;
     top: 50%;
@@ -83,7 +83,5 @@ footer {
 
 .message {
     @extend .error-message;
-    color: #000;
+    color: var(--message-color);
 }
-
-
