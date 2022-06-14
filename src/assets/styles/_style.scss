@@ -55,6 +55,10 @@ select {
     height: 100%;
 }
 
+.App {
+    background-color: var(--app-background-color);
+}
+
 header {
     flex: 0 0 auto;
 }

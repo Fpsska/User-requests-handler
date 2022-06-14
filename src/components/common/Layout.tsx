@@ -4,6 +4,7 @@ import { Outlet } from 'react-router';
 
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import Theme from '../Theme/Theme';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
@@ -42,6 +43,7 @@ const Layout: React.FC = () => {
 
     return (
         <div className="page">
+            <Theme/>
             <Header />
             <main className="main">
                 <Outlet />
