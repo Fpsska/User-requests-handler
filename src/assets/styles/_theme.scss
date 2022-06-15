@@ -8,13 +8,15 @@ html[data-theme="light"] {
     --footer-link-color: #000;
 
     --input-color: #000;
+    --input-color-background-color: transparent;
     --input-border-color: #ccc;
     --input-border-disabledColor: #000;
     --input-autoFill-background-color: #000;
 
+    --selectionmenu-background-color: #fff;
+    --selectionmenu-color: #000;
     --selectionmenu-border-color: #ccc;
     --selectionmenu-border-disabledColor: #000;
-    --selectionmenu-background-color: rgba(204, 204, 204, 0.2);
 
     --scrollbarTrack-boxshadow-color: rgba(0, 0, 0, 0.3);
     --scrollbarThumb-boxshadow-color: #ccc;
@@ -33,4 +35,25 @@ html[data-theme="light"] {
     --err-message-color: red;
 
     --preloader-background-color: #000;
+}
+
+html[data-theme="dark"] {
+    --app-background-color: #333;
+
+    --nav-links-color: #000;
+    --nav-links-activeColor: rgba(255, 255, 255, 1);
+
+    --result-text-color: #fff;
+    --footer-link-color: #fff;
+
+    --input-color: #fff;
+    --input-color-background-color: transparent;
+    --input-border-color: #fff;
+    --input-border-disabledColor: red;
+    --input-autoFill-background-color: transparent;
+
+    --selectionmenu-background-color: transparent;
+    --selectionmenu-color: #ccc;
+    --selectionmenu-border-color: #fff;
+    --selectionmenu-border-disabledColor: red;
 }

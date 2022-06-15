@@ -7,8 +7,6 @@ import MainPage from '../pages/MainPage/MainPage';
 import UserPage from '../pages/UserPage/UserPage';
 import PostPage from '../pages/PostsPage/PostPage';
 
-import { useTheme } from '../../hooks/useTheme';
-
 import './App.css';
 import '../../assets/styles/_style.scss';
 import '../../assets/styles/_media.scss';
@@ -17,8 +15,6 @@ import '../../assets/styles/_theme.scss';
 // /. imports
 
 const App: React.FC = () => {
-
-  const {theme, setTheme} = useTheme();
 
   return (
     <div className="App">

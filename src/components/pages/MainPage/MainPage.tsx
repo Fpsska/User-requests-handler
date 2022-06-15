@@ -9,6 +9,8 @@ import Table from '../../Table/Table';
 
 import { setRequestCount } from '../../../app/slices/tableSlice';
 
+import { useTheme } from '../../../hooks/useTheme';
+
 import './mainPage.scss';
 
 // /. imports
@@ -20,9 +22,12 @@ const MainPage: React.FC = () => {
         isTableDataLoading,
         tableData
     } = useAppSelector(state => state.tableSlice);
+    
     const [text, setText] = useState<string>('заявок');
 
     const dispatch = useAppDispatch();
+
+    const { theme } = useTheme();
 
     useEffect(() => {
         dispatch(setRequestCount(tableData.length));
@@ -40,7 +45,7 @@ const MainPage: React.FC = () => {
             <div className="main-page__wrapper">
                 <div className="result">
                     <div className="result__wrapper">
-                        <IoDocumentTextOutline size={'34px'} />
+                        <IoDocumentTextOutline size={'34px'} color={theme === 'light' ? '#000' : '#fff'} />
                         <h1 className="result__text">{isTableDataLoading ? '0' : requestСount} {text}</h1>
                     </div>
                 </div>

@@ -12,6 +12,10 @@ const Theme: React.FC = () => {
     const [isActive, setActiveStatus] = useState<boolean>(theme === 'light' ? false : true);
 
     useEffect(() => {
+        console.log(theme);
+    }, [theme]);
+
+    useEffect(() => {
         isActive ? setTheme('dark') : setTheme('light');
     }, [isActive]);
 

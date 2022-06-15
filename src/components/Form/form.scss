@@ -14,6 +14,7 @@
     &__input {
         font-size: 12px;
         border: 1px solid var(--input-border-color);
+        background-color: var(--input-color-background-color);
         border-radius: 5px;
         padding: 10px;
         color: var(--input-color);
@@ -37,7 +38,9 @@
 
 .selection-menu {
     padding: 9px;
+    color: var(--selectionmenu-color);
     border: 1px solid var(--selectionmenu-border-color);
+    background-color: var(--selectionmenu-background-color);
     border-radius: 5px;
     font-size: 12px;
     &:disabled {
