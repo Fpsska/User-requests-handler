@@ -22,7 +22,7 @@ const Theme: React.FC = () => {
     return (
         <div className="theme">
             <label className="theme-switch">
-                <input className="theme-switch__input" type="checkbox" onClick={themeHandler}/>
+                <input className="theme-switch__input" type="checkbox" defaultChecked={isActive} onClick={themeHandler} />
                 <div className="slider round">
                     <span className="slider__text">
                         <span className="off">light</span>
