@@ -13,7 +13,7 @@ import './form.scss';
 const Form: React.FC = () => {
 
     const { formSelectTemplates } = useAppSelector(state => state.formSlice);
-    const { isTableDataLoading } = useAppSelector(state => state.tableSlice);
+    const { isTableDataLoading, status } = useAppSelector(state => state.tableSlice);
 
     const inputID = useInput('');
     const inputFIO = useInput('');
@@ -46,7 +46,7 @@ const Form: React.FC = () => {
                         placeholder="ID"
                         value={inputID.value}
                         onChange={e => inputHandler('ID', e)}
-                        disabled={isTableDataLoading}
+                        disabled={isTableDataLoading || status === 'failed'}
                     />
                 </div>
                 <div className="form__template">
@@ -55,7 +55,7 @@ const Form: React.FC = () => {
                         placeholder="ФИО"
                         value={inputFIO.value}
                         onChange={e => inputHandler('FIO', e)}
-                        disabled={isTableDataLoading}
+                        disabled={isTableDataLoading || status === 'failed'}
                     />
                 </div>
                 <div className="form__template">
@@ -64,7 +64,7 @@ const Form: React.FC = () => {
                         placeholder="Дата рождения"
                         value={inputBIRTH.value}
                         onChange={e => inputHandler('BIRTH', e)}
-                        disabled={isTableDataLoading}
+                        disabled={isTableDataLoading || status === 'failed'}
                     />
                 </div>
                 <div className="form__template">
@@ -73,7 +73,7 @@ const Form: React.FC = () => {
                         placeholder="Телефон"
                         value={inputPHONE.value}
                         onChange={e => inputHandler('PHONE', e)}
-                        disabled={isTableDataLoading}
+                        disabled={isTableDataLoading || status === 'failed'}
                     />
                 </div>
                 <>
@@ -84,6 +84,7 @@ const Form: React.FC = () => {
                                 id={item.id}
                                 options={item.options}
                                 isTableDataLoading={isTableDataLoading}
+                                status={status}
                             />
                         );
                     })}

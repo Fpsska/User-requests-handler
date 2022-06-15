@@ -34,6 +34,7 @@ button {
 
 input {
     outline: none;
+    cursor: pointer;
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
@@ -45,6 +46,7 @@ input {
 
 select {
     outline: 0;
+    cursor: pointer;
 }
 
 // /. NULL-STYLES

@@ -30,6 +30,7 @@ html[data-theme="light"] {
     --TD-border-color: #000;
     --TD-color: #000;
 
+    --card--color: #000;
     --card-border-color: #ccc;
 
     --message-color: #000;
@@ -69,6 +70,12 @@ html[data-theme="dark"] {
     --stickyTH--background-color: #444;
     --TD-border-color: #ccc;
     --TD-color: #fff;
+
+    --card--color: #ccc;
+    --card-border-color: #fff;
+
+    --message-color: #fff;
+    --err-message-color: red;
 
     --preloader-background-color: #ccc;
 }

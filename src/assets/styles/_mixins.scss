@@ -13,6 +13,7 @@
     align-items: center;
 }
 @mixin card {
+    color: var(--card--color);
     border: 1px solid var(--card-border-color);
     border-radius: 5px;
     display: flex;
