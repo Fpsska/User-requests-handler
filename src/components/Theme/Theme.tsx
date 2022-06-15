@@ -9,11 +9,8 @@ import './theme.scss';
 const Theme: React.FC = () => {
 
     const { theme, setTheme } = useTheme();
-    const [isActive, setActiveStatus] = useState<boolean>(theme === 'light' ? false : true);
 
-    useEffect(() => {
-        console.log(theme);
-    }, [theme]);
+    const [isActive, setActiveStatus] = useState<boolean>(theme === 'light' ? false : true);
 
     useEffect(() => {
         isActive ? setTheme('dark') : setTheme('light');

@@ -22,12 +22,12 @@ const MainPage: React.FC = () => {
         isTableDataLoading,
         tableData
     } = useAppSelector(state => state.tableSlice);
-    
+
+    const { theme } = useTheme();
+
     const [text, setText] = useState<string>('заявок');
 
     const dispatch = useAppDispatch();
-
-    const { theme } = useTheme();
 
     useEffect(() => {
         dispatch(setRequestCount(tableData.length));

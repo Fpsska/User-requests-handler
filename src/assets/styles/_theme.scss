@@ -28,6 +28,7 @@ html[data-theme="light"] {
     --table-preloader-background-color: rgba(204, 204, 204, 0.3);
     --stickyTH--background-color: #ccc;
     --TD-border-color: #000;
+    --TD-color: #000;
 
     --card-border-color: #ccc;
 
@@ -49,11 +50,25 @@ html[data-theme="dark"] {
     --input-color: #fff;
     --input-color-background-color: transparent;
     --input-border-color: #fff;
-    --input-border-disabledColor: red;
+    --input-border-disabledColor: rgba(255, 0, 0, 0.8);
     --input-autoFill-background-color: transparent;
 
     --selectionmenu-background-color: transparent;
     --selectionmenu-color: #ccc;
     --selectionmenu-border-color: #fff;
-    --selectionmenu-border-disabledColor: red;
+    --selectionmenu-border-disabledColor: rgba(255, 0, 0, 0.8);
+
+    --scrollbarTrack-boxshadow-color: rgba(255, 255, 255, 0.1);
+    --scrollbarThumb-boxshadow-color: rgba(255, 255, 255, 0.3);
+
+    --cell-defaultStatus-color: rgba(0, 128, 0, 0.8);
+    --cell-closetStatus-color: rgba(255, 0, 0, 0.8);
+    --cell-progressStatus-color: rgba(255, 165, 0, 0.8);
+
+    --table-preloader-background-color: rgba(204, 204, 204, 0.3);
+    --stickyTH--background-color: #444;
+    --TD-border-color: #ccc;
+    --TD-color: #fff;
+
+    --preloader-background-color: #ccc;
 }

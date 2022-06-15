@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { BsGithub } from 'react-icons/bs';
 
@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
     const { theme } = useTheme();
 
     return (
-        <footer className={theme === 'light' ? 'footer light' : 'footer dark'}>
+        <footer className="footer">
             <div className="footer__wrapper">
                 <div className="footer__social">
                     <BsGithub size={'34px'} color={theme === 'light' ? '#000' : '#fff'} />
