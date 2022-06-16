@@ -46,6 +46,7 @@ const Form: React.FC = () => {
                         placeholder="ID"
                         value={inputID.value}
                         onChange={e => inputHandler('ID', e)}
+                        onKeyDown={e => e.key === 'e' && e.preventDefault()}
                         disabled={isTableDataLoading || status === 'failed'}
                     />
                 </div>
@@ -64,6 +65,7 @@ const Form: React.FC = () => {
                         placeholder="Дата рождения"
                         value={inputBIRTH.value}
                         onChange={e => inputHandler('BIRTH', e)}
+                        onKeyDown={e => e.key === 'e' && e.preventDefault()}
                         disabled={isTableDataLoading || status === 'failed'}
                     />
                 </div>
@@ -73,6 +75,7 @@ const Form: React.FC = () => {
                         placeholder="Телефон"
                         value={inputPHONE.value}
                         onChange={e => inputHandler('PHONE', e)}
+                        onKeyDown={e => e.key === 'e' && e.preventDefault()}
                         disabled={isTableDataLoading || status === 'failed'}
                     />
                 </div>
