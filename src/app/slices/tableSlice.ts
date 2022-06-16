@@ -11,7 +11,7 @@ export const fetchUsersData = createAsyncThunk(
     'tableSlice/fetchUsersData',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await fetch('htt://jsonplaceholder.typicode.com/users');
+            const response = await fetch('https://jsonplaceholder.typicode.com/users');
 
             if (!response.ok) {
                 throw new Error('Response: server error!');
@@ -160,12 +160,13 @@ const tableSlice = createSlice({
                     break;
                 case 'FIO':
                     state.tableData = state.filteredTableData.filter(item => RegExp(value, 'gi').test(item.name));
+                    console.log(value)
                     break;
                 case 'BIRTH':
                     state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(item.birth));
                     break;
                 case 'PHONE':
-                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(item.phone.replace(/\D/g, '')));
+                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(item.phone)); // .replace(/\D/g, '')
                     break;
                 case 'FILIAL':
                     state.tableData = state.filteredTableData.filter(item => {

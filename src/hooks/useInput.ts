@@ -28,8 +28,8 @@ export function useInput(currentValue: string) {
                 dispatch(filterUsers({ name, value }));
                 break;
             case 'FIO':
-                setValue(value.replace(/[0-9]/g, ''));
-                dispatch(filterUsers({ name, value: value.replace(/[0-9]/g, '') }));
+                setValue(value.replace(/[^a-zA-Z\s]/g, ''));
+                dispatch(filterUsers({ name, value: value.replace(/[^a-zA-Z\s]/g, '').trim() }));
                 break;
             case 'BIRTH':
                 setValue(value);
