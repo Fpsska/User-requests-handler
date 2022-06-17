@@ -71,7 +71,7 @@ const Form: React.FC = () => {
                 </div>
                 <div className="form__template">
                     <input className="form__input"
-                        type="number"
+                        type="text"
                         placeholder="Телефон"
                         value={inputPHONE.value}
                         onChange={e => inputHandler('PHONE', e)}

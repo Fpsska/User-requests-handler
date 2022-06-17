@@ -160,13 +160,12 @@ const tableSlice = createSlice({
                     break;
                 case 'FIO':
                     state.tableData = state.filteredTableData.filter(item => RegExp(value, 'gi').test(item.name));
-                    console.log(value)
                     break;
                 case 'BIRTH':
                     state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(item.birth));
                     break;
                 case 'PHONE':
-                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(item.phone)); // .replace(/\D/g, '')
+                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(item.phone)); 
                     break;
                 case 'FILIAL':
                     state.tableData = state.filteredTableData.filter(item => {

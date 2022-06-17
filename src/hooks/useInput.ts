@@ -36,8 +36,8 @@ export function useInput(currentValue: string) {
                 dispatch(filterUsers({ name, value }));
                 break;
             case 'PHONE':
-                setValue(value);
-                dispatch(filterUsers({ name, value }));
+                setValue(value.replace(/[^0-9-]/g, ''));
+                dispatch(filterUsers({ name, value: value.replace(/[^0-9-]/g, '') }));
                 break;
         }
     };
