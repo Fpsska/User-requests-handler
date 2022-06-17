@@ -24,16 +24,16 @@ export function useInput(currentValue: string) {
 
         switch (name) {
             case 'ID':
-                setValue(value);
-                dispatch(filterUsers({ name, value }));
+                setValue(value.replace(/[^0-9]/g, ''));
+                dispatch(filterUsers({ name, value: value.replace(/[^0-9-]/g, '') }));
                 break;
             case 'FIO':
                 setValue(value.replace(/[^a-zA-Z\s]/g, ''));
                 dispatch(filterUsers({ name, value: value.replace(/[^a-zA-Z\s]/g, '').trim() }));
                 break;
             case 'BIRTH':
-                setValue(value);
-                dispatch(filterUsers({ name, value }));
+                setValue(value.replace(/[^0-9/]/g, ''));
+                dispatch(filterUsers({ name, value: value.replace(/[^0-9/]/g, '') }));
                 break;
             case 'PHONE':
                 setValue(value.replace(/[^0-9-]/g, ''));

@@ -28,6 +28,7 @@ export const fetchUsersData = createAsyncThunk(
 // /. AsyncThunk
 
 interface tableSliceTypes {
+    isMainPage: boolean,
     isUsersDataEmpty: boolean,
     fetchUsersErrMsg: string,
     requestСount: number
@@ -41,6 +42,7 @@ interface tableSliceTypes {
 // /. interfaces
 
 const initialState: tableSliceTypes = {
+    isMainPage: true,
     isUsersDataEmpty: false,
     fetchUsersErrMsg: '',
     requestСount: 0,
@@ -93,6 +95,9 @@ const tableSlice = createSlice({
     name: 'tableSlice',
     initialState,
     reducers: {
+        switchMainPageStatus(state, action: PayloadAction<boolean>) {
+            state.isMainPage = action.payload;
+        },
         switchTableDataLoadingStatus(state, action: PayloadAction<boolean>) {
             state.isTableDataLoading = action.payload;
         },
@@ -165,7 +170,7 @@ const tableSlice = createSlice({
                     state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(item.birth));
                     break;
                 case 'PHONE':
-                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(item.phone)); 
+                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(item.phone));
                     break;
                 case 'FILIAL':
                     state.tableData = state.filteredTableData.filter(item => {
@@ -224,6 +229,7 @@ const tableSlice = createSlice({
 });
 
 export const {
+    switchMainPageStatus,
     switchTableDataLoadingStatus,
     swithUsersDataEmptyStatus,
     setRequestCount,

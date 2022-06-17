@@ -2,15 +2,15 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch } from '../../app/hooks';
+
+import { switchMainPageStatus } from '../../app/slices/tableSlice';
 
 import './header.scss';
 
 // /. imports
 
 const Header: React.FC = () => {
-
-    const { tableData } = useAppSelector(state => state.tableSlice);
 
     const dispatch = useAppDispatch();
 
@@ -20,13 +20,28 @@ const Header: React.FC = () => {
                 <nav className="nav">
                     <ul className="nav__menu">
                         <li className="nav__item">
-                            <NavLink className="nav__link" to="/CodeConstruction-Task/">Main</NavLink>
+                            <NavLink className="nav__link"
+                                to="/CodeConstruction-Task/"
+                                onClick={() => dispatch(switchMainPageStatus(true))}
+                            >
+                                Main
+                            </NavLink>
                         </li>
                         <li className="nav__item">
-                            <NavLink className="nav__link" to="Users">Users</NavLink>
+                            <NavLink className="nav__link"
+                                to="Users"
+                                onClick={() => dispatch(switchMainPageStatus(false))}
+                            >
+                                Users
+                            </NavLink>
                         </li>
                         <li className="nav__item">
-                            <NavLink className="nav__link" to="Posts">Posts</NavLink>
+                            <NavLink className="nav__link"
+                                to="Posts"
+                                onClick={() => dispatch(switchMainPageStatus(false))}
+                            >
+                                Posts
+                            </NavLink>
                         </li>
                     </ul>
                 </nav>

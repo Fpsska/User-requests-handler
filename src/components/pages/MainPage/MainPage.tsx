@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import Form from '../../Form/Form';
 import Table from '../../Table/Table';
 
-import { setRequestCount } from '../../../app/slices/tableSlice';
+import { setRequestCount, filterUsers } from '../../../app/slices/tableSlice';
 
 import { useTheme } from '../../../hooks/useTheme';
 
@@ -20,7 +20,8 @@ const MainPage: React.FC = () => {
     const {
         requestСount,
         isTableDataLoading,
-        tableData
+        tableData,
+        isMainPage
     } = useAppSelector(state => state.tableSlice);
 
     const { theme } = useTheme();
@@ -39,6 +40,15 @@ const MainPage: React.FC = () => {
             setText('заявка');
         };
     }, [requestСount, tableData]);
+
+    useEffect(() => {
+        return () => {
+            dispatch(filterUsers({ name: 'ID', value: '' }));
+            dispatch(filterUsers({ name: 'FIO', value: '' }));
+            dispatch(filterUsers({ name: 'BIRTH', value: '' }));
+            dispatch(filterUsers({ name: 'PHONE', value: '' }));
+        };
+    }, [isMainPage]);
 
     return (
         <div className="main-page">

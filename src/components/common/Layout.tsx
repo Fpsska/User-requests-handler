@@ -43,7 +43,7 @@ const Layout: React.FC = () => {
 
     return (
         <div className="page">
-            <Theme/>
+            <Theme />
             <Header />
             <main className="main">
                 <Outlet />

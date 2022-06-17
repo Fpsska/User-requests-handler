@@ -42,7 +42,7 @@ const Form: React.FC = () => {
             <div className="form__wrapper">
                 <div className="form__template">
                     <input className="form__input form__input--id"
-                        type="number"
+                        type="text"
                         placeholder="ID"
                         value={inputID.value}
                         onChange={e => inputHandler('ID', e)}
@@ -61,7 +61,7 @@ const Form: React.FC = () => {
                 </div>
                 <div className="form__template">
                     <input className="form__input"
-                        type="number"
+                        type="text"
                         placeholder="Дата рождения"
                         value={inputBIRTH.value}
                         onChange={e => inputHandler('BIRTH', e)}
