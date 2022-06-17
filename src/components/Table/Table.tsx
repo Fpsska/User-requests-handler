@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import Preloader from '../common/Preloader/Preloader';
 
 import {
-    swithUsersDataEmptyStatus,
-    sortUsersByASC,
-    sortUsersByDSC
+    swithUsersDataEmptyStatus
 } from '../../app/slices/tableSlice';
 
 import TableBodyTemplate from './TableBodyTemplate';
@@ -26,19 +24,6 @@ const Table: React.FC = () => {
         isUsersDataEmpty,
         tableHeadTemplate
     } = useAppSelector(state => state.tableSlice);
-
-    const [sortOder, setSetOrder] = useState<string>('DSC');
-    const [statuses, setStatus] = useState<any>(
-        {
-            id: false,
-            fio: false,
-            birth: false,
-            phone: false,
-            filial: false,
-            isPaid: false,
-            status: false
-        }
-    );
 
     const dispatch = useAppDispatch();
 

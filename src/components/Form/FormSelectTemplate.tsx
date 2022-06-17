@@ -28,7 +28,7 @@ const FormSelectTemplate: React.FC<propTypes> = (props) => {
 
     const dispatch = useAppDispatch();
 
-    const handleSelect = (value: any): void => {
+    const handleSelect = (value: string): void => {
         switch (id) {
             case 'FILIAL':
                 dispatch(filterUsers({ name: id, value }));

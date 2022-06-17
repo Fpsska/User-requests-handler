@@ -7,9 +7,18 @@
     &__social {
         display: flex;
         align-items: center;
+        cursor: pointer;
         :not(:last-child) {
             margin: 0 10px 0 0;
         }
+        &:hover {
+            svg {
+                transform: scale(1.1);
+            }
+        }
+    }
+    svg {
+        transition: all .25s linear;
     }
     &__link {
         color: var(--footer-link-color); 

@@ -9,8 +9,6 @@ import Table from '../../Table/Table';
 
 import { setRequestCount, filterUsers } from '../../../app/slices/tableSlice';
 
-import { useTheme } from '../../../hooks/useTheme';
-
 import './mainPage.scss';
 
 // /. imports
@@ -23,8 +21,6 @@ const MainPage: React.FC = () => {
         tableData,
         isMainPage
     } = useAppSelector(state => state.tableSlice);
-
-    const { theme } = useTheme();
 
     const [text, setText] = useState<string>('заявок');
 
@@ -55,7 +51,7 @@ const MainPage: React.FC = () => {
             <div className="main-page__wrapper">
                 <div className="result">
                     <div className="result__wrapper">
-                        <IoDocumentTextOutline size={'34px'} color={theme === 'light' ? '#000' : '#fff'} />
+                        <IoDocumentTextOutline size={'34px'} color={'#000'} />
                         <h1 className="result__text">{isTableDataLoading ? '0' : requestСount} {text}</h1>
                     </div>
                 </div>
