@@ -28,22 +28,12 @@ const FormSelectTemplate: React.FC<propTypes> = (props) => {
 
     const dispatch = useAppDispatch();
 
-    const handleSelect = (value: string): void => {
-        switch (id) {
-            case 'FILIAL':
-                dispatch(filterUsers({ name: id, value }));
-                break;
-            case 'PAY':
-                dispatch(filterUsers({ name: id, value }));
-                break;
-        }
-    };
-
     return (
         <div className="form__template">
             <select className="selection-menu"
                 defaultValue={options[0].option}
-                onChange={(e) => handleSelect(e.target.value)}
+                onChange={(e) => dispatch(filterUsers({ name: id, value: e.target.value }))}
+
                 disabled={isTableDataLoading || status === 'failed'}
             >
                 {options.map(item => {

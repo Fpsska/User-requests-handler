@@ -43,8 +43,8 @@ const Table: React.FC = () => {
                                 return (
                                     <TableHeadTemplate
                                         key={item.id}
-                                        name={item.name}
-                                        text={item.text}
+                                        {...item}
+
                                         isTableDataLoading={isTableDataLoading}
                                         isUsersDataEmpty={isUsersDataEmpty}
                                     />
@@ -63,13 +63,7 @@ const Table: React.FC = () => {
                                 return (
                                     <TableBodyTemplate
                                         key={item.id}
-                                        id={item.id}
-                                        name={item.name}
-                                        birth={item.birth}
-                                        phone={item.phone}
-                                        filial={item.filial}
-                                        isPaid={item.isPaid}
-                                        status={item.status}
+                                        {...item}
                                     />
                                 );
                             })}

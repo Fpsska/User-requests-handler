@@ -23,16 +23,16 @@ const Form: React.FC = () => {
     const inputHandler = (name: string, e: React.ChangeEvent<HTMLInputElement>): void => {
         switch (name) {
             case 'ID':
-                inputID.onInputChange({ name: 'ID', value: e.target.value });
+                inputID.onInputChange({ name, value: e.target.value });
                 break;
             case 'FIO':
-                inputFIO.onInputChange({ name: 'FIO', value: e.target.value });
+                inputFIO.onInputChange({ name, value: e.target.value });
                 break;
             case 'BIRTH':
-                inputBIRTH.onInputChange({ name: 'BIRTH', value: e.target.value });
+                inputBIRTH.onInputChange({ name, value: e.target.value });
                 break;
             case 'PHONE':
-                inputPHONE.onInputChange({ name: 'PHONE', value: e.target.value });
+                inputPHONE.onInputChange({ name, value: e.target.value });
                 break;
         }
     };
@@ -84,8 +84,8 @@ const Form: React.FC = () => {
                         return (
                             <FormSelectTemplate
                                 key={item.id}
-                                id={item.id}
-                                options={item.options}
+                                {...item}
+
                                 isTableDataLoading={isTableDataLoading}
                                 status={status}
                             />

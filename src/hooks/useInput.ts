@@ -13,7 +13,7 @@ interface propTypes {
 
 // /. interfaces
 
-export function useInput(currentValue: string) {
+export function useInput(currentValue: string): any {
 
     const [value, setValue] = useState<string>(currentValue);
 
