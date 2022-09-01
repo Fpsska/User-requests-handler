@@ -1,31 +1,13 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { tableDataTypes, tableHeadTemplateTypes } from '../../Types/tableSliceTypes';
+import { fetchUsersData } from '../../api/fetchUsersData';
 
 import { generateRandomDate } from '../../helpers/getRandomDate';
 import { getRandomStatus } from '../../helpers/getRandomStatus';
 
+import { tableDataTypes, tableHeadTemplateTypes } from '../../Types/tableSliceTypes';
+
 // /. imports
-
-export const fetchUsersData = createAsyncThunk(
-    'tableSlice/fetchUsersData',
-    async (_, { rejectWithValue }) => {
-        try {
-            const response = await fetch('https://jsonplaceholder.typicode.com/users');
-
-            if (!response.ok) {
-                throw new Error('Response: server error!');
-            }
-
-            const data = await response.json();
-            return data;
-        } catch (err: any) {
-            return rejectWithValue(err.message);
-        }
-    }
-);
-
-// /. AsyncThunk
 
 interface tableSliceTypes {
     isMainPage: boolean,

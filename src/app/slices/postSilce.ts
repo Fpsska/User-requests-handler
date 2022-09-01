@@ -1,28 +1,10 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { fetchPostsData } from '../../api/fetchPostsData';
 
 import { postDataTypes } from '../../Types/postSliceTypes';
 
 // /. imports
-
-export const fetchPostsData = createAsyncThunk(
-    'postSilce/fetchPostsData',
-    async (_, { rejectWithValue }) => {
-        try {
-            const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-
-            if (!response.ok) {
-                throw new Error('Response: server error!');
-            }
-
-            const data = await response.json();
-            return data;
-        } catch (err: any) {
-            return rejectWithValue(err.message);
-        }
-    }
-);
-
-// /. AsyncThunk
 
 interface postSilceTypes {
     status: string,
