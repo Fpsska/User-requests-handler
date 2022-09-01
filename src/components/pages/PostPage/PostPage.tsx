@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 
 import { switchPostDataLoadingStatus } from '../../../app/slices/postSilce';
 
-import { fetchPostsData } from '../../../api/fetchPostsData';
+import { fetchPostsData } from '../../../app/api/fetchPostsData';
 
 import Preloader from '../../common/Preloader/Preloader';
 

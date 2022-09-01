@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { fetchUsersData } from '../../api/fetchUsersData';
+import { fetchUsersData } from '../api/fetchUsersData';
 
 import { generateRandomDate } from '../../helpers/getRandomDate';
 import { getRandomStatus } from '../../helpers/getRandomStatus';

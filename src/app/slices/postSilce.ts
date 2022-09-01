@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { fetchPostsData } from '../../api/fetchPostsData';
+import { fetchPostsData } from '../api/fetchPostsData';
 
 import { postDataTypes } from '../../Types/postSliceTypes';
 

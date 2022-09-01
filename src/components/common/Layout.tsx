@@ -8,7 +8,7 @@ import Theme from '../Theme/Theme';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
-import { fetchUsersData } from '../../api/fetchUsersData';
+import { fetchUsersData } from '../../app/api/fetchUsersData';
 
 import { switchTableDataLoadingStatus } from '../../app/slices/tableSlice';
 

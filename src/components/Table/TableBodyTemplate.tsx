@@ -28,18 +28,12 @@ const TableBodyTemplate: React.FC<propTypes> = (props) => {
         status
     } = props;
 
-    const [statusName, setStatusName] = useState<string>('');
+    const [statuses] = useState<{ [key: string]: string }>({
+        'Закрыта': 'close',
+        'Новая': 'active',
+        'В обработке': 'progress'
+    });
 
-
-    useEffect(() => {
-        if (status === 'Закрыта') {
-            setStatusName('close');
-        } else if (status === 'Новая') {
-            setStatusName('active');
-        } else if (status === 'В обработке') {
-            setStatusName('progress');
-        }
-    }, [status]);
 
     return (
         <>
@@ -54,7 +48,7 @@ const TableBodyTemplate: React.FC<propTypes> = (props) => {
                         ? <IoCheckmarkCircleOutline size={'24px'} color={'green'} />
                         : <IoCloseCircleOutline size={'24px'} color={'red'} />}
                 </td>
-                <td className={`table__cell table__cell--status ${statusName}`}>
+                <td className={`table__cell table__cell--status ${statuses[status]}`}>
                     {status}
                 </td>
             </tr>
