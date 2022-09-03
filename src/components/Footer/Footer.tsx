@@ -9,12 +9,12 @@ import './footer.scss';
 const Footer: React.FC = () => {
     return (
         <footer className="footer">
-            <div className="footer__wrapper">
-                <div className="footer__social">
+            <section className="footer__wrapper">
+                <address className="footer__social">
                     <BsGithub size={'34px'} color={'#000'} />
                     <a className="footer__link" target="_blank" href="https://github.com/Fpsska">Fpsska</a>
-                </div>
-            </div>
+                </address>
+            </section>
         </footer>
     );
 };

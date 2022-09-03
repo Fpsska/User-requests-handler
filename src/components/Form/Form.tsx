@@ -38,8 +38,8 @@ const Form: React.FC = () => {
     };
 
     return (
-        <form className="form" action="#">
-            <div className="form__wrapper">
+        <form className="form">
+            <fieldset className="form__wrapper">
                 <div className="form__template">
                     <input className="form__input form__input--id"
                         type="text"
@@ -92,7 +92,7 @@ const Form: React.FC = () => {
                         );
                     })}
                 </>
-            </div>
+            </fieldset>
         </form>
     );
 };

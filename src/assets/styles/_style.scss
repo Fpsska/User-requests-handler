@@ -39,6 +39,7 @@ input {
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
+        -webkit-transition: background-color 5000s;
         transition: background-color 5000s;
         -webkit-text-fill-color: var(--input-autoFill-background-color) !important;
     }
@@ -47,6 +48,12 @@ input {
 select {
     outline: 0;
     cursor: pointer;
+}
+
+fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
 }
 
 // /. NULL-STYLES

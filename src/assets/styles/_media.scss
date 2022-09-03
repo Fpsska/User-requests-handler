@@ -8,24 +8,31 @@
     .page {
         padding: 20px;
     }
+
     .table {
+
         th,
         td {
             text-align: center;
         }
     }
+
     .form__wrapper {
         margin: 0 -5px 0 -5px;
     }
+
     .form__template {
         margin: 5px;
     }
+
     .table-wrapper {
         height: calc(100vh - 20px - 40px - 49px - 102px - 54px);
     }
+
     .main-page__wrapper {
-        height: calc(100vh - 20px - 40px - 54px); 
+        height: calc(100vh - 20px - 40px - 54px);
     }
+
     .user-page__wrapper,
     .post-page__wrapper {
         height: calc(100vh - 20px - 40px - 54px);
@@ -36,18 +43,21 @@
     .page {
         padding: 15px;
     }
+
     .form__template {
         width: 100%;
     }
+
     .form__input--id {
         max-width: 100%;
     }
+
     .table-wrapper {
         height: calc(100vh - 15px - 40px - 49px - 286px - 54px);
     }
+
     .user-page__wrapper,
     .post-page__wrapper {
         height: calc(100vh - 15px - 40px - 54px);
     }
 }
-

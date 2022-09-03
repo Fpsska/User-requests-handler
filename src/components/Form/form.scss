@@ -1,16 +1,19 @@
 .form {
     margin: 0 0 10px 0;
+
     &__wrapper {
         display: flex;
         flex-wrap: wrap;
         margin: 0 -10px 0 -10px;
     }
+
     &__template {
         flex-grow: 1;
         display: flex;
         flex-direction: column;
         margin: 10px;
     }
+
     &__input {
         font-size: 12px;
         border: 1px solid var(--input-border-color);
@@ -18,19 +21,23 @@
         border-radius: 5px;
         padding: 10px;
         color: var(--input-color);
+
         input[type="number"] {
             -moz-appearance: textfield;
         }
+
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
+
         &:disabled {
             border: 1px solid var(--input-border-disabledColor);
             cursor: not-allowed;
         }
     }
+
     &__input--id {
         max-width: 45px;
     }
@@ -43,6 +50,7 @@
     background-color: var(--selectionmenu-background-color);
     border-radius: 5px;
     font-size: 12px;
+
     &:disabled {
         border: 1px solid var(--selectionmenu-border-disabledColor);
         background-color: var(--selectionmenu-background-color);

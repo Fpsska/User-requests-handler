@@ -16,7 +16,7 @@ const Header: React.FC = () => {
 
     return (
         <header className="header">
-            <div className="header__wrapper">
+            <section className="header__wrapper">
                 <nav className="nav">
                     <ul className="nav__menu">
                         <li className="nav__item">
@@ -45,7 +45,7 @@ const Header: React.FC = () => {
                         </li>
                     </ul>
                 </nav>
-            </div>
+            </section>
         </header>
     );
 };

@@ -17,7 +17,7 @@ const UserPage: React.FC = () => {
     } = useAppSelector(state => state.tableSlice);
 
     return (
-        <div className="user-page">
+        <section className="user-page">
             <div className="user-page__wrapper">
                 {isTableDataLoading
                     ? <div className="user-page__preloader"><Preloader /></div>
@@ -41,7 +41,7 @@ const UserPage: React.FC = () => {
                     </div>
                 }
             </div>
-        </div>
+        </section>
     );
 };
 

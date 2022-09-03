@@ -47,7 +47,7 @@ const MainPage: React.FC = () => {
     }, [isMainPage]);
 
     return (
-        <div className="main-page">
+        <section className="main-page">
             <div className="main-page__wrapper">
                 <div className="result">
                     <div className="result__wrapper">
@@ -58,7 +58,7 @@ const MainPage: React.FC = () => {
                 <Form />
                 <Table />
             </div>
-        </div>
+        </section>
     );
 };
 

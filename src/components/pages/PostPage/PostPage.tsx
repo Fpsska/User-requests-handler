@@ -17,7 +17,7 @@ const PostPage: React.FC = () => {
     } = useAppSelector(state => state.postSilce);
 
     return (
-        <div className="post-page">
+        <section className="post-page">
             <div className="post-page__wrapper">
                 {isPostDataLoading
                     ? <div className="post-page__preloader"><Preloader /></div>
@@ -39,7 +39,7 @@ const PostPage: React.FC = () => {
                     </div>
                 }
             </div>
-        </div>
+        </section>
     );
 };
 
