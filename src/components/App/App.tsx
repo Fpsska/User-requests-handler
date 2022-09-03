@@ -3,6 +3,7 @@ import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router';
 
 import Layout from '../common/Layout';
+import Preloader from '../common/Preloader/Preloader';
 
 import './App.css';
 import '../../assets/styles/_style.scss';
@@ -13,7 +14,14 @@ import '../../assets/styles/_theme.scss';
 
 const MainPageLazy = lazy(() => import('../pages/MainPage/MainPage'));
 const UserPageLazy = lazy(() => import('../pages/UserPage/UserPage'));
-const PostPageLazy = lazy(() => import('../pages/PostPage/PostPage'));
+
+const PostPageLazy = lazy(() => {
+  return Promise.all([
+    import('../pages/PostPage/PostPage'),
+    new Promise(resolve => setTimeout(resolve, 1700))
+  ])
+    .then(([moduleExports]) => moduleExports);
+});
 
 // /. lazy 
 
@@ -33,7 +41,7 @@ const App: React.FC = () => {
             </Suspense>
           } />
           <Route path="Posts" element={
-            <Suspense>
+            <Suspense fallback={<div className="fallback-loader"><Preloader /></div>}>
               <PostPageLazy />
             </Suspense>
           } />

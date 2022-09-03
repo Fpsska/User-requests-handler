@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { IoCloseCircleOutline, IoCheckmarkCircleOutline } from 'react-icons/io5';
 

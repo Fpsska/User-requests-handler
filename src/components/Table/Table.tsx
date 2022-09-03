@@ -47,8 +47,9 @@ const Table: React.FC = () => {
 
                                         isTableDataLoading={isTableDataLoading}
                                         isUsersDataEmpty={isUsersDataEmpty}
+                                        fetchUsersErrMsg={fetchUsersErrMsg}
                                     />
-                                )
+                                );
                             })
                         }
                     </tr>

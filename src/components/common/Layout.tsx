@@ -8,9 +8,11 @@ import Theme from '../Theme/Theme';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
-import { fetchUsersData } from '../../app/api/fetchUsersData';
-
 import { switchTableDataLoadingStatus } from '../../app/slices/tableSlice';
+import { switchPostDataLoadingStatus } from '../../app/slices/postSilce';
+
+import { fetchUsersData } from '../../app/api/fetchUsersData';
+import { fetchPostsData } from '../../app/api/fetchPostsData';
 
 // /. imports
 
@@ -22,17 +24,20 @@ const Layout: React.FC = () => {
 
     useEffect(() => {
         dispatch(fetchUsersData());
+        dispatch(fetchPostsData());
     }, []);
 
     useEffect(() => {
         if (status === 'loading') {
             setTimeout(() => {
                 dispatch(switchTableDataLoadingStatus(true));
-            }, 1800);
+                dispatch(switchPostDataLoadingStatus(true));
+            }, 3500);
         } else {
             setTimeout(() => {
                 dispatch(switchTableDataLoadingStatus(false));
-            }, 1800);
+                dispatch(switchPostDataLoadingStatus(false));
+            }, 3500);
         }
     }, [status]);
 

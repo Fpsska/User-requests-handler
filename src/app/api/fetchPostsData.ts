@@ -14,7 +14,7 @@ export const fetchPostsData = createAsyncThunk(
 
             const data = await response.json();
             return data;
-            
+
         } catch (err: any) {
             return rejectWithValue(err.message);
         }

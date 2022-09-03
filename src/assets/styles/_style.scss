@@ -91,3 +91,11 @@ footer {
     @extend .error-message;
     color: var(--message-color);
 }
+
+.fallback-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 40px - 40px - 54px);
+}

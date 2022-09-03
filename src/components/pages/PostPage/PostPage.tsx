@@ -1,10 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-
-import { switchPostDataLoadingStatus } from '../../../app/slices/postSilce';
-
-import { fetchPostsData } from '../../../app/api/fetchPostsData';
+import { useAppSelector } from '../../../app/hooks';
 
 import Preloader from '../../common/Preloader/Preloader';
 
@@ -17,28 +13,8 @@ const PostPage: React.FC = () => {
     const {
         postData,
         isPostDataLoading,
-        fetchPostsErrMsg,
-        status
+        fetchPostsErrMsg
     } = useAppSelector(state => state.postSilce);
-
-    const dispatch = useAppDispatch();
-
-
-    useEffect(() => {
-        dispatch(fetchPostsData());
-    }, []);
-
-    useEffect(() => {
-        if (status === 'loading') {
-            setTimeout(() => {
-                dispatch(switchPostDataLoadingStatus(true));
-            }, 2300);
-        } else {
-            setTimeout(() => {
-                dispatch(switchPostDataLoadingStatus(false));
-            }, 2300);
-        }
-    }, [status]);
 
     return (
         <div className="post-page">
@@ -54,7 +30,7 @@ const PostPage: React.FC = () => {
                                         <li className="post__information">Title: <span>{item.title}</span></li>
                                         <li className="post__information">Body: <span>{item.body}</span></li>
                                     </ul>
-                                )
+                                );
                             })
                         }
                         {
