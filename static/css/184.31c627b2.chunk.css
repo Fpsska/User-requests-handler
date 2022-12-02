@@ -1,0 +1,2 @@
+.post-page__wrapper{height:calc(100vh - 134px);overflow:auto}.post-page__wrapper::-webkit-scrollbar{width:0}.post-page__preloader{align-items:center;height:100%;width:100%}.post,.post-page__preloader{display:flex;justify-content:center}.post{align-items:flex-start;align-items:center;border:1px solid var(--card-border-color);border-radius:5px;color:var(--card--color);flex-direction:column;font-weight:600;padding:10px}.post:not(:last-child){margin:0 0 15px}.post__information span{font-weight:400}
+/*# sourceMappingURL=184.31c627b2.chunk.css.map*/

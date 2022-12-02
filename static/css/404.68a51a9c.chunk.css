@@ -1,0 +1,2 @@
+.user-page__wrapper{height:calc(100vh - 134px);overflow:auto}.user-page__wrapper::-webkit-scrollbar{width:0}.user-page__preloader{align-items:center;height:100%;width:100%}.user,.user-page__preloader{display:flex;justify-content:center}.user{align-items:flex-start;border:1px solid var(--card-border-color);border-radius:5px;color:var(--card--color);flex-direction:column;font-weight:600;padding:10px}.user:not(:last-child){margin:0 0 15px}.user__information span{font-weight:400}
+/*# sourceMappingURL=404.68a51a9c.chunk.css.map*/
