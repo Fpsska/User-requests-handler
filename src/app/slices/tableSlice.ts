@@ -92,9 +92,12 @@ const tableSlice = createSlice({
         setRequestCount(state, action: PayloadAction<number>) {
             state.requestСount = action.payload;
         },
-        sortUsersByASC(state, action: PayloadAction<string>) {
-            // SECOND
-            switch (action.payload) {
+        sortUsersByASC(state, action: PayloadAction<{ sortOpt: string }>) {
+            // 1..10 or A..Z
+            const { sortOpt } = action.payload;
+            // SECOND CASE
+            // /. payload
+            switch (sortOpt) {
                 case 'id':
                     state.tableData = state.tableData.sort(
                         (a, b) => a.id - b.id
@@ -102,7 +105,7 @@ const tableSlice = createSlice({
                     break;
                 case 'fio':
                     state.tableData = state.tableData.sort((a, b) =>
-                        a.name > b.name ? 1 : -1
+                        a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
                     );
                     break;
                 case 'birth':
@@ -129,14 +132,19 @@ const tableSlice = createSlice({
                     break;
                 case 'status':
                     state.tableData = state.tableData.sort((a, b) =>
-                        a.status > b.status ? 1 : -1
+                        a.status.toLowerCase() > b.status.toLowerCase() ? 1 : -1
                     );
                     break;
+                default:
+                    return;
             }
         },
-        sortUsersByDSC(state, action: PayloadAction<string>) {
-            // FIRST
-            switch (action.payload) {
+        sortUsersByDSC(state, action: PayloadAction<{ sortOpt: string }>) {
+            // FIRST CASE
+            // 10..1 or Z..A
+            const { sortOpt } = action.payload;
+            // /. payload
+            switch (sortOpt) {
                 case 'id':
                     state.tableData = state.tableData.sort(
                         (a, b) => b.id - a.id
@@ -144,7 +152,7 @@ const tableSlice = createSlice({
                     break;
                 case 'fio':
                     state.tableData = state.tableData.sort((a, b) =>
-                        a.name < b.name ? 1 : -1
+                        a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
                     );
                     break;
                 case 'birth':
@@ -171,9 +179,11 @@ const tableSlice = createSlice({
                     break;
                 case 'status':
                     state.tableData = state.tableData.sort((a, b) =>
-                        a.status < b.status ? 1 : -1
+                        a.status.toLowerCase() < b.status.toLowerCase() ? 1 : -1
                     );
                     break;
+                default:
+                    return;
             }
         },
         filterUsers(

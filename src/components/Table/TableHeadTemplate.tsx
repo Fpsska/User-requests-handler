@@ -71,10 +71,10 @@ const TableHeadTemplate: React.FC<propTypes> = props => {
     const sortUsersData = (name: string): void => {
         if (sortOder === 'ASC') {
             setSetOrder('DSC');
-            dispatch(sortUsersByASC(name));
+            dispatch(sortUsersByASC({ sortOpt: name }));
         } else if (sortOder === 'DSC') {
             setSetOrder('ASC');
-            dispatch(sortUsersByDSC(name));
+            dispatch(sortUsersByDSC({ sortOpt: name }));
         }
         iconHandler(name);
     };
