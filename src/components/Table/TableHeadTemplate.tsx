@@ -65,6 +65,8 @@ const TableHeadTemplate: React.FC<propTypes> = props => {
             case 'status':
                 setStatus(() => ({ ...statuses, status: !statuses.status }));
                 break;
+            default:
+                return;
         }
     };
 

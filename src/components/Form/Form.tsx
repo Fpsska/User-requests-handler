@@ -38,6 +38,8 @@ const Form: React.FC = () => {
             case 'PHONE':
                 inputPHONE.onInputChange({ name, value: e.target.value });
                 break;
+            default:
+                return;
         }
     };
 

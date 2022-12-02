@@ -191,6 +191,7 @@ const tableSlice = createSlice({
             action: PayloadAction<{ name: string; value: string }>
         ) {
             const { name, value } = action.payload;
+            // /. payload
             switch (name) {
                 case 'ID':
                     state.tableData = state.filteredTableData.filter(item =>
@@ -225,18 +226,17 @@ const tableSlice = createSlice({
                     break;
                 case 'PAY':
                     state.tableData = state.filteredTableData.filter(item => {
-                        if (item.isPaid === true && value === 'оплачено') {
+                        if (item.isPaid && value === 'оплачено') {
                             return item;
-                        } else if (
-                            item.isPaid === false &&
-                            value === 'не оплачено'
-                        ) {
+                        } else if (!item.isPaid && value === 'не оплачено') {
                             return item;
                         } else if (value === 'Оплата') {
                             return state.tableData;
                         }
                     });
                     break;
+                default:
+                    return;
             }
         }
     },

@@ -29,36 +29,34 @@ const TableBodyTemplate: React.FC<propTypes> = props => {
     });
 
     return (
-        <>
-            <tr
-                key={id}
-                className="table__row"
+        <tr
+            key={id}
+            className="table__row"
+        >
+            <td className="table__cell table__cell--id">{id}</td>
+            <td className="table__cell table__cell--name">{name}</td>
+            <td className="table__cell table__cell--birth">{birth}</td>
+            <td className="table__cell table__cell--phone">{phone}</td>
+            <td className="table__cell table__cell--filial">{filial}</td>
+            <td className="table__cell table__cell--paid">
+                {isPaid ? (
+                    <IoCheckmarkCircleOutline
+                        size={'24px'}
+                        color={'green'}
+                    />
+                ) : (
+                    <IoCloseCircleOutline
+                        size={'24px'}
+                        color={'red'}
+                    />
+                )}
+            </td>
+            <td
+                className={`table__cell table__cell--status ${statuses[status]}`}
             >
-                <td className="table__cell table__cell--id">{id}</td>
-                <td className="table__cell table__cell--name">{name}</td>
-                <td className="table__cell table__cell--birth">{birth}</td>
-                <td className="table__cell table__cell--phone">{phone}</td>
-                <td className="table__cell table__cell--filial">{filial}</td>
-                <td className="table__cell table__cell--paid">
-                    {isPaid ? (
-                        <IoCheckmarkCircleOutline
-                            size={'24px'}
-                            color={'green'}
-                        />
-                    ) : (
-                        <IoCloseCircleOutline
-                            size={'24px'}
-                            color={'red'}
-                        />
-                    )}
-                </td>
-                <td
-                    className={`table__cell table__cell--status ${statuses[status]}`}
-                >
-                    {status}
-                </td>
-            </tr>
-        </>
+                {status}
+            </td>
+        </tr>
     );
 };
 

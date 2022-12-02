@@ -52,6 +52,8 @@ export function useInput(currentValue: string): any {
                     })
                 );
                 break;
+            default:
+                return;
         }
     };
 
