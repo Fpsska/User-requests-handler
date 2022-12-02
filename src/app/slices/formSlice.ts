@@ -5,7 +5,7 @@ import { formSelectTemplatesTypes } from '../../Types/formSliceTypes';
 // /. imports
 
 interface formSliceTypes {
-    formSelectTemplates: formSelectTemplatesTypes[]
+    formSelectTemplates: formSelectTemplatesTypes[];
 }
 
 // /. interfaces
@@ -57,6 +57,6 @@ const formSlice = createSlice({
     reducers: {}
 });
 
-export const { } = formSlice.actions;
+// export const { } = formSlice.actions;
 
 export default formSlice.reducer;

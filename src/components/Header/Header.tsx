@@ -11,7 +11,6 @@ import './header.scss';
 // /. imports
 
 const Header: React.FC = () => {
-
     const dispatch = useAppDispatch();
 
     return (
@@ -20,25 +19,34 @@ const Header: React.FC = () => {
                 <nav className="nav">
                     <ul className="nav__menu">
                         <li className="nav__item">
-                            <NavLink className="nav__link"
+                            <NavLink
+                                className="nav__link"
                                 to="/CodeConstruction-Task/"
-                                onClick={() => dispatch(switchMainPageStatus(true))}
+                                onClick={() =>
+                                    dispatch(switchMainPageStatus(true))
+                                }
                             >
                                 Main
                             </NavLink>
                         </li>
                         <li className="nav__item">
-                            <NavLink className="nav__link"
+                            <NavLink
+                                className="nav__link"
                                 to="Users"
-                                onClick={() => dispatch(switchMainPageStatus(false))}
+                                onClick={() =>
+                                    dispatch(switchMainPageStatus(false))
+                                }
                             >
                                 Users
                             </NavLink>
                         </li>
                         <li className="nav__item">
-                            <NavLink className="nav__link"
+                            <NavLink
+                                className="nav__link"
                                 to="Posts"
-                                onClick={() => dispatch(switchMainPageStatus(false))}
+                                onClick={() =>
+                                    dispatch(switchMainPageStatus(false))
+                                }
                             >
                                 Posts
                             </NavLink>

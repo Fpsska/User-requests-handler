@@ -7,10 +7,11 @@ import './theme.scss';
 // /. imports
 
 const Theme: React.FC = () => {
-
     const { theme, setTheme } = useTheme();
 
-    const [isActive, setActiveStatus] = useState<boolean>(theme === 'light' ? false : true);
+    const [isActive, setActiveStatus] = useState<boolean>(
+        theme === 'light' ? false : true
+    );
 
     useEffect(() => {
         isActive ? setTheme('dark') : setTheme('light');
@@ -23,7 +24,12 @@ const Theme: React.FC = () => {
     return (
         <div className="theme">
             <label className="theme-switch">
-                <input className="theme-switch__input" type="checkbox" defaultChecked={isActive} onClick={themeHandler} />
+                <input
+                    className="theme-switch__input"
+                    type="checkbox"
+                    defaultChecked={isActive}
+                    onClick={themeHandler}
+                />
                 <div className="slider round">
                     <span className="slider__text">
                         <span className="off">light</span>

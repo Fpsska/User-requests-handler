@@ -1,19 +1,19 @@
 export interface tableDataTypes {
-    id: number,
-    name: string,
-    birth: string,
-    phone: string,
-    filial: string,
-    isPaid: boolean,
-    status: string
-    email: string,
-    username: string
-    address: any[string],
-    city: string,
+    id: number;
+    name: string;
+    birth: string;
+    phone: string;
+    filial: string;
+    isPaid: boolean;
+    status: string;
+    email: string;
+    username: string;
+    address: any[string];
+    city: string;
 }
 
 export interface tableHeadTemplateTypes {
-    id: number,
-    name: string,
-    text: string
+    id: number;
+    name: string;
+    text: string;
 }

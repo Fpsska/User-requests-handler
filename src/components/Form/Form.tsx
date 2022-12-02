@@ -11,16 +11,20 @@ import './form.scss';
 // /. imports
 
 const Form: React.FC = () => {
-
     const { formSelectTemplates } = useAppSelector(state => state.formSlice);
-    const { isTableDataLoading, status } = useAppSelector(state => state.tableSlice);
+    const { isTableDataLoading, status } = useAppSelector(
+        state => state.tableSlice
+    );
 
     const inputID = useInput('');
     const inputFIO = useInput('');
     const inputBIRTH = useInput('');
     const inputPHONE = useInput('');
 
-    const inputHandler = (name: string, e: React.ChangeEvent<HTMLInputElement>): void => {
+    const inputHandler = (
+        name: string,
+        e: React.ChangeEvent<HTMLInputElement>
+    ): void => {
         switch (name) {
             case 'ID':
                 inputID.onInputChange({ name, value: e.target.value });
@@ -41,7 +45,8 @@ const Form: React.FC = () => {
         <form className="form">
             <fieldset className="form__wrapper">
                 <div className="form__template">
-                    <input className="form__input form__input--id"
+                    <input
+                        className="form__input form__input--id"
                         type="text"
                         placeholder="ID"
                         value={inputID.value}
@@ -51,7 +56,8 @@ const Form: React.FC = () => {
                     />
                 </div>
                 <div className="form__template">
-                    <input className="form__input"
+                    <input
+                        className="form__input"
                         type="text"
                         placeholder="ФИО"
                         value={inputFIO.value}
@@ -60,7 +66,8 @@ const Form: React.FC = () => {
                     />
                 </div>
                 <div className="form__template">
-                    <input className="form__input"
+                    <input
+                        className="form__input"
                         type="text"
                         placeholder="Дата рождения"
                         value={inputBIRTH.value}
@@ -70,7 +77,8 @@ const Form: React.FC = () => {
                     />
                 </div>
                 <div className="form__template">
-                    <input className="form__input"
+                    <input
+                        className="form__input"
                         type="text"
                         placeholder="Телефон"
                         value={inputPHONE.value}
@@ -85,7 +93,6 @@ const Form: React.FC = () => {
                             <FormSelectTemplate
                                 key={item.id}
                                 {...item}
-
                                 isTableDataLoading={isTableDataLoading}
                                 status={status}
                             />

@@ -5,20 +5,23 @@ import { fetchUsersData } from '../api/fetchUsersData';
 import { generateRandomDate } from '../../helpers/getRandomDate';
 import { getRandomStatus } from '../../helpers/getRandomStatus';
 
-import { tableDataTypes, tableHeadTemplateTypes } from '../../Types/tableSliceTypes';
+import {
+    tableDataTypes,
+    tableHeadTemplateTypes
+} from '../../Types/tableSliceTypes';
 
 // /. imports
 
 interface tableSliceTypes {
-    isMainPage: boolean,
-    isUsersDataEmpty: boolean,
-    fetchUsersErrMsg: string,
-    requestСount: number
-    isTableDataLoading: boolean,
-    status: string,
-    filteredTableData: tableDataTypes[],
-    tableData: tableDataTypes[],
-    tableHeadTemplate: tableHeadTemplateTypes[]
+    isMainPage: boolean;
+    isUsersDataEmpty: boolean;
+    fetchUsersErrMsg: string;
+    requestСount: number;
+    isTableDataLoading: boolean;
+    status: string;
+    filteredTableData: tableDataTypes[];
+    tableData: tableDataTypes[];
+    tableHeadTemplate: tableHeadTemplateTypes[];
 }
 
 // /. interfaces
@@ -89,70 +92,117 @@ const tableSlice = createSlice({
         setRequestCount(state, action: PayloadAction<number>) {
             state.requestСount = action.payload;
         },
-        sortUsersByASC(state, action: PayloadAction<string>) {  // SECOND
+        sortUsersByASC(state, action: PayloadAction<string>) {
+            // SECOND
             switch (action.payload) {
                 case 'id':
-                    state.tableData = state.tableData.sort((a, b) => a.id - b.id);
+                    state.tableData = state.tableData.sort(
+                        (a, b) => a.id - b.id
+                    );
                     break;
                 case 'fio':
-                    state.tableData = state.tableData.sort((a, b) => a.name > b.name ? 1 : -1);
+                    state.tableData = state.tableData.sort((a, b) =>
+                        a.name > b.name ? 1 : -1
+                    );
                     break;
                 case 'birth':
-                    state.tableData = state.tableData.sort((a, b) => (+a.birth.slice(6)) - (+b.birth.slice(6)));
+                    state.tableData = state.tableData.sort(
+                        (a, b) => +a.birth.slice(6) - +b.birth.slice(6)
+                    );
                     break;
                 case 'phone':
-                    state.tableData = state.tableData.sort((a, b) => a.phone > b.phone ? 1 : -1);
+                    state.tableData = state.tableData.sort((a, b) =>
+                        a.phone > b.phone ? 1 : -1
+                    );
                     break;
                 case 'filial':
-                    state.tableData = state.tableData.sort((a, b) => (+a.filial.replace(/\D/gi, '')) - (+b.filial.replace(/\D/gi, '')));
+                    state.tableData = state.tableData.sort(
+                        (a, b) =>
+                            +a.filial.replace(/\D/gi, '') -
+                            +b.filial.replace(/\D/gi, '')
+                    );
                     break;
                 case 'isPaid':
-                    state.tableData = state.tableData.sort((a, b) => (+a.isPaid) - (+b.isPaid));
+                    state.tableData = state.tableData.sort(
+                        (a, b) => +a.isPaid - +b.isPaid
+                    );
                     break;
                 case 'status':
-                    state.tableData = state.tableData.sort((a, b) => a.status > b.status ? 1 : -1);
+                    state.tableData = state.tableData.sort((a, b) =>
+                        a.status > b.status ? 1 : -1
+                    );
                     break;
             }
         },
-        sortUsersByDSC(state, action: PayloadAction<string>) { // FIRST
+        sortUsersByDSC(state, action: PayloadAction<string>) {
+            // FIRST
             switch (action.payload) {
                 case 'id':
-                    state.tableData = state.tableData.sort((a, b) => b.id - a.id);
+                    state.tableData = state.tableData.sort(
+                        (a, b) => b.id - a.id
+                    );
                     break;
                 case 'fio':
-                    state.tableData = state.tableData.sort((a, b) => a.name < b.name ? 1 : -1);
+                    state.tableData = state.tableData.sort((a, b) =>
+                        a.name < b.name ? 1 : -1
+                    );
                     break;
                 case 'birth':
-                    state.tableData = state.tableData.sort((a, b) => (+b.birth.slice(6)) - (+a.birth.slice(6)));
+                    state.tableData = state.tableData.sort(
+                        (a, b) => +b.birth.slice(6) - +a.birth.slice(6)
+                    );
                     break;
                 case 'phone':
-                    state.tableData = state.tableData.sort((a, b) => a.phone < b.phone ? 1 : -1);
+                    state.tableData = state.tableData.sort((a, b) =>
+                        a.phone < b.phone ? 1 : -1
+                    );
                     break;
                 case 'filial':
-                    state.tableData = state.tableData.sort((a, b) => (+b.filial.replace(/\D/gi, '')) - (+a.filial.replace(/\D/gi, '')));
+                    state.tableData = state.tableData.sort(
+                        (a, b) =>
+                            +b.filial.replace(/\D/gi, '') -
+                            +a.filial.replace(/\D/gi, '')
+                    );
                     break;
                 case 'isPaid':
-                    state.tableData = state.tableData.sort((a, b) => (+b.isPaid) - (+a.isPaid));
+                    state.tableData = state.tableData.sort(
+                        (a, b) => +b.isPaid - +a.isPaid
+                    );
                     break;
                 case 'status':
-                    state.tableData = state.tableData.sort((a, b) => a.status < b.status ? 1 : -1);
+                    state.tableData = state.tableData.sort((a, b) =>
+                        a.status < b.status ? 1 : -1
+                    );
                     break;
             }
         },
-        filterUsers(state, action: PayloadAction<{ name: string, value: string }>) {
+        filterUsers(
+            state,
+            action: PayloadAction<{ name: string; value: string }>
+        ) {
             const { name, value } = action.payload;
             switch (name) {
                 case 'ID':
-                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(String(item.id)));
+                    state.tableData = state.filteredTableData.filter(item =>
+                        RegExp(value, 'g').test(String(item.id))
+                    );
                     break;
                 case 'FIO':
-                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'gi').test(item.name));
+                    state.tableData = state.filteredTableData.filter(item =>
+                        RegExp(value, 'gi').test(item.name)
+                    );
                     break;
                 case 'BIRTH':
-                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(item.birth));
+                    state.tableData = state.filteredTableData.filter(item =>
+                        RegExp(value, 'g').test(item.birth)
+                    );
                     break;
                 case 'PHONE':
-                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test((item.phone).replace(/[)(x\s]/g, '')));
+                    state.tableData = state.filteredTableData.filter(item =>
+                        RegExp(value, 'g').test(
+                            item.phone.replace(/[)(x\s]/g, '')
+                        )
+                    );
                     break;
                 case 'FILIAL':
                     state.tableData = state.filteredTableData.filter(item => {
@@ -167,7 +217,10 @@ const tableSlice = createSlice({
                     state.tableData = state.filteredTableData.filter(item => {
                         if (item.isPaid === true && value === 'оплачено') {
                             return item;
-                        } else if (item.isPaid === false && value === 'не оплачено') {
+                        } else if (
+                            item.isPaid === false &&
+                            value === 'не оплачено'
+                        ) {
                             return item;
                         } else if (value === 'Оплата') {
                             return state.tableData;
@@ -178,7 +231,7 @@ const tableSlice = createSlice({
         }
     },
     extraReducers: {
-        [fetchUsersData.pending.type]: (state) => {
+        [fetchUsersData.pending.type]: state => {
             state.status = 'loading';
         },
         [fetchUsersData.fulfilled.type]: (
@@ -187,11 +240,11 @@ const tableSlice = createSlice({
         ) => {
             state.tableData = action.payload;
             state.tableData.map(item => {
-                item.birth = `${generateRandomDate(new Date(2012, 0, 1), new Date()).toLocaleDateString('en-GB')}`;
-                item.filial = `${getRandomStatus([
-                    'Филиал №1',
-                    'Филиал №2'
-                ])}`;
+                item.birth = `${generateRandomDate(
+                    new Date(2012, 0, 1),
+                    new Date()
+                ).toLocaleDateString('en-GB')}`;
+                item.filial = `${getRandomStatus(['Филиал №1', 'Филиал №2'])}`;
                 item.isPaid = Boolean(Math.round(Math.random()));
                 item.status = `${getRandomStatus([
                     'В обработке',
@@ -203,7 +256,10 @@ const tableSlice = createSlice({
             state.requestСount = state.tableData.length;
             state.filteredTableData = action.payload;
         },
-        [fetchUsersData.rejected.type]: (state, action: PayloadAction<string>) => {
+        [fetchUsersData.rejected.type]: (
+            state,
+            action: PayloadAction<string>
+        ) => {
             state.status = 'failed';
             state.fetchUsersErrMsg = action.payload;
         }

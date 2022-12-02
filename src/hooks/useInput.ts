@@ -7,14 +7,13 @@ import { filterUsers } from '../app/slices/tableSlice';
 // /. imports
 
 interface propTypes {
-    name: string,
-    value: string
+    name: string;
+    value: string;
 }
 
 // /. interfaces
 
 export function useInput(currentValue: string): any {
-
     const [value, setValue] = useState<string>(currentValue);
 
     const dispatch = useAppDispatch();
@@ -25,19 +24,33 @@ export function useInput(currentValue: string): any {
         switch (name) {
             case 'ID':
                 setValue(value.replace(/[^0-9]/g, ''));
-                dispatch(filterUsers({ name, value: value.replace(/[^0-9-]/g, '') }));
+                dispatch(
+                    filterUsers({ name, value: value.replace(/[^0-9-]/g, '') })
+                );
                 break;
             case 'FIO':
                 setValue(value.replace(/[^a-zA-Z\s]/g, ''));
-                dispatch(filterUsers({ name, value: value.replace(/[^a-zA-Z\s]/g, '').trim() }));
+                dispatch(
+                    filterUsers({
+                        name,
+                        value: value.replace(/[^a-zA-Z\s]/g, '').trim()
+                    })
+                );
                 break;
             case 'BIRTH':
                 setValue(value.replace(/[^0-9/]/g, ''));
-                dispatch(filterUsers({ name, value: value.replace(/[^0-9/]/g, '') }));
+                dispatch(
+                    filterUsers({ name, value: value.replace(/[^0-9/]/g, '') })
+                );
                 break;
             case 'PHONE':
                 setValue(value.replace(/[^0-9-)(.]/g, ''));
-                dispatch(filterUsers({ name, value: value.replace(/[^0-9-)(.]/g, '') }));
+                dispatch(
+                    filterUsers({
+                        name,
+                        value: value.replace(/[^0-9-)(.]/g, '')
+                    })
+                );
                 break;
         }
     };

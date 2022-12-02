@@ -14,13 +14,8 @@ import './mainPage.scss';
 // /. imports
 
 const MainPage: React.FC = () => {
-
-    const {
-        requestСount,
-        isTableDataLoading,
-        tableData,
-        isMainPage
-    } = useAppSelector(state => state.tableSlice);
+    const { requestСount, isTableDataLoading, tableData, isMainPage } =
+        useAppSelector(state => state.tableSlice);
 
     const [text, setText] = useState<string>('заявок');
 
@@ -34,7 +29,7 @@ const MainPage: React.FC = () => {
             setText('заявки');
         } else if (requestСount === 1) {
             setText('заявка');
-        };
+        }
     }, [requestСount, tableData]);
 
     useEffect(() => {
@@ -51,8 +46,13 @@ const MainPage: React.FC = () => {
             <div className="main-page__wrapper">
                 <div className="result">
                     <div className="result__wrapper">
-                        <IoDocumentTextOutline size={'34px'} color={'#000'} />
-                        <h1 className="result__text">{isTableDataLoading ? '0' : requestСount} {text}</h1>
+                        <IoDocumentTextOutline
+                            size={'34px'}
+                            color={'#000'}
+                        />
+                        <h1 className="result__text">
+                            {isTableDataLoading ? '0' : requestСount} {text}
+                        </h1>
                     </div>
                 </div>
                 <Form />

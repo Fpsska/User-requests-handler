@@ -9,31 +9,27 @@ import { filterUsers } from '../../app/slices/tableSlice';
 // /. imports
 
 interface propTypes {
-    id: string,
-    options: optionsTypes[],
-    isTableDataLoading: boolean,
-    status: string
+    id: string;
+    options: optionsTypes[];
+    isTableDataLoading: boolean;
+    status: string;
 }
 
 // /. interfaces
 
-const FormSelectTemplate: React.FC<propTypes> = (props) => {
-
-    const {
-        id,
-        options,
-        isTableDataLoading,
-        status
-    } = props;
+const FormSelectTemplate: React.FC<propTypes> = props => {
+    const { id, options, isTableDataLoading, status } = props;
 
     const dispatch = useAppDispatch();
 
     return (
         <div className="form__template">
-            <select className="selection-menu"
+            <select
+                className="selection-menu"
                 defaultValue={options[0].option}
-                onChange={(e) => dispatch(filterUsers({ name: id, value: e.target.value }))}
-
+                onChange={e =>
+                    dispatch(filterUsers({ name: id, value: e.target.value }))
+                }
                 disabled={isTableDataLoading || status === 'failed'}
             >
                 {options.map(item => {

@@ -17,7 +17,6 @@ import { fetchPostsData } from '../../app/api/fetchPostsData';
 // /. imports
 
 const Layout: React.FC = () => {
-
     const { status } = useAppSelector(state => state.tableSlice);
 
     const dispatch = useAppDispatch();

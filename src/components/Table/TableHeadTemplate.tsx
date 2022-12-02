@@ -11,17 +11,16 @@ import { sortUsersByASC, sortUsersByDSC } from '../../app/slices/tableSlice';
 // /. imports
 
 interface propTypes {
-    name: string,
-    text: string,
-    isTableDataLoading: boolean,
-    isUsersDataEmpty: boolean,
-    fetchUsersErrMsg: string
+    name: string;
+    text: string;
+    isTableDataLoading: boolean;
+    isUsersDataEmpty: boolean;
+    fetchUsersErrMsg: string;
 }
 
 // /. interfaces
 
-const TableHeadTemplate: React.FC<propTypes> = (props) => {
-
+const TableHeadTemplate: React.FC<propTypes> = props => {
     const {
         name,
         text,
@@ -31,17 +30,15 @@ const TableHeadTemplate: React.FC<propTypes> = (props) => {
     } = props;
 
     const [sortOder, setSetOrder] = useState<string>('DSC');
-    const [statuses, setStatus] = useState<{ [key: string]: boolean }>(
-        {
-            id: false,
-            fio: false,
-            birth: false,
-            phone: false,
-            filial: false,
-            isPaid: false,
-            status: false
-        }
-    );
+    const [statuses, setStatus] = useState<{ [key: string]: boolean }>({
+        id: false,
+        fio: false,
+        birth: false,
+        phone: false,
+        filial: false,
+        isPaid: false,
+        status: false
+    });
 
     const dispatch = useAppDispatch();
 
@@ -83,9 +80,18 @@ const TableHeadTemplate: React.FC<propTypes> = (props) => {
     };
 
     return (
-        <th className="table__col table__col--head" onClick={() => !isTableDataLoading && !fetchUsersErrMsg && sortUsersData(name)}>
+        <th
+            className="table__col table__col--head"
+            onClick={() =>
+                !isTableDataLoading && !fetchUsersErrMsg && sortUsersData(name)
+            }
+        >
             {text}
-            {!isTableDataLoading && !isUsersDataEmpty && statuses[name] ? <TiArrowSortedUp /> : <FaSortDown />}
+            {!isTableDataLoading && !isUsersDataEmpty && statuses[name] ? (
+                <TiArrowSortedUp />
+            ) : (
+                <FaSortDown />
+            )}
         </th>
     );
 };

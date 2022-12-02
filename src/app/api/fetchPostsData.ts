@@ -6,7 +6,9 @@ export const fetchPostsData = createAsyncThunk(
     'postSilce/fetchPostsData',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+            const response = await fetch(
+                'https://jsonplaceholder.typicode.com/posts'
+            );
 
             if (!response.ok) {
                 throw new Error('Response: server error!');
@@ -14,7 +16,6 @@ export const fetchPostsData = createAsyncThunk(
 
             const data = await response.json();
             return data;
-
         } catch (err: any) {
             return rejectWithValue(err.message);
         }
