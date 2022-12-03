@@ -25,14 +25,17 @@ export function useInput(currentValue: string): any {
             case 'ID':
                 setValue(value.replace(/[^0-9]/g, ''));
                 dispatch(
-                    filterUsers({ name, value: value.replace(/[^0-9-]/g, '') })
+                    filterUsers({
+                        filterProp: name,
+                        value: value.replace(/[^0-9-]/g, '')
+                    })
                 );
                 break;
             case 'FIO':
                 setValue(value.replace(/[^a-zA-Z\s]/g, ''));
                 dispatch(
                     filterUsers({
-                        name,
+                        filterProp: name,
                         value: value.replace(/[^a-zA-Z\s]/g, '').trim()
                     })
                 );
@@ -40,14 +43,17 @@ export function useInput(currentValue: string): any {
             case 'BIRTH':
                 setValue(value.replace(/[^0-9/]/g, ''));
                 dispatch(
-                    filterUsers({ name, value: value.replace(/[^0-9/]/g, '') })
+                    filterUsers({
+                        filterProp: name,
+                        value: value.replace(/[^0-9/]/g, '')
+                    })
                 );
                 break;
             case 'PHONE':
                 setValue(value.replace(/[^0-9-)(.]/g, ''));
                 dispatch(
                     filterUsers({
-                        name,
+                        filterProp: name,
                         value: value.replace(/[^0-9-)(.]/g, '')
                     })
                 );

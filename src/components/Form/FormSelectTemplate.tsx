@@ -28,7 +28,9 @@ const FormSelectTemplate: React.FC<propTypes> = props => {
                 className="selection-menu"
                 defaultValue={options[0].option}
                 onChange={e =>
-                    dispatch(filterUsers({ name: id, value: e.target.value }))
+                    dispatch(
+                        filterUsers({ filterProp: id, value: e.target.value })
+                    )
                 }
                 disabled={isTableDataLoading || status === 'failed'}
             >

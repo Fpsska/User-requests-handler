@@ -15,7 +15,7 @@ import './table.scss';
 
 const Table: React.FC = () => {
     const {
-        tableData,
+        filteredTableData,
         isTableDataLoading,
         fetchUsersErrMsg,
         isUsersDataEmpty,
@@ -25,10 +25,10 @@ const Table: React.FC = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        tableData.length === 0
+        filteredTableData.length === 0
             ? dispatch(swithUsersDataEmptyStatus(true))
             : dispatch(swithUsersDataEmptyStatus(false));
-    }, [tableData]);
+    }, [filteredTableData]);
 
     return (
         <div className="table-wrapper">
@@ -63,7 +63,7 @@ const Table: React.FC = () => {
                         </div>
                     ) : (
                         <>
-                            {tableData.map(item => {
+                            {filteredTableData.map(item => {
                                 return (
                                     <TableBodyTemplate
                                         key={item.id}

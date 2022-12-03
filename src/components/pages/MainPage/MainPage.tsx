@@ -34,10 +34,10 @@ const MainPage: React.FC = () => {
 
     useEffect(() => {
         return () => {
-            dispatch(filterUsers({ name: 'ID', value: '' }));
-            dispatch(filterUsers({ name: 'FIO', value: '' }));
-            dispatch(filterUsers({ name: 'BIRTH', value: '' }));
-            dispatch(filterUsers({ name: 'PHONE', value: '' }));
+            dispatch(filterUsers({ filterProp: 'ID', value: '' }));
+            dispatch(filterUsers({ filterProp: 'FIO', value: '' }));
+            dispatch(filterUsers({ filterProp: 'BIRTH', value: '' }));
+            dispatch(filterUsers({ filterProp: 'PHONE', value: '' }));
         };
     }, [isMainPage]);
 

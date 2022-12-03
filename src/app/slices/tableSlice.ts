@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, current, PayloadAction } from '@reduxjs/toolkit';
 
 import { fetchUsersData } from '../api/fetchUsersData';
 
@@ -19,8 +19,8 @@ interface tableSliceTypes {
     requestСount: number;
     isTableDataLoading: boolean;
     status: string;
-    filteredTableData: tableDataTypes[];
     tableData: tableDataTypes[];
+    filteredTableData: tableDataTypes[];
     tableHeadTemplate: tableHeadTemplateTypes[];
 }
 
@@ -33,8 +33,8 @@ const initialState: tableSliceTypes = {
     requestСount: 0,
     isTableDataLoading: true,
     status: '',
-    filteredTableData: [],
     tableData: [],
+    filteredTableData: [],
     tableHeadTemplate: [
         {
             id: 1,
@@ -188,35 +188,39 @@ const tableSlice = createSlice({
         },
         filterUsers(
             state,
-            action: PayloadAction<{ name: string; value: string }>
+            action: PayloadAction<{ filterProp: string; value: string }>
         ) {
-            const { name, value } = action.payload;
+            const { filterProp, value } = action.payload;
             // /. payload
-            switch (name) {
-                case 'ID':
-                    state.tableData = state.filteredTableData.filter(item =>
+            switch (filterProp) {
+                case 'ID': {
+                    const filteredData = state.tableData.filter(item =>
                         RegExp(value, 'g').test(String(item.id))
                     );
+                    state.filteredTableData = value
+                        ? filteredData
+                        : [...state.tableData];
                     break;
+                }
                 case 'FIO':
-                    state.tableData = state.filteredTableData.filter(item =>
+                    state.filteredTableData = state.tableData.filter(item =>
                         RegExp(value, 'gi').test(item.name)
                     );
                     break;
                 case 'BIRTH':
-                    state.tableData = state.filteredTableData.filter(item =>
+                    state.filteredTableData = state.tableData.filter(item =>
                         RegExp(value, 'g').test(item.birth)
                     );
                     break;
                 case 'PHONE':
-                    state.tableData = state.filteredTableData.filter(item =>
+                    state.filteredTableData = state.tableData.filter(item =>
                         RegExp(value, 'g').test(
                             item.phone.replace(/[)(x\s]/g, '')
                         )
                     );
                     break;
                 case 'FILIAL':
-                    state.tableData = state.filteredTableData.filter(item => {
+                    state.filteredTableData = state.tableData.filter(item => {
                         if (item.filial === value) {
                             return item;
                         } else if (value === 'Филиал') {
@@ -225,7 +229,7 @@ const tableSlice = createSlice({
                     });
                     break;
                 case 'PAY':
-                    state.tableData = state.filteredTableData.filter(item => {
+                    state.filteredTableData = state.tableData.filter(item => {
                         if (item.isPaid && value === 'оплачено') {
                             return item;
                         } else if (!item.isPaid && value === 'не оплачено') {
