@@ -1,6 +1,8 @@
 .table-wrapper {
-    max-height: calc(100vh - 40px - 40px - 49px - 66px - 54px);
+    max-height: calc(100vh - 230px);
     overflow: auto;
+    margin-bottom: 10px;
+    border: 1px solid var(--TD-border-color);
 
     &::-webkit-scrollbar {
         width: 6px;

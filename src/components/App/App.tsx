@@ -5,11 +5,11 @@ import { Route, Routes } from 'react-router';
 import Layout from '../common/Layout';
 import Preloader from '../common/Preloader/Preloader';
 
-import './App.css';
-import '../../assets/styles/_reset.scss';
-import '../../assets/styles/_style.scss';
 import '../../assets/styles/_media.scss';
+import '../../assets/styles/style.scss';
 import '../../assets/styles/_theme.scss';
+import '../../assets/styles/_reset.scss';
+import './App.css';
 
 // /. imports
 
