@@ -46,54 +46,47 @@ const Form: React.FC = () => {
     return (
         <form className="form">
             <fieldset className="form__wrapper">
-                <div className="form__template">
-                    <input
-                        className="form__input form__input--id"
-                        type="text"
-                        placeholder="ID"
-                        value={inputID.value}
-                        onChange={e => inputHandler('ID', e)}
-                        onKeyDown={e => e.key === 'e' && e.preventDefault()}
-                        disabled={isTableDataLoading || status === 'failed'}
-                    />
-                </div>
-                <div className="form__template">
-                    <input
-                        className="form__input"
-                        type="text"
-                        placeholder="ФИО"
-                        value={inputFIO.value}
-                        onChange={e => inputHandler('FIO', e)}
-                        disabled={isTableDataLoading || status === 'failed'}
-                    />
-                </div>
-                <div className="form__template">
-                    <input
-                        className="form__input"
-                        type="text"
-                        placeholder="Дата рождения"
-                        value={inputBIRTH.value}
-                        onChange={e => inputHandler('BIRTH', e)}
-                        onKeyDown={e => e.key === 'e' && e.preventDefault()}
-                        disabled={isTableDataLoading || status === 'failed'}
-                    />
-                </div>
-                <div className="form__template">
-                    <input
-                        className="form__input"
-                        type="text"
-                        placeholder="Телефон"
-                        value={inputPHONE.value}
-                        onChange={e => inputHandler('PHONE', e)}
-                        onKeyDown={e => e.key === 'e' && e.preventDefault()}
-                        disabled={isTableDataLoading || status === 'failed'}
-                    />
-                </div>
+                <input
+                    className="form__input form__input--id"
+                    type="text"
+                    placeholder="ID"
+                    value={inputID.value}
+                    onChange={e => inputHandler('ID', e)}
+                    onKeyDown={e => e.key === 'e' && e.preventDefault()}
+                    disabled={isTableDataLoading || status === 'failed'}
+                />
+                <input
+                    className="form__input"
+                    type="text"
+                    placeholder="ФИО"
+                    value={inputFIO.value}
+                    onChange={e => inputHandler('FIO', e)}
+                    disabled={isTableDataLoading || status === 'failed'}
+                />
+                <input
+                    className="form__input"
+                    type="text"
+                    placeholder="Дата рождения"
+                    value={inputBIRTH.value}
+                    onChange={e => inputHandler('BIRTH', e)}
+                    onKeyDown={e => e.key === 'e' && e.preventDefault()}
+                    disabled={isTableDataLoading || status === 'failed'}
+                />
+                <input
+                    className="form__input"
+                    type="text"
+                    placeholder="Телефон"
+                    value={inputPHONE.value}
+                    onChange={e => inputHandler('PHONE', e)}
+                    onKeyDown={e => e.key === 'e' && e.preventDefault()}
+                    disabled={isTableDataLoading || status === 'failed'}
+                />
                 <>
                     {formSelectTemplates.map(item => {
                         return (
                             <FormSelectTemplate
                                 key={item.id}
+                                role={'form__selection-menu'}
                                 {...item}
                                 isTableDataLoading={isTableDataLoading}
                                 status={status}

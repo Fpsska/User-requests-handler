@@ -1,16 +1,20 @@
 .table-wrapper {
-    height: calc(100vh - 40px - 40px - 49px - 66px - 54px);
+    max-height: calc(100vh - 40px - 40px - 49px - 66px - 54px);
     overflow: auto;
+
     &::-webkit-scrollbar {
         width: 6px;
         height: 6px;
     }
+
     &::-webkit-scrollbar-track {
         box-shadow: inset 0 0 6px var(--scrollbarTrack-boxshadow-color);
     }
+
     &::-webkit-scrollbar-thumb {
         box-shadow: inset 0 0 6px var(--scrollbarThumb-boxshadow-color);
     }
+
     &::-webkit-scrollbar-corner {
         background-color: transparent;
     }
@@ -19,6 +23,7 @@
 .table {
     width: 100%;
     border-spacing: 0;
+
     th,
     td {
         text-align: left;
@@ -27,18 +32,23 @@
         padding: 0.75em 1em;
         color: var(--TD-color);
     }
+
     &__cell--status.active {
         color: var(--cell-defaultStatus-color);
     }
+
     &__cell--status.close {
         color: var(--cell-closetStatus-color);
     }
+
     &__cell--status.progress {
         color: var(--cell-progressStatus-color);
     }
+
     &__col--head {
         cursor: pointer;
     }
+
     &__preloader {
         width: 100%;
         height: 100%;
@@ -58,6 +68,7 @@
     position: sticky;
     top: 0;
     z-index: 1;
+
     th {
         background-color: var(--stickyTH--background-color);
     }
@@ -65,9 +76,11 @@
 
 .table__body {
     position: relative;
+
     td {
         border-bottom: 1px solid var(--TD-border-color);
     }
+
     tr {
         &:last-child td {
             border: none;

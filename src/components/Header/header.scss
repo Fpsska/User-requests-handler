@@ -1,24 +1,29 @@
 .header {
     margin: 0 0 20px 0;
+
     &__wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
     }
-};
+}
+
 
 .nav {
     &__menu {
         display: flex;
+
         :not(:last-child) {
             margin: 0 20px 0 0;
         }
     }
+
     &__link {
         font-size: 16px;
         font-weight: 600;
         color: var(--nav-links-color);
     }
+
     &__link.active {
         color: var(--nav-links-activeColor);
     }

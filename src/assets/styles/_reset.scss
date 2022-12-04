@@ -1,0 +1,40 @@
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+input {
+    outline: none;
+    cursor: pointer;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+        -webkit-transition: background-color 5000s;
+        transition: background-color 5000s;
+        -webkit-text-fill-color: var(--input-autoFill-background-color) !important;
+    }
+}
+
+select {
+    outline: 0;
+    cursor: pointer;
+}
+
+fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}

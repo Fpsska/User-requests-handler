@@ -2,19 +2,18 @@
     margin: 0 0 10px 0;
 
     &__wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 -10px 0 -10px;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(12, 1fr);
     }
 
-    &__template {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        margin: 10px;
+    &__selection-menu {
+        grid-column: 2 span
     }
 
     &__input {
+        grid-column: 2 span;
+        width: 100%;
         font-size: 12px;
         border: 1px solid var(--input-border-color);
         background-color: var(--input-color-background-color);
@@ -39,11 +38,13 @@
     }
 
     &__input--id {
-        max-width: 45px;
+        max-width: 25%;
+        min-width: 45px;
     }
 }
 
 .selection-menu {
+    width: 100%;
     padding: 9px;
     color: var(--selectionmenu-color);
     border: 1px solid var(--selectionmenu-border-color);

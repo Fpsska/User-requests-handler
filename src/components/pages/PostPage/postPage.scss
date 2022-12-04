@@ -1,9 +1,12 @@
 @import "../../../assets/styles/_mixins.scss";
 
+// /. imports
+
 .post-page {
     &__wrapper {
         @include wrapper;
     }
+
     &__preloader {
         @include preloader;
     }
@@ -12,6 +15,7 @@
 .post {
     @include card;
     align-items: center;
+
     &__information span {
         font-weight: 400;
     }

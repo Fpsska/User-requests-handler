@@ -1,9 +1,12 @@
 @import "../../../assets/styles/_mixins.scss";
 
+// /. imports
+
 .user-page {
     &__wrapper {
         @include wrapper;
     }
+
     &__preloader {
         @include preloader;
     }
@@ -11,6 +14,7 @@
 
 .user {
     @include card;
+
     &__information span {
         font-weight: 400;
     }

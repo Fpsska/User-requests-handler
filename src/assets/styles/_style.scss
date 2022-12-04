@@ -16,47 +16,7 @@ body {
     height: 100vh;
 }
 
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-a {
-    text-decoration: none;
-}
-
-button {
-    cursor: pointer;
-    outline: none;
-    border: none;
-}
-
-input {
-    outline: none;
-    cursor: pointer;
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus,
-    &:-webkit-autofill:active {
-        -webkit-transition: background-color 5000s;
-        transition: background-color 5000s;
-        -webkit-text-fill-color: var(--input-autoFill-background-color) !important;
-    }
-}
-
-select {
-    outline: 0;
-    cursor: pointer;
-}
-
-fieldset {
-    border: 0;
-    padding: 0;
-    margin: 0;
-}
-
-// /. NULL-STYLES
+// /. general styles
 
 #root,
 .App,
@@ -71,9 +31,11 @@ fieldset {
 header {
     flex: 0 0 auto;
 }
+
 main {
     flex: 1 0 auto;
 }
+
 footer {
     flex: 0 0 auto;
 }

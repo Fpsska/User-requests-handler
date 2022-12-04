@@ -15,7 +15,9 @@ export const fetchUsersData = createAsyncThunk(
             }
 
             const data = await response.json();
-            return data;
+            const data2x = data;
+
+            return data.concat(data2x);
         } catch (err: any) {
             return rejectWithValue(err.message);
         }
