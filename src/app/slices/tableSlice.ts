@@ -95,44 +95,47 @@ const tableSlice = createSlice({
         sortUsersByASC(state, action: PayloadAction<{ sortOpt: string }>) {
             // 1..10 or A..Z
             const { sortOpt } = action.payload;
-            // SECOND CASE
             // /. payload
             switch (sortOpt) {
                 case 'id':
-                    state.tableData = state.tableData.sort(
+                    state.filteredTableData = [...state.filteredTableData].sort(
                         (a, b) => a.id - b.id
                     );
                     break;
                 case 'fio':
-                    state.tableData = state.tableData.sort((a, b) =>
-                        a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
+                    state.filteredTableData = [...state.filteredTableData].sort(
+                        (a, b) =>
+                            a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
                     );
                     break;
                 case 'birth':
-                    state.tableData = state.tableData.sort(
+                    state.filteredTableData = [...state.filteredTableData].sort(
                         (a, b) => +a.birth.slice(6) - +b.birth.slice(6)
                     );
                     break;
                 case 'phone':
-                    state.tableData = state.tableData.sort((a, b) =>
-                        a.phone > b.phone ? 1 : -1
+                    state.filteredTableData = [...state.filteredTableData].sort(
+                        (a, b) => (a.phone > b.phone ? 1 : -1)
                     );
                     break;
                 case 'filial':
-                    state.tableData = state.tableData.sort(
+                    state.filteredTableData = [...state.filteredTableData].sort(
                         (a, b) =>
                             +a.filial.replace(/\D/gi, '') -
                             +b.filial.replace(/\D/gi, '')
                     );
                     break;
                 case 'isPaid':
-                    state.tableData = state.tableData.sort(
+                    state.filteredTableData = [...state.filteredTableData].sort(
                         (a, b) => +a.isPaid - +b.isPaid
                     );
                     break;
                 case 'status':
-                    state.tableData = state.tableData.sort((a, b) =>
-                        a.status.toLowerCase() > b.status.toLowerCase() ? 1 : -1
+                    state.filteredTableData = [...state.filteredTableData].sort(
+                        (a, b) =>
+                            a.status.toLowerCase() > b.status.toLowerCase()
+                                ? 1
+                                : -1
                     );
                     break;
                 default:
@@ -140,46 +143,49 @@ const tableSlice = createSlice({
             }
         },
         sortUsersByDSC(state, action: PayloadAction<{ sortOpt: string }>) {
-            // FIRST CASE
             // 10..1 or Z..A
             const { sortOpt } = action.payload;
             // /. payload
             switch (sortOpt) {
                 case 'id':
-                    state.tableData = state.tableData.sort(
+                    state.filteredTableData = [...state.filteredTableData].sort(
                         (a, b) => b.id - a.id
                     );
                     break;
                 case 'fio':
-                    state.tableData = state.tableData.sort((a, b) =>
-                        a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
+                    state.filteredTableData = [...state.filteredTableData].sort(
+                        (a, b) =>
+                            a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
                     );
                     break;
                 case 'birth':
-                    state.tableData = state.tableData.sort(
+                    state.filteredTableData = [...state.filteredTableData].sort(
                         (a, b) => +b.birth.slice(6) - +a.birth.slice(6)
                     );
                     break;
                 case 'phone':
-                    state.tableData = state.tableData.sort((a, b) =>
-                        a.phone < b.phone ? 1 : -1
+                    state.filteredTableData = [...state.filteredTableData].sort(
+                        (a, b) => (a.phone < b.phone ? 1 : -1)
                     );
                     break;
                 case 'filial':
-                    state.tableData = state.tableData.sort(
+                    state.filteredTableData = [...state.filteredTableData].sort(
                         (a, b) =>
                             +b.filial.replace(/\D/gi, '') -
                             +a.filial.replace(/\D/gi, '')
                     );
                     break;
                 case 'isPaid':
-                    state.tableData = state.tableData.sort(
+                    state.filteredTableData = [...state.filteredTableData].sort(
                         (a, b) => +b.isPaid - +a.isPaid
                     );
                     break;
                 case 'status':
-                    state.tableData = state.tableData.sort((a, b) =>
-                        a.status.toLowerCase() < b.status.toLowerCase() ? 1 : -1
+                    state.filteredTableData = [...state.filteredTableData].sort(
+                        (a, b) =>
+                            a.status.toLowerCase() < b.status.toLowerCase()
+                                ? 1
+                                : -1
                     );
                     break;
                 default:
