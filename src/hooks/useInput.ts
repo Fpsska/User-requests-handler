@@ -65,6 +65,7 @@ export function useInput(currentValue: string): any {
 
     return {
         value,
+        setValue,
         onInputChange
     };
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { useAppSelector } from '../../app/hooks';
 
@@ -21,6 +21,8 @@ const Form: React.FC = () => {
     const inputBIRTH = useInput('');
     const inputPHONE = useInput('');
 
+    const inputIdRef = useRef<HTMLInputElement>(null!);
+
     const inputHandler = (
         name: string,
         e: React.ChangeEvent<HTMLInputElement>
@@ -28,26 +30,49 @@ const Form: React.FC = () => {
         switch (name) {
             case 'ID':
                 inputID.onInputChange({ name, value: e.target.value });
+
+                inputFIO.setValue('');
+                inputBIRTH.setValue('');
+                inputPHONE.setValue('');
                 break;
             case 'FIO':
                 inputFIO.onInputChange({ name, value: e.target.value });
+
+                inputID.setValue('');
+                inputBIRTH.setValue('');
+                inputPHONE.setValue('');
                 break;
             case 'BIRTH':
                 inputBIRTH.onInputChange({ name, value: e.target.value });
+
+                inputID.setValue('');
+                inputFIO.setValue('');
+                inputPHONE.setValue('');
                 break;
             case 'PHONE':
                 inputPHONE.onInputChange({ name, value: e.target.value });
+
+                inputID.setValue('');
+                inputFIO.setValue('');
+                inputBIRTH.setValue('');
                 break;
             default:
                 return;
         }
     };
 
+    useEffect(() => {
+        if (!isTableDataLoading && inputIdRef.current) {
+            inputIdRef.current.focus();
+        }
+    }, [isTableDataLoading, inputIdRef]);
+
     return (
         <form className="form">
             <fieldset className="form__wrapper">
                 <input
                     className="form__input form__input--id"
+                    ref={inputIdRef}
                     type="text"
                     placeholder="ID"
                     value={inputID.value}
@@ -86,8 +111,8 @@ const Form: React.FC = () => {
                         return (
                             <FormSelectTemplate
                                 key={item.id}
-                                role={'form__selection-menu'}
                                 {...item}
+                                role={'form__selection-menu'}
                                 isTableDataLoading={isTableDataLoading}
                                 status={status}
                             />

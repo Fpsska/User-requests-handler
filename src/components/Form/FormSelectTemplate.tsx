@@ -23,14 +23,15 @@ const FormSelectTemplate: React.FC<propTypes> = props => {
 
     const dispatch = useAppDispatch();
 
+    const onSelectChange = (eventVal: string): void => {
+        dispatch(filterUsers({ filterProp: id, value: eventVal }));
+    };
+
     return (
-        // <div className="form__template">
         <select
             className={`${role ? role : ''} selection-menu`}
             defaultValue={options[0].option}
-            onChange={e =>
-                dispatch(filterUsers({ filterProp: id, value: e.target.value }))
-            }
+            onChange={e => onSelectChange(e.target.value)}
             disabled={isTableDataLoading || status === 'failed'}
         >
             {options.map(item => {
@@ -45,7 +46,6 @@ const FormSelectTemplate: React.FC<propTypes> = props => {
                 );
             })}
         </select>
-        // </div>
     );
 };
 
