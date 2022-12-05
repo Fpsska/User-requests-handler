@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/CodeConstruction-Task/static/css/main.3fc69aaa.css",
-    "main.js": "/CodeConstruction-Task/static/js/main.a9a20d8c.js",
-    "static/css/249.78d50622.chunk.css": "/CodeConstruction-Task/static/css/249.78d50622.chunk.css",
-    "static/js/249.02cf2ca4.chunk.js": "/CodeConstruction-Task/static/js/249.02cf2ca4.chunk.js",
+    "main.css": "/CodeConstruction-Task/static/css/main.3f3b4dd9.css",
+    "main.js": "/CodeConstruction-Task/static/js/main.09e89605.js",
+    "static/css/249.f521dc73.chunk.css": "/CodeConstruction-Task/static/css/249.f521dc73.chunk.css",
+    "static/js/249.6c2c76e9.chunk.js": "/CodeConstruction-Task/static/js/249.6c2c76e9.chunk.js",
     "static/css/404.68a51a9c.chunk.css": "/CodeConstruction-Task/static/css/404.68a51a9c.chunk.css",
     "static/js/404.32cde6f6.chunk.js": "/CodeConstruction-Task/static/js/404.32cde6f6.chunk.js",
     "static/css/184.31c627b2.chunk.css": "/CodeConstruction-Task/static/css/184.31c627b2.chunk.css",
@@ -11,10 +11,10 @@
     "static/js/787.4ec84dc1.chunk.js": "/CodeConstruction-Task/static/js/787.4ec84dc1.chunk.js",
     "static/js/690.965e2465.chunk.js": "/CodeConstruction-Task/static/js/690.965e2465.chunk.js",
     "index.html": "/CodeConstruction-Task/index.html",
-    "main.3fc69aaa.css.map": "/CodeConstruction-Task/static/css/main.3fc69aaa.css.map",
-    "main.a9a20d8c.js.map": "/CodeConstruction-Task/static/js/main.a9a20d8c.js.map",
-    "249.78d50622.chunk.css.map": "/CodeConstruction-Task/static/css/249.78d50622.chunk.css.map",
-    "249.02cf2ca4.chunk.js.map": "/CodeConstruction-Task/static/js/249.02cf2ca4.chunk.js.map",
+    "main.3f3b4dd9.css.map": "/CodeConstruction-Task/static/css/main.3f3b4dd9.css.map",
+    "main.09e89605.js.map": "/CodeConstruction-Task/static/js/main.09e89605.js.map",
+    "249.f521dc73.chunk.css.map": "/CodeConstruction-Task/static/css/249.f521dc73.chunk.css.map",
+    "249.6c2c76e9.chunk.js.map": "/CodeConstruction-Task/static/js/249.6c2c76e9.chunk.js.map",
     "404.68a51a9c.chunk.css.map": "/CodeConstruction-Task/static/css/404.68a51a9c.chunk.css.map",
     "404.32cde6f6.chunk.js.map": "/CodeConstruction-Task/static/js/404.32cde6f6.chunk.js.map",
     "184.31c627b2.chunk.css.map": "/CodeConstruction-Task/static/css/184.31c627b2.chunk.css.map",
@@ -23,7 +23,7 @@
     "690.965e2465.chunk.js.map": "/CodeConstruction-Task/static/js/690.965e2465.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3fc69aaa.css",
-    "static/js/main.a9a20d8c.js"
+    "static/css/main.3f3b4dd9.css",
+    "static/js/main.09e89605.js"
   ]
 }
