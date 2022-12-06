@@ -1,5 +1,5 @@
 .table-wrapper {
-    max-height: calc(100vh - 230px);
+    height: calc(100vh - 230px);
     overflow: auto;
     margin-bottom: 10px;
     border: 1px solid var(--TD-border-color);
@@ -66,6 +66,11 @@
     }
 }
 
+.table.loading,
+.table.empty {
+    height: 100%;
+}
+
 .table__head.sticky {
     position: sticky;
     top: 0;
@@ -88,9 +93,4 @@
             border: none;
         }
     }
-}
-
-.table__body.loading,
-.table__body.empty {
-    height: 80vh;
 }

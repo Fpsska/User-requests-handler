@@ -24,7 +24,7 @@
     }
 
     .table-wrapper.table-wrapper {
-        max-height: calc(100vh - 255px);
+        height: calc(100vh - 275px);
     }
 
     .user-page__wrapper.user-page__wrapper,
@@ -43,7 +43,7 @@
     }
 
     .table-wrapper.table-wrapper {
-        max-height: calc(100vh - 340px);
+        height: calc(100vh - 365px);
     }
 
 }
@@ -58,7 +58,7 @@
     }
 
     .table-wrapper.table-wrapper {
-        max-height: calc(100vh - 465px);
+        height: calc(100vh - 465px);
     }
 
     .page {
@@ -76,7 +76,7 @@
     }
 
     .table-wrapper.table-wrapper {
-        max-height: 600px;
+        height: 600px;
     }
 }
 
@@ -86,6 +86,6 @@
     }
 
     .table-wrapper.table-wrapper {
-        max-height: 600px;
+        height: 600px;
     }
 }

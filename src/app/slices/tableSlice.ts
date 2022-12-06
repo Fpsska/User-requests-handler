@@ -226,21 +226,15 @@ const tableSlice = createSlice({
                     );
                     break;
                 case 'FILIAL':
-                    state.filteredTableData = state.tableData.filter(item => {
-                        if (item.filial === value) {
-                            return item;
-                        } else if (value === 'Филиал') {
-                            return state.tableData;
-                        }
-                    });
-                    break;
                 case 'PAY':
                     state.filteredTableData = state.tableData.filter(item => {
-                        if (item.isPaid && value === 'оплачено') {
+                        if (
+                            item.filial === value ||
+                            (!item.isPaid && value === 'не оплачено') ||
+                            (item.isPaid && value === 'оплачено')
+                        ) {
                             return item;
-                        } else if (!item.isPaid && value === 'не оплачено') {
-                            return item;
-                        } else if (value === 'Оплата') {
+                        } else if (value === 'Филиал' || value === 'Оплата') {
                             return state.tableData;
                         }
                     });

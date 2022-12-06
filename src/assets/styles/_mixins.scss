@@ -1,5 +1,5 @@
 @mixin wrapper {
-    height: calc(100vh - 40px - 40px - 54px);
+    height: calc(100vh - 134px);
     overflow: auto;
 
     &::-webkit-scrollbar {

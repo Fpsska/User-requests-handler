@@ -32,7 +32,11 @@ const Table: React.FC = () => {
 
     return (
         <div className="table-wrapper">
-            <table className="table">
+            <table
+                className={`table ${isTableDataLoading ? 'loading' : ''} ${
+                    isUsersDataEmpty ? 'empty' : ''
+                }`}
+            >
                 <thead className="table__head sticky">
                     <tr className="table__row table__row--head">
                         {tableHeadTemplate.map(item => {
@@ -48,15 +52,7 @@ const Table: React.FC = () => {
                         })}
                     </tr>
                 </thead>
-                <tbody
-                    className={
-                        isTableDataLoading
-                            ? 'table__body loading'
-                            : isUsersDataEmpty
-                            ? 'table__body empty'
-                            : 'table__body'
-                    }
-                >
+                <tbody className="table__body">
                     {isTableDataLoading ? (
                         <div className="table__preloader">
                             <Preloader />
