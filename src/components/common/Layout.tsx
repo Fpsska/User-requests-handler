@@ -29,11 +29,6 @@ const Layout: React.FC = () => {
     useEffect(() => {
         if (status === 'loading') {
             setTimeout(() => {
-                dispatch(switchTableDataLoadingStatus(true));
-                dispatch(switchPostDataLoadingStatus(true));
-            }, 3500);
-        } else {
-            setTimeout(() => {
                 dispatch(switchTableDataLoadingStatus(false));
                 dispatch(switchPostDataLoadingStatus(false));
             }, 3500);

@@ -4,17 +4,19 @@ import { IoDocumentTextOutline } from 'react-icons/io5';
 
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 
+import { setRequestCount, filterUsers } from '../../../app/slices/tableSlice';
+
+import { declinateByCount } from '../../../helpers/declinateByCount';
+
 import Form from '../../Form/Form';
 import Table from '../../Table/Table';
-
-import { setRequestCount, filterUsers } from '../../../app/slices/tableSlice';
 
 import './mainPage.scss';
 
 // /. imports
 
 const MainPage: React.FC = () => {
-    const { requestСount, isTableDataLoading, tableData, isMainPage } =
+    const { requestСount, isTableDataLoading, filteredTableData, isMainPage } =
         useAppSelector(state => state.tableSlice);
 
     const [text, setText] = useState<string>('заявок');
@@ -22,15 +24,15 @@ const MainPage: React.FC = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(setRequestCount(tableData.length));
-        if (requestСount >= 5 || requestСount === 0) {
-            setText('заявок');
-        } else if (requestСount >= 2 || requestСount <= 4) {
-            setText('заявки');
-        } else if (requestСount === 1) {
-            setText('заявка');
-        }
-    }, [requestСount, tableData]);
+        dispatch(setRequestCount(filteredTableData.length));
+        setText(
+            declinateByCount(filteredTableData.length, [
+                'заявка',
+                'заявки',
+                'заявок'
+            ])
+        );
+    }, [filteredTableData]);
 
     useEffect(() => {
         return () => {
