@@ -13,7 +13,6 @@ import {
 // /. imports
 
 interface tableSliceTypes {
-    isMainPage: boolean;
     isUsersDataEmpty: boolean;
     fetchUsersErrMsg: string;
     requestСount: number;
@@ -27,7 +26,6 @@ interface tableSliceTypes {
 // /. interfaces
 
 const initialState: tableSliceTypes = {
-    isMainPage: true,
     isUsersDataEmpty: false,
     fetchUsersErrMsg: '',
     requestСount: 0,
@@ -80,9 +78,6 @@ const tableSlice = createSlice({
     name: 'tableSlice',
     initialState,
     reducers: {
-        switchMainPageStatus(state, action: PayloadAction<boolean>) {
-            state.isMainPage = action.payload;
-        },
         switchTableDataLoadingStatus(state, action: PayloadAction<boolean>) {
             state.isTableDataLoading = action.payload;
         },
@@ -240,7 +235,7 @@ const tableSlice = createSlice({
                     });
                     break;
                 default:
-                    return;
+                    state.filteredTableData = state.tableData;
             }
         }
     },
@@ -281,7 +276,6 @@ const tableSlice = createSlice({
 });
 
 export const {
-    switchMainPageStatus,
     switchTableDataLoadingStatus,
     swithUsersDataEmptyStatus,
     setRequestCount,

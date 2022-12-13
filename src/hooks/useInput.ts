@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useAppDispatch } from '../app/hooks';
 
@@ -13,8 +13,8 @@ interface propTypes {
 
 // /. interfaces
 
-export function useInput(currentValue: string): any {
-    const [value, setValue] = useState<string>(currentValue);
+export function useInput(): any {
+    const [value, setValue] = useState<string>('');
 
     const dispatch = useAppDispatch();
 

@@ -16,7 +16,7 @@ import './mainPage.scss';
 // /. imports
 
 const MainPage: React.FC = () => {
-    const { requestСount, isTableDataLoading, filteredTableData, isMainPage } =
+    const { requestСount, isTableDataLoading, filteredTableData } =
         useAppSelector(state => state.tableSlice);
 
     const [text, setText] = useState<string>('заявок');
@@ -36,12 +36,10 @@ const MainPage: React.FC = () => {
 
     useEffect(() => {
         return () => {
-            dispatch(filterUsers({ filterProp: 'ID', value: '' }));
-            dispatch(filterUsers({ filterProp: 'FIO', value: '' }));
-            dispatch(filterUsers({ filterProp: 'BIRTH', value: '' }));
-            dispatch(filterUsers({ filterProp: 'PHONE', value: '' }));
+            // reset filtering when page is re-rendered
+            dispatch(filterUsers({ filterProp: '', value: '' }));
         };
-    }, [isMainPage]);
+    }, []);
 
     return (
         <section className="main-page">

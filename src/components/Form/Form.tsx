@@ -16,10 +16,10 @@ const Form: React.FC = () => {
         state => state.tableSlice
     );
 
-    const inputID = useInput('');
-    const inputFIO = useInput('');
-    const inputBIRTH = useInput('');
-    const inputPHONE = useInput('');
+    const inputID = useInput();
+    const inputFIO = useInput();
+    const inputBIRTH = useInput();
+    const inputPHONE = useInput();
 
     const inputIdRef = useRef<HTMLInputElement>(null!);
 
@@ -29,7 +29,10 @@ const Form: React.FC = () => {
     ): void => {
         switch (name) {
             case 'ID':
-                inputID.onInputChange({ name, value: e.target.value });
+                inputID.onInputChange({
+                    name,
+                    value: e.target.value
+                });
 
                 inputFIO.setValue('');
                 inputBIRTH.setValue('');
@@ -72,7 +75,6 @@ const Form: React.FC = () => {
             <fieldset className="form__wrapper">
                 <input
                     className="form__input form__input--id"
-                    ref={inputIdRef}
                     type="text"
                     placeholder="ID"
                     value={inputID.value}

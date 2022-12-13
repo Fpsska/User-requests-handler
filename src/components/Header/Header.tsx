@@ -2,17 +2,11 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-import { useAppDispatch } from '../../app/hooks';
-
-import { switchMainPageStatus } from '../../app/slices/tableSlice';
-
 import './header.scss';
 
 // /. imports
 
 const Header: React.FC = () => {
-    const dispatch = useAppDispatch();
-
     return (
         <header className="header">
             <section className="header__wrapper">
@@ -22,9 +16,7 @@ const Header: React.FC = () => {
                             <NavLink
                                 className="nav__link"
                                 to="/CodeConstruction-Task/"
-                                onClick={() =>
-                                    dispatch(switchMainPageStatus(true))
-                                }
+                                // state={'mainPage'}
                             >
                                 Main
                             </NavLink>
@@ -33,9 +25,6 @@ const Header: React.FC = () => {
                             <NavLink
                                 className="nav__link"
                                 to="Users"
-                                onClick={() =>
-                                    dispatch(switchMainPageStatus(false))
-                                }
                             >
                                 Users
                             </NavLink>
@@ -44,9 +33,6 @@ const Header: React.FC = () => {
                             <NavLink
                                 className="nav__link"
                                 to="Posts"
-                                onClick={() =>
-                                    dispatch(switchMainPageStatus(false))
-                                }
                             >
                                 Posts
                             </NavLink>
