@@ -10,7 +10,7 @@ import './postPage.scss';
 
 const PostPage: React.FC = () => {
     const { postData, isPostDataLoading, fetchPostsErrMsg } = useAppSelector(
-        state => state.postSilce
+        state => state.postSlice
     );
 
     return (

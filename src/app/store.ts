@@ -2,7 +2,7 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 
 import formSlice from './slices/formSlice';
 import tableSlice from './slices/tableSlice';
-import postSilce from './slices/postSilce';
+import postSlice from './slices/postSlice';
 
 // /. imports
 
@@ -10,7 +10,7 @@ export const store = configureStore({
     reducer: {
         formSlice: formSlice,
         tableSlice: tableSlice,
-        postSilce: postSilce
+        postSlice: postSlice
     }
 });
 

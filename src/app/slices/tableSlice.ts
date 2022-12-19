@@ -262,7 +262,6 @@ const tableSlice = createSlice({
                     'Закрыта'
                 ])}`;
             });
-            console.log(state.tableData[0]);
             state.status = 'success';
             state.requestСount = state.tableData.length;
             state.filteredTableData = action.payload;

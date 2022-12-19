@@ -9,7 +9,7 @@ import Theme from '../Theme/Theme';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import { switchTableDataLoadingStatus } from '../../app/slices/tableSlice';
-import { switchPostDataLoadingStatus } from '../../app/slices/postSilce';
+import { switchPostDataLoadingStatus } from '../../app/slices/postSlice';
 
 import { fetchUsersData } from '../../app/api/fetchUsersData';
 import { fetchPostsData } from '../../app/api/fetchPostsData';
@@ -18,8 +18,10 @@ import { fetchPostsData } from '../../app/api/fetchPostsData';
 
 const Layout: React.FC = () => {
     const { status } = useAppSelector(state => state.tableSlice);
-
+    const { fetchPostsStatus } = useAppSelector(state => state.postSlice);
     const dispatch = useAppDispatch();
+
+    // /. hooks
 
     useEffect(() => {
         dispatch(fetchUsersData());
@@ -27,13 +29,20 @@ const Layout: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        if (status === 'loading') {
+        if (status === 'success') {
             setTimeout(() => {
                 dispatch(switchTableDataLoadingStatus(false));
-                dispatch(switchPostDataLoadingStatus(false));
             }, 3500);
         }
     }, [status]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            dispatch(switchPostDataLoadingStatus(false));
+        }, 3500);
+    }, [fetchPostsStatus]);
+
+    // /. effects
 
     return (
         <div className="page">

@@ -7,14 +7,14 @@ import { postDataTypes } from '../../Types/postSliceTypes';
 // /. imports
 
 interface postSilceTypes {
-    status: string;
-    fetchPostsErrMsg: string;
+    fetchPostsStatus: string;
+    fetchPostsErrMsg: string | null;
     isPostDataLoading: boolean;
     postData: postDataTypes[];
 }
 
 const initialState: postSilceTypes = {
-    status: '',
+    fetchPostsStatus: '',
     fetchPostsErrMsg: '',
     isPostDataLoading: true,
     postData: []
@@ -30,20 +30,21 @@ const postSilce = createSlice({
     },
     extraReducers: {
         [fetchPostsData.pending.type]: state => {
-            state.status = 'loading';
+            state.fetchPostsStatus = 'loading';
+            state.fetchPostsErrMsg = null;
         },
         [fetchPostsData.fulfilled.type]: (
             state,
             action: PayloadAction<postDataTypes[]>
         ) => {
             state.postData = action.payload;
-            state.status = 'success';
+            state.fetchPostsStatus = 'success';
         },
         [fetchPostsData.rejected.type]: (
             state,
             action: PayloadAction<string>
         ) => {
-            state.status = 'failed';
+            state.fetchPostsStatus = 'failed';
             state.fetchPostsErrMsg = action.payload;
         }
     }
