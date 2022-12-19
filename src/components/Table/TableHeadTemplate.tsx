@@ -15,7 +15,7 @@ interface propTypes {
     text: string;
     isTableDataLoading: boolean;
     isUsersDataEmpty: boolean;
-    fetchUsersErrMsg: string;
+    fetchUsersErrMsg: string | null;
 }
 
 // /. interfaces

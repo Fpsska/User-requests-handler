@@ -7,7 +7,7 @@ export const fetchUsersData = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const response = await fetch(
-                'https://jsonplaceholder.typicode.com/users'
+                'https://jsonplaceholder.typcode.com/users'
             );
 
             if (!response.ok) {

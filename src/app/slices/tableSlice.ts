@@ -14,10 +14,10 @@ import {
 
 interface tableSliceTypes {
     isUsersDataEmpty: boolean;
-    fetchUsersErrMsg: string;
+    status: string;
+    fetchUsersErrMsg: string | null;
     requestСount: number;
     isTableDataLoading: boolean;
-    status: string;
     tableData: tableDataTypes[];
     filteredTableData: tableDataTypes[];
     tableHeadTemplate: tableHeadTemplateTypes[];
@@ -27,10 +27,10 @@ interface tableSliceTypes {
 
 const initialState: tableSliceTypes = {
     isUsersDataEmpty: false,
+    status: '',
     fetchUsersErrMsg: '',
     requestСount: 0,
     isTableDataLoading: true,
-    status: '',
     tableData: [],
     filteredTableData: [],
     tableHeadTemplate: [
@@ -242,6 +242,7 @@ const tableSlice = createSlice({
     extraReducers: {
         [fetchUsersData.pending.type]: state => {
             state.status = 'loading';
+            state.fetchUsersErrMsg = null;
         },
         [fetchUsersData.fulfilled.type]: (
             state,
@@ -261,6 +262,7 @@ const tableSlice = createSlice({
                     'Закрыта'
                 ])}`;
             });
+            console.log(state.tableData[0]);
             state.status = 'success';
             state.requestСount = state.tableData.length;
             state.filteredTableData = action.payload;
