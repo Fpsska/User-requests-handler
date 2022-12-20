@@ -5,29 +5,26 @@ import { fetchUsersData } from '../api/fetchUsersData';
 import { generateRandomDate } from '../../helpers/getRandomDate';
 import { getRandomStatus } from '../../helpers/getRandomStatus';
 
-import {
-    tableDataTypes,
-    tableHeadTemplateTypes
-} from '../../Types/tableSliceTypes';
+import { Itable, ItableHeadTemplate } from '../../Types/tableSliceTypes';
 
 // /. imports
 
 interface tableSliceTypes {
     isUsersDataEmpty: boolean;
-    status: string;
+    fetchUsersStatus: string;
     fetchUsersErrMsg: string | null;
     requestСount: number;
     isTableDataLoading: boolean;
-    tableData: tableDataTypes[];
-    filteredTableData: tableDataTypes[];
-    tableHeadTemplate: tableHeadTemplateTypes[];
+    tableData: Itable[];
+    filteredTableData: Itable[];
+    tableHeadTemplate: ItableHeadTemplate[];
 }
 
 // /. interfaces
 
 const initialState: tableSliceTypes = {
     isUsersDataEmpty: false,
-    status: '',
+    fetchUsersStatus: '',
     fetchUsersErrMsg: '',
     requestСount: 0,
     isTableDataLoading: true,
@@ -239,42 +236,44 @@ const tableSlice = createSlice({
             }
         }
     },
-    extraReducers: {
-        [fetchUsersData.pending.type]: state => {
-            state.status = 'loading';
-            state.fetchUsersErrMsg = null;
-        },
-        [fetchUsersData.fulfilled.type]: (
-            state,
-            action: PayloadAction<tableDataTypes[]>
-        ) => {
-            state.tableData = action.payload;
-            state.tableData.map(item => {
-                item.birth = `${generateRandomDate(
-                    new Date(2012, 0, 1),
-                    new Date()
-                ).toLocaleDateString('en-GB')}`;
-                item.filial = `${getRandomStatus(['Филиал №1', 'Филиал №2'])}`;
-                item.isPaid = Boolean(Math.round(Math.random()));
-                item.status = `${getRandomStatus([
-                    'В обработке',
-                    'Новая',
-                    'Закрыта'
-                ])}`;
+    extraReducers: builder => {
+        builder
+            .addCase(fetchUsersData.pending, state => {
+                state.fetchUsersStatus = 'loading';
+                state.fetchUsersErrMsg = null;
+            })
+            .addCase(fetchUsersData.fulfilled, (state, action) => {
+                state.tableData = action.payload;
+                state.tableData.map(item => {
+                    item.birth = `${generateRandomDate(
+                        new Date(2012, 0, 1),
+                        new Date()
+                    ).toLocaleDateString('en-GB')}`;
+                    item.filial = `${getRandomStatus([
+                        'Филиал №1',
+                        'Филиал №2'
+                    ])}`;
+                    item.isPaid = Boolean(Math.round(Math.random()));
+                    item.status = `${getRandomStatus([
+                        'В обработке',
+                        'Новая',
+                        'Закрыта'
+                    ])}`;
+                });
+                state.fetchUsersStatus = 'success';
+                state.requestСount = state.tableData.length;
+                state.filteredTableData = action.payload;
+            })
+            .addCase(fetchUsersData.rejected, (state, action) => {
+                state.fetchUsersStatus = 'failed';
+                if (action.payload) {
+                    state.fetchUsersErrMsg = action.payload;
+                }
             });
-            state.status = 'success';
-            state.requestСount = state.tableData.length;
-            state.filteredTableData = action.payload;
-        },
-        [fetchUsersData.rejected.type]: (
-            state,
-            action: PayloadAction<string>
-        ) => {
-            state.status = 'failed';
-            state.fetchUsersErrMsg = action.payload;
-        }
     }
 });
+
+// /. slice
 
 export const {
     switchTableDataLoadingStatus,

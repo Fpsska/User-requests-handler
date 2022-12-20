@@ -1,4 +1,4 @@
-export interface tableDataTypes {
+export interface Itable {
     id: number;
     name: string;
     birth: string;
@@ -9,10 +9,9 @@ export interface tableDataTypes {
     email: string;
     username: string;
     address: any[string];
-    city: string;
 }
 
-export interface tableHeadTemplateTypes {
+export interface ItableHeadTemplate {
     id: number;
     name: string;
     text: string;

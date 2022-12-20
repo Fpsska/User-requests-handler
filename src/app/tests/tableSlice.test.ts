@@ -1,14 +1,14 @@
 import tableSlice from '../slices/tableSlice';
 import { fetchUsersData } from '../api/fetchUsersData';
 
-import { tableDataTypes } from '../../Types/tableSliceTypes';
+import { Itable } from '../../Types/tableSliceTypes';
 
 // /. imports
 
 const initialState: any = {
     tableData: [],
     filteredTableData: [],
-    status: '',
+    fetchUsersStatus: '',
     fetchUsersErrMsg: '',
     requestСount: 0
 };
@@ -16,7 +16,7 @@ const initialState: any = {
 describe('tableSlice Extra Reducers', () => {
     it('should change status with "fetchUsersData.pending" action', () => {
         const state = tableSlice(initialState, fetchUsersData.pending(''));
-        expect(state.status).toBe('loading');
+        expect(state.fetchUsersStatus).toBe('loading');
         expect(state.fetchUsersErrMsg).toBeNull(); // .toBe(null)
     });
     it('should change status with "fetchUsersData.fulfilled" action', () => {
@@ -31,7 +31,7 @@ describe('tableSlice Extra Reducers', () => {
                 status: 'Новая',
                 email: 'Sincere@april.biz',
                 username: 'Bret',
-                city: 'Gwenborough'
+                address: { city: 'Gwenborough' }
             }
         ];
 
@@ -42,7 +42,7 @@ describe('tableSlice Extra Reducers', () => {
         expect(state).toEqual({
             tableData: mockUsers,
             filteredTableData: mockUsers,
-            status: 'success',
+            fetchUsersStatus: 'success',
             fetchUsersErrMsg: '',
             requestСount: mockUsers.length
         });
@@ -57,7 +57,7 @@ describe('tableSlice Extra Reducers', () => {
         expect(state).toEqual({
             tableData: [],
             filteredTableData: [],
-            status: 'failed',
+            fetchUsersStatus: 'failed',
             fetchUsersErrMsg: 'Failed to fetch',
             requestСount: 0
         });

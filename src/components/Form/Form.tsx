@@ -12,7 +12,7 @@ import './form.scss';
 
 const Form: React.FC = () => {
     const { formSelectTemplates } = useAppSelector(state => state.formSlice);
-    const { isTableDataLoading, status } = useAppSelector(
+    const { isTableDataLoading, fetchUsersStatus } = useAppSelector(
         state => state.tableSlice
     );
 
@@ -80,7 +80,9 @@ const Form: React.FC = () => {
                     value={inputID.value}
                     onChange={e => inputHandler('ID', e)}
                     onKeyDown={e => e.key === 'e' && e.preventDefault()}
-                    disabled={isTableDataLoading || status === 'failed'}
+                    disabled={
+                        isTableDataLoading || fetchUsersStatus === 'failed'
+                    }
                 />
                 <input
                     className="form__input"
@@ -88,7 +90,9 @@ const Form: React.FC = () => {
                     placeholder="ФИО"
                     value={inputFIO.value}
                     onChange={e => inputHandler('FIO', e)}
-                    disabled={isTableDataLoading || status === 'failed'}
+                    disabled={
+                        isTableDataLoading || fetchUsersStatus === 'failed'
+                    }
                 />
                 <input
                     className="form__input"
@@ -97,7 +101,9 @@ const Form: React.FC = () => {
                     value={inputBIRTH.value}
                     onChange={e => inputHandler('BIRTH', e)}
                     onKeyDown={e => e.key === 'e' && e.preventDefault()}
-                    disabled={isTableDataLoading || status === 'failed'}
+                    disabled={
+                        isTableDataLoading || fetchUsersStatus === 'failed'
+                    }
                 />
                 <input
                     className="form__input"
@@ -106,7 +112,9 @@ const Form: React.FC = () => {
                     value={inputPHONE.value}
                     onChange={e => inputHandler('PHONE', e)}
                     onKeyDown={e => e.key === 'e' && e.preventDefault()}
-                    disabled={isTableDataLoading || status === 'failed'}
+                    disabled={
+                        isTableDataLoading || fetchUsersStatus === 'failed'
+                    }
                 />
                 <>
                     {formSelectTemplates.map(item => {
@@ -116,7 +124,7 @@ const Form: React.FC = () => {
                                 {...item}
                                 role={'form__selection-menu'}
                                 isTableDataLoading={isTableDataLoading}
-                                status={status}
+                                status={fetchUsersStatus}
                             />
                         );
                     })}

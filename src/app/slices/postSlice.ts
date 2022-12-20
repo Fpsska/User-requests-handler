@@ -22,7 +22,7 @@ const initialState: postSilceTypes = {
     postData: []
 };
 
-// /. state
+// /. initialState
 
 const postSilce = createSlice({
     name: 'postSilce',

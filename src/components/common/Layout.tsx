@@ -17,7 +17,7 @@ import { fetchPostsData } from '../../app/api/fetchPostsData';
 // /. imports
 
 const Layout: React.FC = () => {
-    const { status } = useAppSelector(state => state.tableSlice);
+    const { fetchUsersStatus } = useAppSelector(state => state.tableSlice);
     const { fetchPostsStatus } = useAppSelector(state => state.postSlice);
     const dispatch = useAppDispatch();
 
@@ -29,12 +29,10 @@ const Layout: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        if (status === 'success') {
-            setTimeout(() => {
-                dispatch(switchTableDataLoadingStatus(false));
-            }, 3500);
-        }
-    }, [status]);
+        setTimeout(() => {
+            dispatch(switchTableDataLoadingStatus(false));
+        }, 3500);
+    }, [fetchUsersStatus]);
 
     useEffect(() => {
         setTimeout(() => {
