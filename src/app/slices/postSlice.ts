@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { fetchPostsData } from '../api/fetchPostsData';
 
-import { postDataTypes } from '../../Types/postSliceTypes';
+import { Ipost } from '../../Types/postSliceTypes';
 
 // /. imports
 
@@ -10,8 +10,10 @@ interface postSilceTypes {
     fetchPostsStatus: string;
     fetchPostsErrMsg: string | null;
     isPostDataLoading: boolean;
-    postData: postDataTypes[];
+    postData: Ipost[];
 }
+
+// /. interfaces
 
 const initialState: postSilceTypes = {
     fetchPostsStatus: '',
@@ -19,6 +21,8 @@ const initialState: postSilceTypes = {
     isPostDataLoading: true,
     postData: []
 };
+
+// /. state
 
 const postSilce = createSlice({
     name: 'postSilce',
@@ -28,27 +32,26 @@ const postSilce = createSlice({
             state.isPostDataLoading = action.payload;
         }
     },
-    extraReducers: {
-        [fetchPostsData.pending.type]: state => {
-            state.fetchPostsStatus = 'loading';
-            state.fetchPostsErrMsg = null;
-        },
-        [fetchPostsData.fulfilled.type]: (
-            state,
-            action: PayloadAction<postDataTypes[]>
-        ) => {
-            state.postData = action.payload;
-            state.fetchPostsStatus = 'success';
-        },
-        [fetchPostsData.rejected.type]: (
-            state,
-            action: PayloadAction<string>
-        ) => {
-            state.fetchPostsStatus = 'failed';
-            state.fetchPostsErrMsg = action.payload;
-        }
+    extraReducers: builder => {
+        builder
+            .addCase(fetchPostsData.pending, state => {
+                state.fetchPostsStatus = 'loading';
+                state.fetchPostsErrMsg = null;
+            })
+            .addCase(fetchPostsData.fulfilled, (state, action) => {
+                state.postData = action.payload;
+                state.fetchPostsStatus = 'success';
+            })
+            .addCase(fetchPostsData.rejected, (state, action) => {
+                state.fetchPostsStatus = 'failed';
+                if (action.payload) {
+                    state.fetchPostsErrMsg = action.payload;
+                }
+            });
     }
 });
+
+// /. slice
 
 export const { switchPostDataLoadingStatus } = postSilce.actions;
 

@@ -1,4 +1,4 @@
-export interface postDataTypes {
+export interface Ipost {
     id: number;
     userId: number;
     title: string;
