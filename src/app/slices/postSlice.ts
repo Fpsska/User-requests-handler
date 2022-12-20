@@ -2,20 +2,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { fetchPostsData } from '../api/fetchPostsData';
 
-import { Ipost } from '../../Types/postSliceTypes';
+import { IpostSilce } from '../../Types/postSliceTypes';
 
 // /. imports
 
-interface postSilceTypes {
-    fetchPostsStatus: string;
-    fetchPostsErrMsg: string | null;
-    isPostDataLoading: boolean;
-    postData: Ipost[];
-}
-
-// /. interfaces
-
-const initialState: postSilceTypes = {
+const initialState: IpostSilce = {
     fetchPostsStatus: '',
     fetchPostsErrMsg: '',
     isPostDataLoading: true,

@@ -29,15 +29,19 @@ const Layout: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        setTimeout(() => {
-            dispatch(switchTableDataLoadingStatus(false));
-        }, 3500);
+        if (fetchUsersStatus) {
+            setTimeout(() => {
+                dispatch(switchTableDataLoadingStatus(false));
+            }, 3500);
+        }
     }, [fetchUsersStatus]);
 
     useEffect(() => {
-        setTimeout(() => {
-            dispatch(switchPostDataLoadingStatus(false));
-        }, 3500);
+        if (fetchPostsStatus) {
+            setTimeout(() => {
+                dispatch(switchPostDataLoadingStatus(false));
+            }, 3500);
+        }
     }, [fetchPostsStatus]);
 
     // /. effects

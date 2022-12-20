@@ -12,12 +12,12 @@ const initialState: any = {
 };
 
 describe('tableSlice Extra Reducers', () => {
-    it('should change status with "fetchUsersData.pending" action', () => {
+    it('should change state with "fetchUsersData.pending" action', () => {
         const state = tableSlice(initialState, fetchUsersData.pending(''));
         expect(state.fetchUsersStatus).toBe('loading');
         expect(state.fetchUsersErrMsg).toBeNull(); // .toBe(null)
     });
-    it('should change status with "fetchUsersData.fulfilled" action', () => {
+    it('should change state with "fetchUsersData.fulfilled" action', () => {
         const mockUsers = [
             {
                 id: 1,
@@ -45,7 +45,7 @@ describe('tableSlice Extra Reducers', () => {
             requestСount: mockUsers.length
         });
     });
-    it('should change status with "fetchUsersData.rejected" action', () => {
+    it('should change state with "fetchUsersData.rejected" action', () => {
         const action = {
             type: fetchUsersData.rejected.type,
             payload: 'Failed to fetch'
