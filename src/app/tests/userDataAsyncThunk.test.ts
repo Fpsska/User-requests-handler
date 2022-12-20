@@ -20,6 +20,7 @@ describe('fetchUsersData AsyncThunk', () => {
                 city: 'Gwenborough'
             }
         ];
+
         (fetch as jest.MockedFunction<any>).mockResolvedValue({
             ok: true,
             json: () => Promise.resolve(mockUsers)
@@ -34,8 +35,8 @@ describe('fetchUsersData AsyncThunk', () => {
         expect(calls).toHaveLength(2); // pending, fulfilled
 
         const [start, end] = calls;
-        expect(start[0].type).toBe('tableSlice/fetchUsersData/pending');
-        expect(end[0].type).toBe('tableSlice/fetchUsersData/fulfilled');
+        expect(start[0].type).toBe(fetchUsersData.pending('').type);
+        expect(end[0].type).toBe(fetchUsersData.fulfilled([], '').type);
         expect(end[0].payload).toBe(mockUsers);
     });
 
@@ -54,8 +55,8 @@ describe('fetchUsersData AsyncThunk', () => {
 
         const [start, end] = calls;
 
-        expect(start[0].type).toBe('tableSlice/fetchUsersData/pending');
-        expect(end[0].type).toBe('tableSlice/fetchUsersData/rejected');
+        expect(start[0].type).toBe(fetchUsersData.pending('').type);
+        expect(end[0].type).toBe(fetchUsersData.rejected(null, '').type);
         expect(end[0].meta.rejectedWithValue).toBe(true);
         expect(end[0].payload).toBe('Response: server error!');
     });

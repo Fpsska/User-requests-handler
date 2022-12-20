@@ -11,7 +11,7 @@ export const fetchUsersData = createAsyncThunk<
 >('tableSlice/fetchUsersData', async (_, { rejectWithValue }) => {
     try {
         const response = await fetch(
-            'https://jsonlaceholder.typicode.com/users'
+            'https://jsonplaceholder.typicode.com/users'
         );
 
         if (!response.ok) {

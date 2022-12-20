@@ -1,8 +1,6 @@
 import tableSlice from '../slices/tableSlice';
 import { fetchUsersData } from '../api/fetchUsersData';
 
-import { Itable } from '../../Types/tableSliceTypes';
-
 // /. imports
 
 const initialState: any = {
