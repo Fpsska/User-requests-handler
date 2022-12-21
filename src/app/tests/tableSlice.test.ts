@@ -88,6 +88,40 @@ describe('tableSlice', () => {
 
             expect(result.isUsersDataEmpty).toBe(true);
         });
+        it('should update requestCount value with setRequestCount AC', () => {
+            const action = { type: setRequestCount.type, payload: 123 };
+            const result = tableSlice(initialState, action);
+
+            expect(result.requestСount).toBe(123);
+        });
+        it('should filter filteredTableData[] by props with filterUsers AC', () => {
+            const mockTableData = [
+                {
+                    id: 1,
+                    name: 'Leanne Graham',
+                    username: 'Bret',
+                    birth: '24/06/1995',
+                    phone: '1-770-736-8031 x56442',
+                    email: 'Sincere@april.biz',
+                    address: { city: 'Gwenborough' },
+                    filial: 'Филиал №2',
+                    status: 'Новая',
+                    isPaid: false
+                }
+            ];
+
+            const action = {
+                type: filterUsers.type,
+                payload: { filterProp: 'ID', value: '0' }
+            };
+            const result = tableSlice(
+                // replace tableData[] by mock-data for testing
+                { ...initialState, tableData: mockTableData },
+                action
+            );
+
+            expect(result.filteredTableData).toStrictEqual([]);
+        });
     });
     describe('tableSlice Extra Reducers', () => {
         it('should change state with "fetchUsersData.pending" action', () => {

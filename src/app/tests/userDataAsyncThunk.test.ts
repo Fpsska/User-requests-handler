@@ -6,7 +6,7 @@ global.fetch = jest.fn();
 
 describe('fetchUsersData AsyncThunk', () => {
     it('should fetchUsersData with RESOLVED response', async () => {
-        const mockUsers = [
+        const mockUser = [
             {
                 id: 1,
                 name: 'Leanne Graham',
@@ -23,7 +23,7 @@ describe('fetchUsersData AsyncThunk', () => {
 
         (fetch as jest.MockedFunction<any>).mockResolvedValue({
             ok: true,
-            json: () => Promise.resolve(mockUsers)
+            json: () => Promise.resolve(mockUser)
         });
 
         const dispatch = jest.fn();
@@ -37,7 +37,7 @@ describe('fetchUsersData AsyncThunk', () => {
         const [start, end] = calls;
         expect(start[0].type).toBe(fetchUsersData.pending('').type);
         expect(end[0].type).toBe(fetchUsersData.fulfilled([], '').type);
-        expect(end[0].payload).toBe(mockUsers);
+        expect(end[0].payload).toBe(mockUser);
     });
 
     it('should fetchUsersData with REJECTED response', async () => {

@@ -5,24 +5,11 @@ import { fetchUsersData } from '../api/fetchUsersData';
 import { generateRandomDate } from '../../helpers/getRandomDate';
 import { getRandomStatus } from '../../helpers/getRandomStatus';
 
-import { Itable, ItableHeadTemplate } from '../../Types/tableSliceTypes';
+import { ItableSlice } from '../../Types/tableSliceTypes';
 
 // /. imports
 
-interface tableSliceTypes {
-    isUsersDataEmpty: boolean;
-    fetchUsersStatus: string;
-    fetchUsersErrMsg: string | null;
-    requestСount: number;
-    isTableDataLoading: boolean;
-    tableData: Itable[];
-    filteredTableData: Itable[];
-    tableHeadTemplate: ItableHeadTemplate[];
-}
-
-// /. interfaces
-
-const initialState: tableSliceTypes = {
+const initialState: ItableSlice = {
     isUsersDataEmpty: false,
     fetchUsersStatus: '',
     fetchUsersErrMsg: '',
@@ -263,6 +250,7 @@ const tableSlice = createSlice({
                 state.fetchUsersStatus = 'success';
                 state.requestСount = state.tableData.length;
                 state.filteredTableData = action.payload;
+                console.log(state.tableData);
             })
             .addCase(fetchUsersData.rejected, (state, action) => {
                 state.fetchUsersStatus = 'failed';
