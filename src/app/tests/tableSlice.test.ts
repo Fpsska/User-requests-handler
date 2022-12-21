@@ -19,16 +19,60 @@ const initialState: any = {
 };
 
 describe('tableSlice', () => {
+    let mockTableData = [
+        {
+            id: 1,
+            name: 'Leanne Graham',
+            username: 'Bret',
+            birth: '24/06/1995',
+            phone: '1-770-736-8031 x56442',
+            email: 'Sincere@april.biz',
+            address: { city: 'Gwenborough' },
+            filial: 'Филиал №2',
+            status: 'Новая',
+            isPaid: false
+        }
+    ];
+
+    beforeEach(() => {
+        mockTableData = [
+            {
+                id: 1,
+                name: 'Leanne Graham',
+                username: 'Bret',
+                birth: '24/06/1995',
+                phone: '1-770-736-8031 x56442',
+                email: 'Sincere@april.biz',
+                address: { city: 'Gwenborough' },
+                filial: 'Филиал №2',
+                status: 'Новая',
+                isPaid: false
+            },
+            {
+                id: 2,
+                name: 'Graham Bewc',
+                username: 'Afser',
+                birth: '12/01/1976',
+                phone: '3-333-333-3333 x33',
+                email: 'Csdrdropmail@april.biz',
+                address: { city: 'Undefined' },
+                filial: 'Филиал №1',
+                status: 'В обработке',
+                isPaid: true
+            }
+        ];
+    });
+
     describe('tableSlice Action Creators', () => {
         it('should return default state when passed an empty action', () => {
             const result = tableSlice(undefined, { type: '' }); // arg1: state , arg2: action
 
             expect(result).toEqual({
-                isUsersDataEmpty: false,
                 fetchUsersStatus: '',
                 fetchUsersErrMsg: '',
                 requestСount: 0,
                 isTableDataLoading: true,
+                isUsersDataEmpty: false,
                 tableData: [],
                 filteredTableData: [],
                 tableHeadTemplate: [
@@ -95,21 +139,6 @@ describe('tableSlice', () => {
             expect(result.requestСount).toBe(123);
         });
         it('should filter filteredTableData[] by props with filterUsers AC', () => {
-            const mockTableData = [
-                {
-                    id: 1,
-                    name: 'Leanne Graham',
-                    username: 'Bret',
-                    birth: '24/06/1995',
-                    phone: '1-770-736-8031 x56442',
-                    email: 'Sincere@april.biz',
-                    address: { city: 'Gwenborough' },
-                    filial: 'Филиал №2',
-                    status: 'Новая',
-                    isPaid: false
-                }
-            ];
-
             const action = {
                 type: filterUsers.type,
                 payload: { filterProp: 'ID', value: '0' }
@@ -120,7 +149,7 @@ describe('tableSlice', () => {
                 action
             );
 
-            expect(result.filteredTableData).toStrictEqual([]);
+            expect(result.filteredTableData).toEqual([]);
         });
     });
     describe('tableSlice Extra Reducers', () => {
@@ -130,31 +159,16 @@ describe('tableSlice', () => {
             expect(state.fetchUsersErrMsg).toBeNull(); // .toBe(null)
         });
         it('should change state with "fetchUsersData.fulfilled" action', () => {
-            const mockUsers = [
-                {
-                    id: 1,
-                    name: 'Leanne Graham',
-                    birth: '28/04/1979',
-                    phone: '1-770-736-8031',
-                    filial: 'Филиал №1',
-                    isPaid: true,
-                    status: 'Новая',
-                    email: 'Sincere@april.biz',
-                    username: 'Bret',
-                    address: { city: 'Gwenborough' }
-                }
-            ];
-
             const state = tableSlice(
                 initialState,
-                fetchUsersData.fulfilled(mockUsers, '')
+                fetchUsersData.fulfilled(mockTableData, '')
             );
             expect(state).toEqual({
-                tableData: mockUsers,
-                filteredTableData: mockUsers,
+                tableData: mockTableData,
+                filteredTableData: mockTableData,
                 fetchUsersStatus: 'success',
                 fetchUsersErrMsg: '',
-                requestСount: mockUsers.length
+                requestСount: mockTableData.length
             });
         });
         it('should change state with "fetchUsersData.rejected" action', () => {

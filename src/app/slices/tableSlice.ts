@@ -250,7 +250,7 @@ const tableSlice = createSlice({
                 state.fetchUsersStatus = 'success';
                 state.requestСount = state.tableData.length;
                 state.filteredTableData = action.payload;
-                console.log(state.tableData);
+                // console.log(state.tableData);
             })
             .addCase(fetchUsersData.rejected, (state, action) => {
                 state.fetchUsersStatus = 'failed';
