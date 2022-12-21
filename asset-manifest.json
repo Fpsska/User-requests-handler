@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CodeConstruction-Task/static/css/main.4f1a3e46.css",
-    "main.js": "/CodeConstruction-Task/static/js/main.8a97499d.js",
+    "main.js": "/CodeConstruction-Task/static/js/main.a396885d.js",
     "static/css/12.c8b544af.chunk.css": "/CodeConstruction-Task/static/css/12.c8b544af.chunk.css",
     "static/js/12.502b4196.chunk.js": "/CodeConstruction-Task/static/js/12.502b4196.chunk.js",
     "static/css/404.68a51a9c.chunk.css": "/CodeConstruction-Task/static/css/404.68a51a9c.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/690.965e2465.chunk.js": "/CodeConstruction-Task/static/js/690.965e2465.chunk.js",
     "index.html": "/CodeConstruction-Task/index.html",
     "main.4f1a3e46.css.map": "/CodeConstruction-Task/static/css/main.4f1a3e46.css.map",
-    "main.8a97499d.js.map": "/CodeConstruction-Task/static/js/main.8a97499d.js.map",
+    "main.a396885d.js.map": "/CodeConstruction-Task/static/js/main.a396885d.js.map",
     "12.c8b544af.chunk.css.map": "/CodeConstruction-Task/static/css/12.c8b544af.chunk.css.map",
     "12.502b4196.chunk.js.map": "/CodeConstruction-Task/static/js/12.502b4196.chunk.js.map",
     "404.68a51a9c.chunk.css.map": "/CodeConstruction-Task/static/css/404.68a51a9c.chunk.css.map",
@@ -24,6 +24,6 @@
   },
   "entrypoints": [
     "static/css/main.4f1a3e46.css",
-    "static/js/main.8a97499d.js"
+    "static/js/main.a396885d.js"
   ]
 }
