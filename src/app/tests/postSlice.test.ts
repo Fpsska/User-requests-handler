@@ -11,7 +11,7 @@ const initialState: any = {
 
 describe('postSlice', () => {
     describe('postSlice Action Creators', () => {
-        it('shouild return default state when passed an empty action', () => {
+        it('should return default state when passed an empty action', () => {
             const result = postSlice(undefined, { type: '' }); // arg1: state , arg2: action
 
             expect(result).toEqual({
@@ -26,8 +26,8 @@ describe('postSlice', () => {
                 type: switchPostDataLoadingStatus.type,
                 payload: false
             };
-
             const result = postSlice(initialState, action);
+
             expect(result.isPostDataLoading).toBe(false);
         });
     });
@@ -46,11 +46,11 @@ describe('postSlice', () => {
                     body: 'quia et suscipitnsuscipit recusandae consequuntur …strum rerum est autem sunt rem eveniet architecto'
                 }
             ];
-
             const state = postSlice(
                 initialState,
                 fetchPostsData.fulfilled(mockPost, '')
             );
+
             expect(state).toEqual({
                 postData: mockPost,
                 fetchPostsStatus: 'success',
