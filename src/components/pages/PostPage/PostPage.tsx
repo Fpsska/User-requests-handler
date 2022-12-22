@@ -9,22 +9,23 @@ import './postPage.scss';
 // /. imports
 
 const PostPage: React.FC = () => {
-    const {
-        postData = [],
-        isPostDataLoading,
-        fetchPostsErrMsg
-    } = useAppSelector(state => state.postSlice);
+    const { postData, isPostDataLoading, fetchPostsErrMsg } = useAppSelector(
+        state => state.postSlice
+    );
 
     return (
         <section className="post-page">
             <div className="post-page__wrapper">
                 {isPostDataLoading ? (
-                    <div className="post-page__preloader">
+                    <div
+                        className="post-page__preloader"
+                        data-testid="preloader"
+                    >
                         <Preloader />
                     </div>
                 ) : (
                     <div className="posts">
-                        {postData.map(item => {
+                        {postData?.map(item => {
                             return (
                                 <ul
                                     className="post"

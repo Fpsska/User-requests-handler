@@ -22,7 +22,7 @@ const UserPage: React.FC = () => {
                     </div>
                 ) : (
                     <div className="users">
-                        {tableData.map(item => {
+                        {tableData?.map(item => {
                             return (
                                 <ul
                                     className="user"
