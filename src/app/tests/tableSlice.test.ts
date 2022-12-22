@@ -6,7 +6,10 @@ import tableSlice, {
     sortUsersByDSC,
     filterUsers
 } from '../slices/tableSlice';
+
 import { fetchUsersData } from '../api/fetchUsersData';
+
+import { Itable } from '../../Types/tableSliceTypes';
 
 // /. imports
 
@@ -19,20 +22,7 @@ const initialState: any = {
 };
 
 describe('tableSlice', () => {
-    let mockTableData = [
-        {
-            id: 1,
-            name: 'Leanne Graham',
-            username: 'Bret',
-            birth: '24/06/1995',
-            phone: '1-770-736-8031 x56442',
-            email: 'Sincere@april.biz',
-            address: { city: 'Gwenborough' },
-            filial: 'Филиал №2',
-            status: 'Новая',
-            isPaid: false
-        }
-    ];
+    let mockTableData: Itable[] = [];
 
     beforeEach(() => {
         mockTableData = [

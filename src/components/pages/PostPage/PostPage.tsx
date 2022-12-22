@@ -9,9 +9,11 @@ import './postPage.scss';
 // /. imports
 
 const PostPage: React.FC = () => {
-    const { postData, isPostDataLoading, fetchPostsErrMsg } = useAppSelector(
-        state => state.postSlice
-    );
+    const {
+        postData = [],
+        isPostDataLoading,
+        fetchPostsErrMsg
+    } = useAppSelector(state => state.postSlice);
 
     return (
         <section className="post-page">
