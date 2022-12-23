@@ -34,8 +34,12 @@ describe('postSlice', () => {
     describe('postSlice Extra Reducers', () => {
         it('should change state with "fetchPostsData.pending" action', () => {
             const state = postSlice(initialState, fetchPostsData.pending(''));
-            expect(state.fetchPostsStatus).toBe('loading');
-            expect(state.fetchPostsErrMsg).toBeNull();
+
+            expect(state).toEqual({
+                postData: [],
+                fetchPostsStatus: 'loading',
+                fetchPostsErrMsg: null
+            });
         });
         it('should change state with "fetchPostsData.fulfilled" action', () => {
             const mockPost = [

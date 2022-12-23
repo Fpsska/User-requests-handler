@@ -42,4 +42,26 @@ describe('PostPage component', () => {
 
         waitFor(() => expect(screen.getByRole('list')).toBeInTheDocument()); // waiting for all state updates
     });
+    it('should display Preloader component when isPostDataLoading', () => {
+        mockedUseSelector.mockReturnValue([]);
+
+        render(<PostPage />);
+
+        waitFor(() =>
+            expect(screen.getByTestId('preloader')).toBeInTheDocument()
+        );
+
+        expect(screen.queryByRole('list')).toBeNull();
+        expect(screen.queryByText(/Error:/i)).toBeNull();
+    });
+    it('should display error-markup when fetchPostsErrMsg && !isPostDataLoading', () => {
+        mockedUseSelector.mockReturnValue([]);
+
+        render(<PostPage />);
+
+        waitFor(() => expect(screen.getByText(/Error:/i)));
+
+        expect(screen.queryByTestId('preloader')).toBeNull();
+        expect(screen.queryByRole('list')).toBeNull();
+    });
 });
