@@ -23,6 +23,8 @@ const MainPage: React.FC = () => {
 
     const dispatch = useAppDispatch();
 
+    // /. hooks
+
     useEffect(() => {
         dispatch(setRequestCount(filteredTableData.length));
         setText(
@@ -41,6 +43,8 @@ const MainPage: React.FC = () => {
         };
     }, []);
 
+    // /. effects
+
     return (
         <section className="main-page">
             <div className="main-page__wrapper">
@@ -50,7 +54,10 @@ const MainPage: React.FC = () => {
                             size={'34px'}
                             color={'#000'}
                         />
-                        <h1 className="result__text">
+                        <h1
+                            className="result__text"
+                            data-testid="counter"
+                        >
                             {isTableDataLoading ? '0' : requestСount} {text}
                         </h1>
                     </div>

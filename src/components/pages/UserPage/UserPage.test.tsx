@@ -38,12 +38,12 @@ const mockUsersData = [
 ];
 
 describe('UserPage component', () => {
-    it('should create UserPage with empty cards data', () => {
+    it('should render UserPage with empty cards data', () => {
         const { queryByTestId } = renderWithProviders(<UserPage />);
 
         expect(queryByTestId('users-list')).toBeNull();
     });
-    it('should create UserPage with cards data', async () => {
+    it('should render UserPage with cards data', async () => {
         const { findAllByTestId } = renderWithProviders(<UserPage />, {
             preloadedState: {
                 tableSlice: {
