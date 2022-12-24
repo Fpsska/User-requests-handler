@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { render, screen, waitFor } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 
-import * as reduxAppHooks from '../../../app/hooks';
+import { renderWithProviders } from '../../../utils/test-utils';
+
+import { initialState as tableState } from '../../../app/slices/tableSlice';
 
 import UserPage from './UserPage';
 
 // /. imports
-
-const mockedUseSelector = jest.spyOn(reduxAppHooks, 'useAppSelector');
 
 const mockUsersData = [
     {
@@ -17,7 +17,11 @@ const mockUsersData = [
         username: 'Bret',
         phone: '1-770-736-8031 x56442',
         email: 'Sincere@april.biz',
-        city: 'Gwenborough'
+        address: { city: 'Gwenborough' },
+        birth: '09/06/1965',
+        filial: 'Филиал №1',
+        status: 'Новая',
+        isPaid: true
     },
     {
         id: 2,
@@ -25,25 +29,69 @@ const mockUsersData = [
         username: 'Antonette',
         phone: '010-692-6593 x09125',
         email: 'Shanna@melissa.tv',
-        city: 'Wisokyburgh'
+        address: { city: 'Wisokyburgh' },
+        birth: '14/07/2007',
+        filial: 'Филиал №2',
+        status: 'В обработке',
+        isPaid: true
     }
 ];
 
 describe('UserPage component', () => {
     it('should create UserPage with empty cards data', () => {
-        mockedUseSelector.mockReturnValue([]);
+        const { queryByTestId } = renderWithProviders(<UserPage />);
 
-        const component = render(<UserPage />);
-        expect(component).toMatchSnapshot();
-
-        expect(screen.queryByRole('list')).toBeNull(); // not.toBeInTheDocument()
+        expect(queryByTestId('users-list')).toBeNull();
     });
-    it('should create UserPage with cards data', () => {
-        mockedUseSelector.mockReturnValue(mockUsersData);
+    it('should create UserPage with cards data', async () => {
+        const { findAllByTestId } = renderWithProviders(<UserPage />, {
+            preloadedState: {
+                tableSlice: {
+                    ...tableState,
+                    isTableDataLoading: false,
+                    filteredTableData: mockUsersData
+                }
+            }
+        });
 
-        const component = render(<UserPage />);
-        expect(component).toMatchSnapshot();
+        const usersList = await findAllByTestId(/users-list/i);
+        expect(usersList.length).toBe(2);
+    });
+    it('should display Preloader component', async () => {
+        const { findByTestId, queryByTestId, queryByText } =
+            renderWithProviders(<UserPage />, {
+                preloadedState: {
+                    tableSlice: {
+                        ...tableState,
+                        isTableDataLoading: true
+                    }
+                }
+            });
 
-        waitFor(() => expect(screen.getByRole('list')).toBeInTheDocument()); // waiting for all state updates
+        const preloaderEl = await findByTestId('preloader');
+        expect(preloaderEl).toBeInTheDocument();
+
+        expect(queryByTestId('users-container')).toBeNull();
+        expect(queryByText(/Error:/i)).toBeNull();
+    });
+    it('should display error-markup', async () => {
+        const { findByTestId, queryByTestId } = renderWithProviders(
+            <UserPage />,
+            {
+                preloadedState: {
+                    tableSlice: {
+                        ...tableState,
+                        isTableDataLoading: false,
+                        fetchUsersErrMsg: 'Error: Failed to fetch'
+                    }
+                }
+            }
+        );
+
+        const errorEl = await findByTestId('error');
+        expect(errorEl).toBeInTheDocument();
+
+        expect(queryByTestId('preloader')).toBeNull();
+        expect(queryByTestId('users-container')).toBeNull();
     });
 });

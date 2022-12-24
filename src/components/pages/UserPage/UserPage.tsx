@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useAppSelector } from '../../../app/hooks';
 
@@ -12,6 +12,16 @@ const UserPage: React.FC = () => {
     const { isTableDataLoading, fetchUsersErrMsg, filteredTableData } =
         useAppSelector(state => state.tableSlice);
 
+    const [isError, setErrorStatus] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (!isTableDataLoading && fetchUsersErrMsg) {
+            setErrorStatus(true);
+        } else {
+            setErrorStatus(false);
+        }
+    }, [isTableDataLoading, fetchUsersErrMsg]);
+
     // /. hooks
 
     return (
@@ -24,8 +34,18 @@ const UserPage: React.FC = () => {
                     >
                         <Preloader />
                     </div>
+                ) : isError ? (
+                    <span
+                        className="error-message"
+                        data-testid="error"
+                    >
+                        Error: {fetchUsersErrMsg}
+                    </span>
                 ) : (
-                    <div className="users">
+                    <div
+                        className="users"
+                        data-testid="users-container"
+                    >
                         {filteredTableData.map((item, idx) => {
                             return (
                                 <ul
@@ -51,11 +71,6 @@ const UserPage: React.FC = () => {
                                 </ul>
                             );
                         })}
-                        {!isTableDataLoading && fetchUsersErrMsg && (
-                            <span className="error-message">
-                                Error: {fetchUsersErrMsg}
-                            </span>
-                        )}
                     </div>
                 )}
             </div>
