@@ -14,6 +14,8 @@ const UserPage: React.FC = () => {
 
     const [isError, setErrorStatus] = useState<boolean>(false);
 
+    // /. hooks
+
     useEffect(() => {
         if (!isTableDataLoading && fetchUsersErrMsg) {
             setErrorStatus(true);
@@ -22,7 +24,7 @@ const UserPage: React.FC = () => {
         }
     }, [isTableDataLoading, fetchUsersErrMsg]);
 
-    // /. hooks
+    // /. effects
 
     return (
         <section className="user-page">

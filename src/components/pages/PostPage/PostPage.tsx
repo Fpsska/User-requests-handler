@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useAppSelector } from '../../../app/hooks';
 
@@ -13,6 +13,20 @@ const PostPage: React.FC = () => {
         state => state.postSlice
     );
 
+    const [isError, setErrorStatus] = useState<boolean>(false);
+
+    // /. hooks
+
+    useEffect(() => {
+        if (!isPostDataLoading && fetchPostsErrMsg) {
+            setErrorStatus(true);
+        } else {
+            setErrorStatus(false);
+        }
+    }, [isPostDataLoading, fetchPostsErrMsg]);
+
+    // /. effects
+
     return (
         <section className="post-page">
             <div className="post-page__wrapper">
@@ -23,13 +37,24 @@ const PostPage: React.FC = () => {
                     >
                         <Preloader />
                     </div>
+                ) : isError ? (
+                    <span
+                        className="error-message"
+                        data-tesid="error"
+                    >
+                        Error: {fetchPostsErrMsg}
+                    </span>
                 ) : (
-                    <div className="posts">
-                        {postData?.map(item => {
+                    <div
+                        className="posts"
+                        data-tesid="posts-container"
+                    >
+                        {postData.map(item => {
                             return (
                                 <ul
                                     className="post"
                                     key={item.id}
+                                    data-tesid="posts-list"
                                 >
                                     <li className="post__information">
                                         User ID: <span>{item.userId}</span>
@@ -43,11 +68,6 @@ const PostPage: React.FC = () => {
                                 </ul>
                             );
                         })}
-                        {!isPostDataLoading && fetchPostsErrMsg && (
-                            <span className="error-message">
-                                Error: {fetchPostsErrMsg}
-                            </span>
-                        )}
                     </div>
                 )}
             </div>
