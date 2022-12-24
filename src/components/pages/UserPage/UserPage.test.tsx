@@ -30,7 +30,7 @@ const mockUsersData = [
 ];
 
 describe('UserPage component', () => {
-    it('should create UserPage with empty posts data', () => {
+    it('should create UserPage with empty cards data', () => {
         mockedUseSelector.mockReturnValue([]);
 
         const component = render(<UserPage />);
@@ -38,7 +38,7 @@ describe('UserPage component', () => {
 
         expect(screen.queryByRole('list')).toBeNull(); // not.toBeInTheDocument()
     });
-    it('should create UserPage with posts data', () => {
+    it('should create UserPage with cards data', () => {
         mockedUseSelector.mockReturnValue(mockUsersData);
 
         const component = render(<UserPage />);

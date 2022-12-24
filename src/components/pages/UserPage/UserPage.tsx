@@ -9,24 +9,29 @@ import './userPage.scss';
 // /. imports
 
 const UserPage: React.FC = () => {
-    const { isTableDataLoading, fetchUsersErrMsg, tableData } = useAppSelector(
-        state => state.tableSlice
-    );
+    const { isTableDataLoading, fetchUsersErrMsg, filteredTableData } =
+        useAppSelector(state => state.tableSlice);
+
+    // /. hooks
 
     return (
         <section className="user-page">
             <div className="user-page__wrapper">
                 {isTableDataLoading ? (
-                    <div className="user-page__preloader">
+                    <div
+                        className="user-page__preloader"
+                        data-testid="preloader"
+                    >
                         <Preloader />
                     </div>
                 ) : (
                     <div className="users">
-                        {tableData?.map(item => {
+                        {filteredTableData.map((item, idx) => {
                             return (
                                 <ul
                                     className="user"
                                     key={item.id}
+                                    data-testid={`users-list-${idx}`}
                                 >
                                     <li className="user__information">
                                         Name: <span>{item.name}</span>

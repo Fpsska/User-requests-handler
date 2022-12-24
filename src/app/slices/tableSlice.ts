@@ -9,7 +9,7 @@ import { ItableSlice } from '../../Types/tableSliceTypes';
 
 // /. imports
 
-const initialState: ItableSlice = {
+export const initialState: ItableSlice = {
     isUsersDataEmpty: false,
     fetchUsersStatus: '',
     fetchUsersErrMsg: '',
@@ -250,7 +250,6 @@ const tableSlice = createSlice({
                 state.fetchUsersStatus = 'success';
                 state.requestСount = state.tableData.length;
                 state.filteredTableData = action.payload;
-                // console.log(state.tableData);
             })
             .addCase(fetchUsersData.rejected, (state, action) => {
                 state.fetchUsersStatus = 'failed';
