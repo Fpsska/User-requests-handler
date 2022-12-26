@@ -1,29 +1,29 @@
 {
   "files": {
     "main.css": "/CodeConstruction-Task/static/css/main.4f1a3e46.css",
-    "main.js": "/CodeConstruction-Task/static/js/main.43b3da11.js",
+    "main.js": "/CodeConstruction-Task/static/js/main.ae68522d.js",
     "static/css/12.c8b544af.chunk.css": "/CodeConstruction-Task/static/css/12.c8b544af.chunk.css",
-    "static/js/12.502b4196.chunk.js": "/CodeConstruction-Task/static/js/12.502b4196.chunk.js",
+    "static/js/12.07e90663.chunk.js": "/CodeConstruction-Task/static/js/12.07e90663.chunk.js",
     "static/css/404.68a51a9c.chunk.css": "/CodeConstruction-Task/static/css/404.68a51a9c.chunk.css",
     "static/js/404.8b8df008.chunk.js": "/CodeConstruction-Task/static/js/404.8b8df008.chunk.js",
     "static/css/184.31c627b2.chunk.css": "/CodeConstruction-Task/static/css/184.31c627b2.chunk.css",
-    "static/js/184.60bc713d.chunk.js": "/CodeConstruction-Task/static/js/184.60bc713d.chunk.js",
+    "static/js/184.5b45374b.chunk.js": "/CodeConstruction-Task/static/js/184.5b45374b.chunk.js",
     "static/js/787.4ec84dc1.chunk.js": "/CodeConstruction-Task/static/js/787.4ec84dc1.chunk.js",
     "static/js/690.965e2465.chunk.js": "/CodeConstruction-Task/static/js/690.965e2465.chunk.js",
     "index.html": "/CodeConstruction-Task/index.html",
     "main.4f1a3e46.css.map": "/CodeConstruction-Task/static/css/main.4f1a3e46.css.map",
-    "main.43b3da11.js.map": "/CodeConstruction-Task/static/js/main.43b3da11.js.map",
+    "main.ae68522d.js.map": "/CodeConstruction-Task/static/js/main.ae68522d.js.map",
     "12.c8b544af.chunk.css.map": "/CodeConstruction-Task/static/css/12.c8b544af.chunk.css.map",
-    "12.502b4196.chunk.js.map": "/CodeConstruction-Task/static/js/12.502b4196.chunk.js.map",
+    "12.07e90663.chunk.js.map": "/CodeConstruction-Task/static/js/12.07e90663.chunk.js.map",
     "404.68a51a9c.chunk.css.map": "/CodeConstruction-Task/static/css/404.68a51a9c.chunk.css.map",
     "404.8b8df008.chunk.js.map": "/CodeConstruction-Task/static/js/404.8b8df008.chunk.js.map",
     "184.31c627b2.chunk.css.map": "/CodeConstruction-Task/static/css/184.31c627b2.chunk.css.map",
-    "184.60bc713d.chunk.js.map": "/CodeConstruction-Task/static/js/184.60bc713d.chunk.js.map",
+    "184.5b45374b.chunk.js.map": "/CodeConstruction-Task/static/js/184.5b45374b.chunk.js.map",
     "787.4ec84dc1.chunk.js.map": "/CodeConstruction-Task/static/js/787.4ec84dc1.chunk.js.map",
     "690.965e2465.chunk.js.map": "/CodeConstruction-Task/static/js/690.965e2465.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4f1a3e46.css",
-    "static/js/main.43b3da11.js"
+    "static/js/main.ae68522d.js"
   ]
 }
