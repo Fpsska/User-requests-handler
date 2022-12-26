@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { FaSortDown } from 'react-icons/fa';
 
@@ -16,6 +16,7 @@ interface propTypes {
     isTableDataLoading: boolean;
     isUsersDataEmpty: boolean;
     fetchUsersErrMsg: string | null;
+    dataLength: number;
 }
 
 // /. interfaces
@@ -26,10 +27,13 @@ const TableHeadTemplate: React.FC<propTypes> = props => {
         text,
         isTableDataLoading,
         isUsersDataEmpty,
-        fetchUsersErrMsg
+        fetchUsersErrMsg,
+        dataLength
     } = props;
 
     const [sortOder, setSetOrder] = useState<string>('DSC');
+    const [isValidCondition, setValidConditionStatus] =
+        useState<boolean>(false);
     const [statuses, setStatus] = useState<{ [key: string]: boolean }>({
         id: false,
         fio: false,
@@ -41,6 +45,8 @@ const TableHeadTemplate: React.FC<propTypes> = props => {
     });
 
     const dispatch = useAppDispatch();
+
+    // /. hooks
 
     const iconHandler = (name: string): void => {
         switch (name) {
@@ -81,19 +87,35 @@ const TableHeadTemplate: React.FC<propTypes> = props => {
         iconHandler(name);
     };
 
+    // /. functions
+
+    useEffect(() => {
+        const validCondition =
+            !isTableDataLoading &&
+            !fetchUsersErrMsg &&
+            !isUsersDataEmpty &&
+            dataLength > 1;
+
+        if (validCondition) {
+            setValidConditionStatus(true);
+        } else {
+            setValidConditionStatus(false);
+        }
+    }, [isTableDataLoading, isUsersDataEmpty, fetchUsersErrMsg, dataLength]);
+
     return (
         <th
             className="table__col table__col--head"
-            onClick={() =>
-                !isTableDataLoading && !fetchUsersErrMsg && sortUsersData(name)
-            }
+            onClick={() => isValidCondition && sortUsersData(name)}
         >
             {text}
-            {!isTableDataLoading && !isUsersDataEmpty && statuses[name] ? (
-                <TiArrowSortedUp />
-            ) : (
-                <FaSortDown />
-            )}
+            <>
+                {sortOder === 'ASC' ? (
+                    <TiArrowSortedUp data-testid="arrow-up" />
+                ) : (
+                    <FaSortDown data-testid="arrow-down" />
+                )}
+            </>
         </th>
     );
 };

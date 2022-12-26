@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
@@ -22,13 +22,38 @@ const Table: React.FC = () => {
         tableHeadTemplate
     } = useAppSelector(state => state.tableSlice);
 
+    const [isError, setErorrStatus] = useState<boolean>(false);
+    const [isEmptyCase, setEmptyCaseStatus] = useState<boolean>(false);
+
     const dispatch = useAppDispatch();
+
+    // /. hooks
 
     useEffect(() => {
         filteredTableData.length === 0
             ? dispatch(swithUsersDataEmptyStatus(true))
             : dispatch(swithUsersDataEmptyStatus(false));
     }, [filteredTableData]);
+
+    useEffect(() => {
+        if (!isTableDataLoading && fetchUsersErrMsg) {
+            setErorrStatus(true);
+        } else {
+            setErorrStatus(false);
+        }
+    }, [isTableDataLoading, fetchUsersErrMsg]);
+
+    useEffect(() => {
+        const emptyCondition =
+            !isTableDataLoading && !fetchUsersErrMsg && isUsersDataEmpty;
+        if (emptyCondition) {
+            setEmptyCaseStatus(true);
+        } else {
+            setEmptyCaseStatus(false);
+        }
+    }, [isTableDataLoading, fetchUsersErrMsg, isUsersDataEmpty]);
+
+    // /. effects
 
     return (
         <div className="table-wrapper">
@@ -47,6 +72,7 @@ const Table: React.FC = () => {
                                     isTableDataLoading={isTableDataLoading}
                                     isUsersDataEmpty={isUsersDataEmpty}
                                     fetchUsersErrMsg={fetchUsersErrMsg}
+                                    dataLength={filteredTableData.length}
                                 />
                             );
                         })}
@@ -57,6 +83,12 @@ const Table: React.FC = () => {
                         <div className="table__preloader">
                             <Preloader />
                         </div>
+                    ) : isError ? (
+                        <span className="error-message">
+                            Error: {fetchUsersErrMsg}
+                        </span>
+                    ) : isEmptyCase ? (
+                        <span className="message">No matches!</span>
                     ) : (
                         <>
                             {filteredTableData.map(item => {
@@ -68,18 +100,6 @@ const Table: React.FC = () => {
                                 );
                             })}
                         </>
-                    )}
-                    {!isTableDataLoading && fetchUsersErrMsg && (
-                        <span className="error-message">
-                            Error: {fetchUsersErrMsg}
-                        </span>
-                    )}
-                    {!isTableDataLoading &&
-                    !fetchUsersErrMsg &&
-                    isUsersDataEmpty ? (
-                        <span className="message">No matches!</span>
-                    ) : (
-                        <></>
                     )}
                 </tbody>
             </table>
