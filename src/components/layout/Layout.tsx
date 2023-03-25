@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 
 import { Outlet } from 'react-router';
 
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import Theme from '../Theme/Theme';
+import Theme from '../ui/Theme/Theme';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
@@ -13,6 +11,9 @@ import { switchPostDataLoadingStatus } from '../../app/slices/postSlice';
 
 import { fetchUsersData } from '../../app/api/fetchUsersData';
 import { fetchPostsData } from '../../app/api/fetchPostsData';
+
+import Footer from './Footer/Footer';
+import Header from './Header/Header';
 
 // /. imports
 

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch } from 'app/hooks';
 
-import { filterUsers } from '../../app/slices/tableSlice';
+import { filterUsers } from 'app/slices/tableSlice';
 
 // /. imports
 

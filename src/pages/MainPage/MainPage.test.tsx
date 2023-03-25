@@ -1,12 +1,10 @@
 import React from 'react';
 
-import { screen } from '@testing-library/react';
+import { renderWithProviders } from 'utils/test-utils';
 
-import { renderWithProviders } from '../../../utils/test-utils';
+import { initialState as tableState } from 'app/slices/tableSlice';
 
-import { initialState as tableState } from '../../../app/slices/tableSlice';
-
-import MainPage from './MainPage';
+import MainPage from 'pages/MainPage/MainPage';
 
 // /. imports
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 
-import { useAppSelector } from '../../app/hooks';
+import { useAppSelector } from '../../../app/hooks';
 
-import { useInput } from '../../utils/hooks/useInput';
+import { useInput } from '../../../utils/hooks/useInput';
 
 import FormSelectTemplate from './FormSelectTemplate';
 

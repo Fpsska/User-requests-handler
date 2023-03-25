@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 
 import { IoDocumentTextOutline } from 'react-icons/io5';
 
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from 'app/hooks';
 
-import { setRequestCount, filterUsers } from '../../../app/slices/tableSlice';
+import { setRequestCount, filterUsers } from 'app/slices/tableSlice';
 
-import { declinateByCount } from '../../../utils/helpers/declinateByCount';
+import { declinateByCount } from 'utils/helpers/declinateByCount';
 
-import Form from '../../Form/Form';
-import Table from '../../Table/Table';
+import Form from 'components/ui/Form/Form';
+
+import Table from 'components/ui/Table/Table';
 
 import './mainPage.scss';
 

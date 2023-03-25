@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import { useAppSelector } from '../../../app/hooks';
+import Preloader from 'components/ui/Preloader/Preloader';
 
-import Preloader from '../../common/Preloader/Preloader';
+import { useAppSelector } from 'app/hooks';
 
 import './userPage.scss';
 

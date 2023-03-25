@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import Preloader from 'components/ui/Preloader/Preloader';
 
-import Preloader from '../common/Preloader/Preloader';
+import { useAppDispatch, useAppSelector } from 'app/hooks';
 
-import { swithUsersDataEmptyStatus } from '../../app/slices/tableSlice';
+import { swithUsersDataEmptyStatus } from 'app/slices/tableSlice';
 
 import TableBodyTemplate from './TableBodyTemplate';
 import TableHeadTemplate from './TableHeadTemplate';

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { optionsTypes } from '../../types/formSliceTypes';
+import { optionsTypes } from '../../../types/formSliceTypes';
 
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch } from '../../../app/hooks';
 
-import { filterUsers } from '../../app/slices/tableSlice';
+import { filterUsers } from '../../../app/slices/tableSlice';
 
 // /. imports
 

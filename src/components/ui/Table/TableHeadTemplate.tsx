@@ -4,9 +4,9 @@ import { FaSortDown } from 'react-icons/fa';
 
 import { TiArrowSortedUp } from 'react-icons/ti';
 
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch } from 'app/hooks';
 
-import { sortUsersByASC, sortUsersByDSC } from '../../app/slices/tableSlice';
+import { sortUsersByASC, sortUsersByDSC } from 'app/slices/tableSlice';
 
 // /. imports
 
