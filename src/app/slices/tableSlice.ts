@@ -2,10 +2,10 @@ import { createSlice, current, PayloadAction } from '@reduxjs/toolkit';
 
 import { fetchUsersData } from '../api/fetchUsersData';
 
-import { generateRandomDate } from '../../helpers/getRandomDate';
-import { getRandomStatus } from '../../helpers/getRandomStatus';
+import { generateRandomDate } from '../../utils/helpers/getRandomDate';
+import { getRandomStatus } from '../../utils/helpers/getRandomStatus';
 
-import { ItableSlice } from '../../Types/tableSliceTypes';
+import { ItableSlice } from '../../types/tableSliceTypes';
 
 // /. imports
 

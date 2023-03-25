@@ -9,7 +9,7 @@ import tableSlice, {
 
 import { fetchUsersData } from '../api/fetchUsersData';
 
-import { Itable } from '../../Types/tableSliceTypes';
+import { Itable } from '../../types/tableSliceTypes';
 
 // /. imports
 

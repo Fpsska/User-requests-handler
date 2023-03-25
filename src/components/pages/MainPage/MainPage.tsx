@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 
 import { setRequestCount, filterUsers } from '../../../app/slices/tableSlice';
 
-import { declinateByCount } from '../../../helpers/declinateByCount';
+import { declinateByCount } from '../../../utils/helpers/declinateByCount';
 
 import Form from '../../Form/Form';
 import Table from '../../Table/Table';

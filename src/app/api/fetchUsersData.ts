@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { Itable } from '../../Types/tableSliceTypes';
+import { Itable } from '../../types/tableSliceTypes';
 
 // /. imports
 

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { Ipost } from '../../Types/postSliceTypes';
+import { Ipost } from '../../types/postSliceTypes';
 
 // /. imports
 

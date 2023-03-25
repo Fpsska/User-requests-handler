@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { fetchPostsData } from '../api/fetchPostsData';
 
-import { IpostSilce } from '../../Types/postSliceTypes';
+import { IpostSilce } from '../../types/postSliceTypes';
 
 // /. imports
 

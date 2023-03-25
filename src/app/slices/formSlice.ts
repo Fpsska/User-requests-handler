@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { formSelectTemplatesTypes } from '../../Types/formSliceTypes';
+import { formSelectTemplatesTypes } from '../../types/formSliceTypes';
 
 // /. imports
 

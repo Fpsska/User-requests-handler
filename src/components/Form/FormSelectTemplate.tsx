@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { optionsTypes } from '../../Types/formSliceTypes';
+import { optionsTypes } from '../../types/formSliceTypes';
 
 import { useAppDispatch } from '../../app/hooks';
 
