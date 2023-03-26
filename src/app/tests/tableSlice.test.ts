@@ -1,9 +1,9 @@
+import { tableHeadData } from 'context/db';
+
 import tableSlice, {
     switchTableDataLoadingStatus,
     swithUsersDataEmptyStatus,
     setRequestCount,
-    sortUsersByASC,
-    sortUsersByDSC,
     filterUsers
 } from '../slices/tableSlice';
 
@@ -65,43 +65,7 @@ describe('tableSlice', () => {
                 isUsersDataEmpty: false,
                 tableData: [],
                 filteredTableData: [],
-                tableHeadTemplate: [
-                    {
-                        id: 1,
-                        name: 'id',
-                        text: 'ID'
-                    },
-                    {
-                        id: 2,
-                        name: 'fio',
-                        text: 'ФИО'
-                    },
-                    {
-                        id: 3,
-                        name: 'birth',
-                        text: 'Дата рождения'
-                    },
-                    {
-                        id: 5,
-                        name: 'phone',
-                        text: 'Телефон'
-                    },
-                    {
-                        id: 6,
-                        name: 'filial',
-                        text: 'Филиал'
-                    },
-                    {
-                        id: 7,
-                        name: 'isPaid',
-                        text: 'Оплата'
-                    },
-                    {
-                        id: 8,
-                        name: 'status',
-                        text: 'Статус'
-                    }
-                ]
+                tableHeadTemplates: tableHeadData
             });
         });
         it('should switch isTableDataLoading status with switchTableDataLoadingStatus AC', () => {

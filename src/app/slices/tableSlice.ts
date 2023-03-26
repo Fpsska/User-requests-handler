@@ -1,5 +1,7 @@
 import { createSlice, current, PayloadAction } from '@reduxjs/toolkit';
 
+import { tableHeadData } from 'context/db';
+
 import { fetchUsersData } from '../api/fetchUsersData';
 
 import { generateRandomDate } from '../../utils/helpers/getRandomDate';
@@ -17,43 +19,7 @@ export const initialState: ItableSlice = {
     isTableDataLoading: true,
     tableData: [],
     filteredTableData: [],
-    tableHeadTemplate: [
-        {
-            id: 1,
-            name: 'id',
-            text: 'ID'
-        },
-        {
-            id: 2,
-            name: 'fio',
-            text: 'ФИО'
-        },
-        {
-            id: 3,
-            name: 'birth',
-            text: 'Дата рождения'
-        },
-        {
-            id: 5,
-            name: 'phone',
-            text: 'Телефон'
-        },
-        {
-            id: 6,
-            name: 'filial',
-            text: 'Филиал'
-        },
-        {
-            id: 7,
-            name: 'isPaid',
-            text: 'Оплата'
-        },
-        {
-            id: 8,
-            name: 'status',
-            text: 'Статус'
-        }
-    ]
+    tableHeadTemplates: tableHeadData
 };
 
 // /. initialState

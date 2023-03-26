@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { optionsTypes } from '../../../types/formSliceTypes';
+import { Ioption } from '../../../types/formSliceTypes';
 
 import { useAppDispatch } from '../../../app/hooks';
 
@@ -10,7 +10,7 @@ import { filterUsers } from '../../../app/slices/tableSlice';
 
 interface propTypes {
     id: string;
-    options: optionsTypes[];
+    options: Ioption[];
     isTableDataLoading: boolean;
     status: string;
     role: string;

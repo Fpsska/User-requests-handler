@@ -1,9 +1,13 @@
-export interface optionsTypes {
+export interface Ioption {
     id: number;
     option: string;
 }
 
-export interface formSelectTemplatesTypes {
+export interface IselectTemplate {
     id: string;
-    options: optionsTypes[];
+    options: Ioption[];
+}
+
+export interface IformSilce {
+    formSelectTemplates: IselectTemplate[];
 }

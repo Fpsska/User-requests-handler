@@ -19,7 +19,7 @@ const Table: React.FC = () => {
         isTableDataLoading,
         fetchUsersErrMsg,
         isUsersDataEmpty,
-        tableHeadTemplate
+        tableHeadTemplates
     } = useAppSelector(state => state.tableSlice);
 
     const [isError, setErorrStatus] = useState<boolean>(false);
@@ -64,7 +64,7 @@ const Table: React.FC = () => {
             >
                 <thead className="table__head sticky">
                     <tr className="table__row table__row--head">
-                        {tableHeadTemplate.map(item => {
+                        {tableHeadTemplates.map(item => {
                             return (
                                 <TableHeadTemplate
                                     key={item.id}

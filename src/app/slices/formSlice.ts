@@ -1,52 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { formSelectTemplatesTypes } from '../../types/formSliceTypes';
+import { formSelectData } from 'context/db';
+
+import { IformSilce } from '../../types/formSliceTypes';
 
 // /. imports
 
-interface formSliceTypes {
-    formSelectTemplates: formSelectTemplatesTypes[];
-}
-
-// /. interfaces
-
-const initialState: formSliceTypes = {
-    formSelectTemplates: [
-        {
-            id: 'FILIAL',
-            options: [
-                {
-                    id: 1,
-                    option: 'Филиал'
-                },
-                {
-                    id: 2,
-                    option: 'Филиал №2'
-                },
-                {
-                    id: 3,
-                    option: 'Филиал №1'
-                }
-            ]
-        },
-        {
-            id: 'PAY',
-            options: [
-                {
-                    id: 4,
-                    option: 'Оплата'
-                },
-                {
-                    id: 5,
-                    option: 'оплачено'
-                },
-                {
-                    id: 6,
-                    option: 'не оплачено'
-                }
-            ]
-        }
-    ]
+const initialState: IformSilce = {
+    formSelectTemplates: formSelectData
 };
 
 // /. initialState

@@ -25,5 +25,5 @@ export interface ItableSlice {
     isTableDataLoading: boolean;
     tableData: Itable[];
     filteredTableData: Itable[];
-    tableHeadTemplate: ItableHeadTemplate[];
+    tableHeadTemplates: ItableHeadTemplate[];
 }
