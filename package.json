@@ -1,9 +1,9 @@
 {
-  "name": "code-construction-task",
+  "name": "user-requests-handler",
   "author": "Fpsska",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Fpsska.github.io/CodeConstruction-Task",
+  "homepage": "https://Fpsska.github.io/User-requests-handler",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
     "@testing-library/jest-dom": "^5.16.4",
