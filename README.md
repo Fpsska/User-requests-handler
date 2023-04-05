@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [react-icons](https://react-icons.github.io/react-icons/)
 - [css-spinner](https://github.com/loadingio/css-spinner/)
 
-### `Watch demo` _[CodeConstruction-Task](https://fpsska.github.io/CodeConstruction-Task/)_
+### `Watch demo` _[User-requests-handler](https://Fpsska.github.io/User-requests-handler)_
 
 ## Available Scripts
 
