@@ -1,6 +1,8 @@
-import { createSlice, current, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { tableHeadData } from 'context/db';
+
+import { makeDateCompare } from 'utils/helpers/makeDateCompare';
 
 import { fetchUsersData } from '../api/fetchUsersData';
 
@@ -49,18 +51,19 @@ const tableSlice = createSlice({
                     break;
                 case 'fio':
                     state.filteredTableData = [...state.filteredTableData].sort(
-                        (a, b) =>
-                            a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
+                        (a, b) => a.name.localeCompare(b.name)
                     );
                     break;
                 case 'birth':
                     state.filteredTableData = [...state.filteredTableData].sort(
-                        (a, b) => +a.birth.slice(6) - +b.birth.slice(6)
+                        (a, b) => makeDateCompare(a.birth, b.birth)
                     );
                     break;
                 case 'phone':
                     state.filteredTableData = [...state.filteredTableData].sort(
-                        (a, b) => (a.phone > b.phone ? 1 : -1)
+                        (a, b) =>
+                            +a.phone.replace(/\D/gi, '') -
+                            +b.phone.replace(/\D/gi, '')
                     );
                     break;
                 case 'filial':
@@ -77,10 +80,7 @@ const tableSlice = createSlice({
                     break;
                 case 'status':
                     state.filteredTableData = [...state.filteredTableData].sort(
-                        (a, b) =>
-                            a.status.toLowerCase() > b.status.toLowerCase()
-                                ? 1
-                                : -1
+                        (a, b) => a.status.localeCompare(b.status)
                     );
                     break;
                 default:
@@ -99,18 +99,19 @@ const tableSlice = createSlice({
                     break;
                 case 'fio':
                     state.filteredTableData = [...state.filteredTableData].sort(
-                        (a, b) =>
-                            a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
+                        (a, b) => b.name.localeCompare(a.name)
                     );
                     break;
                 case 'birth':
                     state.filteredTableData = [...state.filteredTableData].sort(
-                        (a, b) => +b.birth.slice(6) - +a.birth.slice(6)
+                        (a, b) => makeDateCompare(b.birth, a.birth)
                     );
                     break;
                 case 'phone':
                     state.filteredTableData = [...state.filteredTableData].sort(
-                        (a, b) => (a.phone < b.phone ? 1 : -1)
+                        (a, b) =>
+                            +b.phone.replace(/\D/gi, '') -
+                            +a.phone.replace(/\D/gi, '')
                     );
                     break;
                 case 'filial':
@@ -127,10 +128,7 @@ const tableSlice = createSlice({
                     break;
                 case 'status':
                     state.filteredTableData = [...state.filteredTableData].sort(
-                        (a, b) =>
-                            a.status.toLowerCase() < b.status.toLowerCase()
-                                ? 1
-                                : -1
+                        (a, b) => b.status.localeCompare(a.status)
                     );
                     break;
                 default:
