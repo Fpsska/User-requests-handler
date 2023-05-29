@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { useAppDispatch } from 'app/hooks';
 
@@ -17,6 +17,8 @@ export function useInput(): any {
     const [value, setValue] = useState<string>('');
 
     const dispatch = useAppDispatch();
+
+    // /. hooks
 
     const onInputChange = (props: propTypes) => {
         const { name, value } = props;

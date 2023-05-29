@@ -7,7 +7,7 @@ import { makeDateCompare } from 'utils/helpers/makeDateCompare';
 import { fetchUsersData } from '../api/fetchUsersData';
 
 import { generateRandomDate } from '../../utils/helpers/getRandomDate';
-import { getRandomStatus } from '../../utils/helpers/getRandomStatus';
+import { getRandomArrayEl } from '../../utils/helpers/getRandomArrayEl';
 
 import { ItableSlice } from '../../types/tableSliceTypes';
 
@@ -200,12 +200,12 @@ const tableSlice = createSlice({
                         new Date(2012, 0, 1),
                         new Date()
                     ).toLocaleDateString('en-GB')}`;
-                    item.filial = `${getRandomStatus([
+                    item.filial = `${getRandomArrayEl([
                         'Филиал №1',
                         'Филиал №2'
                     ])}`;
                     item.isPaid = Boolean(Math.round(Math.random()));
-                    item.status = `${getRandomStatus([
+                    item.status = `${getRandomArrayEl([
                         'В обработке',
                         'Новая',
                         'Закрыта'

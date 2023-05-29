@@ -1,4 +1,4 @@
-export function generateRandomDate(start: any, end: any): any {
+export function generateRandomDate(start: Date, end: Date): Date {
     return new Date(
         start.getTime() - Math.floor(Math.random() * end.getTime())
     );
